@@ -1,0 +1,4 @@
+# MediTrace RAG Pipeline
+# Stage 1: No external dependencies (stdlib only)
+# Stage 2: Requires sentence-transformers for embedding generation
+sentence-transformers>=2.2.0
