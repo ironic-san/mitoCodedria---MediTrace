@@ -116,11 +116,21 @@ def get_current_user(
                 filter_col="auth_user_id",
                 filter_val=auth_user_id
             )
+
+            if not docs_data and token_email:
+                docs_data = query_table_with_retry(
+                    table_name="doctors",
+                    select_fields="*",
+                    filter_col="email",
+                    filter_val=token_email
+                )
+
             if not docs_data:
                 raise HTTPException(
                     status_code=status.HTTP_404_NOT_FOUND,
                     detail="Doctor profile not found for authenticated user.",
                 )
+
             doc = docs_data[0]
             doctor_id = str(doc.get("doctor_id"))
             full_name = doc.get("full_name")
