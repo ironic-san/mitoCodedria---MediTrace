@@ -2,6 +2,106 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import DashboardLayout from "../layouts/DashboardLayout.jsx"
 
+function Icon({ name, size = 20 }) {
+  const common = {
+    width: size,
+    height: size,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": "true",
+  }
+
+  const icons = {
+    patients: (
+      <svg {...common}>
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
+
+    alert: (
+      <svg {...common}>
+        <path d="M10.3 3.4 2.7 17a2 2 0 0 0 1.75 3h15.1a2 2 0 0 0 1.75-3L13.7 3.4a2 2 0 0 0-3.4 0z" />
+        <path d="M12 9v4" />
+        <path d="M12 17h.01" />
+      </svg>
+    ),
+
+    review: (
+      <svg {...common}>
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <path d="M14 2v6h6" />
+        <path d="M8 13h8" />
+        <path d="M8 17h5" />
+      </svg>
+    ),
+
+    shield: (
+      <svg {...common}>
+        <path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+    ),
+
+    search: (
+      <svg {...common}>
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-4-4" />
+      </svg>
+    ),
+
+    arrow: (
+      <svg {...common}>
+        <path d="M5 12h13" />
+        <path d="m13 6 6 6-6 6" />
+      </svg>
+    ),
+
+    warning: (
+      <svg {...common}>
+        <path d="M10.3 3.4 2.7 17a2 2 0 0 0 1.75 3h15.1a2 2 0 0 0 1.75-3L13.7 3.4a2 2 0 0 0-3.4 0z" />
+        <path d="M12 9v4" />
+        <path d="M12 17h.01" />
+      </svg>
+    ),
+
+    info: (
+      <svg {...common}>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 11v5" />
+        <path d="M12 8h.01" />
+      </svg>
+    ),
+
+    folder: (
+      <svg {...common}>
+        <path d="M3 6a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      </svg>
+    ),
+
+    sparkles: (
+      <svg {...common}>
+        <path d="m12 3-1.4 5.6L5 10l5.6 1.4L12 17l1.4-5.6L19 10l-5.6-1.4z" />
+        <path d="m19 16-.7 2.3L16 19l2.3.7L19 22l.7-2.3L22 19l-2.3-.7z" />
+      </svg>
+    ),
+
+    check: (
+      <svg {...common}>
+        <path d="m5 12 4 4L19 6" />
+      </svg>
+    ),
+  }
+
+  return icons[name] || null
+}
+
 function DoctorDashboard() {
   const navigate = useNavigate()
 
@@ -87,7 +187,9 @@ function DoctorDashboard() {
     >
       <div className="doctor-dashboard-page">
 
-        {/* PAGE HEADER */}
+        {/* =========================
+            PAGE HEADER
+            ========================= */}
 
         <div className="dashboard-page-header">
 
@@ -113,61 +215,147 @@ function DoctorDashboard() {
         </div>
 
 
-        {/* SUMMARY CARDS */}
+        {/* =========================
+            SUMMARY CARDS
+            ========================= */}
 
         <div className="stats-grid">
 
-          <div className="stat-card">
+          {/* Authorized Patients */}
 
-            <div className="stat-icon">
-              👥
+          <div className="stat-card polished-stat-card">
+
+            <div className="stat-icon stat-icon-patients">
+              <Icon
+                name="patients"
+                size={21}
+              />
             </div>
 
-            <div>
-              <span>Authorized Patients</span>
-              <strong>{patients.length}</strong>
+            <div className="stat-content">
+              <span className="stat-label">
+                Authorized Patients
+              </span>
+
+              <strong>
+                {patients.length}
+              </strong>
+
+              <small>
+                Active clinical access
+              </small>
             </div>
 
-          </div>
-
-
-          <div className="stat-card">
-
-            <div className="stat-icon">
-              🚨
-            </div>
-
-            <div>
-              <span>Critical Alerts</span>
-              <strong>3</strong>
-            </div>
-
-          </div>
-
-
-          <div className="stat-card">
-
-            <div className="stat-icon">
-              📄
-            </div>
-
-            <div>
-              <span>Pending Reviews</span>
-              <strong>2</strong>
+            <div className="stat-accent">
+              <Icon
+                name="arrow"
+                size={15}
+              />
             </div>
 
           </div>
 
 
-          <div className="stat-card">
+          {/* Critical Alerts */}
 
-            <div className="stat-icon">
-              ✓
+          <div className="stat-card polished-stat-card stat-card-alert">
+
+            <div className="stat-icon stat-icon-alert">
+              <Icon
+                name="alert"
+                size={21}
+              />
             </div>
 
-            <div>
-              <span>Integrity Checks</span>
-              <strong>8</strong>
+            <div className="stat-content">
+              <span className="stat-label">
+                Critical Alerts
+              </span>
+
+              <strong>
+                3
+              </strong>
+
+              <small>
+                Require clinical attention
+              </small>
+            </div>
+
+            <div className="stat-accent">
+              <Icon
+                name="arrow"
+                size={15}
+              />
+            </div>
+
+          </div>
+
+
+          {/* Pending Reviews */}
+
+          <div className="stat-card polished-stat-card">
+
+            <div className="stat-icon stat-icon-review">
+              <Icon
+                name="review"
+                size={21}
+              />
+            </div>
+
+            <div className="stat-content">
+              <span className="stat-label">
+                Pending Reviews
+              </span>
+
+              <strong>
+                2
+              </strong>
+
+              <small>
+                Awaiting doctor review
+              </small>
+            </div>
+
+            <div className="stat-accent">
+              <Icon
+                name="arrow"
+                size={15}
+              />
+            </div>
+
+          </div>
+
+
+          {/* Integrity */}
+
+          <div className="stat-card polished-stat-card">
+
+            <div className="stat-icon stat-icon-integrity">
+              <Icon
+                name="shield"
+                size={21}
+              />
+            </div>
+
+            <div className="stat-content">
+              <span className="stat-label">
+                Integrity Checks
+              </span>
+
+              <strong>
+                8
+              </strong>
+
+              <small>
+                Provenance checks recorded
+              </small>
+            </div>
+
+            <div className="stat-accent">
+              <Icon
+                name="arrow"
+                size={15}
+              />
             </div>
 
           </div>
@@ -175,7 +363,9 @@ function DoctorDashboard() {
         </div>
 
 
-        {/* PATIENT SEARCH */}
+        {/* =========================
+            PATIENT SEARCH
+            ========================= */}
 
         <section className="dashboard-panel doctor-patient-panel">
 
@@ -191,20 +381,37 @@ function DoctorDashboard() {
               </p>
             </div>
 
+            <button
+              type="button"
+              className="panel-action-button"
+              onClick={() => navigate("/doctor/patients")}
+            >
+              View all
+              <Icon
+                name="arrow"
+                size={14}
+              />
+            </button>
+
           </div>
 
 
           <div className="patient-search-wrapper">
 
             <span className="patient-search-icon">
-              🔍
+              <Icon
+                name="search"
+                size={18}
+              />
             </span>
 
             <input
               type="text"
               placeholder="Search by patient name or condition..."
               value={search}
-              onChange={(event) => setSearch(event.target.value)}
+              onChange={(event) =>
+                setSearch(event.target.value)
+              }
             />
 
           </div>
@@ -218,6 +425,13 @@ function DoctorDashboard() {
                 className="doctor-patient-card"
                 key={patient.id}
                 onClick={() => openPatient(patient)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    openPatient(patient)
+                  }
+                }}
               >
 
                 <div className="patient-avatar">
@@ -276,7 +490,10 @@ function DoctorDashboard() {
                   </span>
 
                   <span className="patient-arrow">
-                    →
+                    <Icon
+                      name="arrow"
+                      size={15}
+                    />
                   </span>
 
                 </div>
@@ -289,7 +506,13 @@ function DoctorDashboard() {
             {filteredPatients.length === 0 && (
 
               <div className="no-patients">
-                <div>🔍</div>
+
+                <div className="empty-search-icon">
+                  <Icon
+                    name="search"
+                    size={25}
+                  />
+                </div>
 
                 <h3>
                   No patients found
@@ -298,6 +521,7 @@ function DoctorDashboard() {
                 <p>
                   Try searching with a different name or condition.
                 </p>
+
               </div>
 
             )}
@@ -307,7 +531,9 @@ function DoctorDashboard() {
         </section>
 
 
-        {/* CRITICAL ALERTS */}
+        {/* =========================
+            CRITICAL ALERTS
+            ========================= */}
 
         <section className="dashboard-panel">
 
@@ -323,15 +549,24 @@ function DoctorDashboard() {
               </p>
             </div>
 
+            <div className="panel-count">
+              3 alerts
+            </div>
+
           </div>
 
 
           <div className="doctor-alert-list">
 
+            {/* Kabir */}
+
             <div className="doctor-alert critical">
 
               <div className="doctor-alert-icon">
-                ⚠️
+                <Icon
+                  name="warning"
+                  size={20}
+                />
               </div>
 
               <div>
@@ -349,15 +584,24 @@ function DoctorDashboard() {
                 onClick={() => openPatient(patients[4])}
               >
                 View
+                <Icon
+                  name="arrow"
+                  size={13}
+                />
               </button>
 
             </div>
 
 
+            {/* Tanya */}
+
             <div className="doctor-alert warning">
 
               <div className="doctor-alert-icon">
-                ⚠️
+                <Icon
+                  name="warning"
+                  size={20}
+                />
               </div>
 
               <div>
@@ -366,8 +610,7 @@ function DoctorDashboard() {
                 </strong>
 
                 <p>
-                  Potential discrepancy detected between medical document and
-                  current surgery date.
+                  Potential discrepancy detected between medical document and current surgery date.
                 </p>
               </div>
 
@@ -376,15 +619,24 @@ function DoctorDashboard() {
                 onClick={() => openPatient(patients[5])}
               >
                 Review
+                <Icon
+                  name="arrow"
+                  size={13}
+                />
               </button>
 
             </div>
 
 
+            {/* Nikhil */}
+
             <div className="doctor-alert info">
 
               <div className="doctor-alert-icon">
-                ℹ️
+                <Icon
+                  name="info"
+                  size={20}
+                />
               </div>
 
               <div>
@@ -402,6 +654,10 @@ function DoctorDashboard() {
                 onClick={() => openPatient(patients[2])}
               >
                 Open
+                <Icon
+                  name="arrow"
+                  size={13}
+                />
               </button>
 
             </div>
@@ -411,7 +667,9 @@ function DoctorDashboard() {
         </section>
 
 
-        {/* QUICK ACTIONS */}
+        {/* =========================
+            QUICK ACTIONS
+            ========================= */}
 
         <section className="dashboard-panel">
 
@@ -437,9 +695,28 @@ function DoctorDashboard() {
               className="clinical-tool"
               onClick={() => navigate("/doctor/patients")}
             >
-              <span>👥</span>
-              <strong>Patient Directory</strong>
-              <small>Browse authorized patients</small>
+              <span className="clinical-tool-icon">
+                <Icon
+                  name="patients"
+                  size={21}
+                />
+              </span>
+
+              <strong>
+                Patient Directory
+              </strong>
+
+              <small>
+                Browse authorized patients
+              </small>
+
+              <span className="clinical-tool-arrow">
+                <Icon
+                  name="arrow"
+                  size={14}
+                />
+              </span>
+
             </button>
 
 
@@ -448,9 +725,28 @@ function DoctorDashboard() {
               className="clinical-tool"
               onClick={() => navigate("/doctor/documents")}
             >
-              <span>📄</span>
-              <strong>Document Review</strong>
-              <small>Upload and review medical documents</small>
+              <span className="clinical-tool-icon">
+                <Icon
+                  name="folder"
+                  size={21}
+                />
+              </span>
+
+              <strong>
+                Document Review
+              </strong>
+
+              <small>
+                Upload and review medical documents
+              </small>
+
+              <span className="clinical-tool-arrow">
+                <Icon
+                  name="arrow"
+                  size={14}
+                />
+              </span>
+
             </button>
 
 
@@ -459,9 +755,28 @@ function DoctorDashboard() {
               className="clinical-tool"
               onClick={() => navigate("/doctor/ai-reviews")}
             >
-              <span>✦</span>
-              <strong>AI Reviews</strong>
-              <small>Review AI-extracted findings</small>
+              <span className="clinical-tool-icon">
+                <Icon
+                  name="sparkles"
+                  size={21}
+                />
+              </span>
+
+              <strong>
+                AI Reviews
+              </strong>
+
+              <small>
+                Review AI-extracted findings
+              </small>
+
+              <span className="clinical-tool-arrow">
+                <Icon
+                  name="arrow"
+                  size={14}
+                />
+              </span>
+
             </button>
 
 
@@ -470,9 +785,28 @@ function DoctorDashboard() {
               className="clinical-tool"
               onClick={() => navigate("/doctor/integrity")}
             >
-              <span>✓</span>
-              <strong>Integrity Verification</strong>
-              <small>Verify historical record provenance</small>
+              <span className="clinical-tool-icon">
+                <Icon
+                  name="check"
+                  size={21}
+                />
+              </span>
+
+              <strong>
+                Integrity Verification
+              </strong>
+
+              <small>
+                Verify historical record provenance
+              </small>
+
+              <span className="clinical-tool-arrow">
+                <Icon
+                  name="arrow"
+                  size={14}
+                />
+              </span>
+
             </button>
 
           </div>

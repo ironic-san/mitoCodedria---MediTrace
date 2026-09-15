@@ -7,23 +7,24 @@ function PatientTimeline() {
       date: "18 Nov 2019",
       title: "Severe Penicillin Allergy Identified",
       type: "Allergy",
-      icon: "⚠️",
+      icon: "!",
       hospital: "Apollo Hospitals, Chennai",
       description:
-        "Severe allergic reaction to Penicillin documented. Reaction recorded as anaphylaxis.",
+        "A severe allergic reaction to Penicillin was documented, with the reaction recorded as anaphylaxis.",
       details: [
         "Allergen: Penicillin",
         "Severity: Severe",
         "Reaction: Anaphylaxis",
       ],
       status: "Critical",
+      tone: "critical",
     },
     {
       year: "2024",
       date: "06 Aug 2024",
       title: "Bacterial Pneumonia Hospitalization",
       type: "Hospitalization",
-      icon: "🏥",
+      icon: "+",
       hospital: "Apollo Hospitals, Chennai",
       description:
         "Hospital admission for bacterial pneumonia with treatment and clinical monitoring.",
@@ -33,22 +34,24 @@ function PatientTimeline() {
         "Treatment and follow-up documented",
       ],
       status: "Completed",
+      tone: "completed",
     },
     {
       year: "2026",
       date: "15 Sep 2026",
       title: "Emergency Presentation",
       type: "Emergency",
-      icon: "🚨",
+      icon: "!",
       hospital: "Emergency Department",
       description:
-        "Patient presented for emergency evaluation. Critical allergy information is available through the emergency health passport.",
+        "Emergency evaluation initiated. Critical allergy information is available through the Emergency Health Passport.",
       details: [
         "Emergency workflow initiated",
         "Critical allergy information available",
-        "Emergency access requires break-glass authorization",
+        "Emergency access requires authorization",
       ],
       status: "Current",
+      tone: "current",
     },
   ]
 
@@ -57,15 +60,18 @@ function PatientTimeline() {
       role="patient"
       userName="Kabir Malhotra"
     >
-      <div className="timeline-page">
+      <div className="patient-timeline-page">
 
-        {/* PAGE HEADER */}
+        {/* =====================================================
+            PAGE HEADER
+        ====================================================== */}
 
-        <div className="dashboard-page-header">
+        <section className="patient-timeline-header">
+
           <div>
-            <div className="page-eyebrow">
+            <span className="timeline-page-kicker">
               MEDICAL HISTORY
-            </div>
+            </span>
 
             <h1>
               Medical Timeline
@@ -75,38 +81,65 @@ function PatientTimeline() {
               A chronological view of your documented medical history.
             </p>
           </div>
-        </div>
+
+          <div className="timeline-header-summary">
+
+            <div className="timeline-summary-number">
+              {events.length}
+            </div>
+
+            <div>
+              <span>
+                DOCUMENTED
+              </span>
+
+              <strong>
+                Medical Events
+              </strong>
+            </div>
+
+          </div>
+
+        </section>
 
 
-        {/* IMPORTANT NOTICE */}
+        {/* =====================================================
+            INFORMATION NOTICE
+        ====================================================== */}
 
-        <div className="timeline-notice">
+        <section className="patient-timeline-notice">
 
           <div className="timeline-notice-icon">
-            ℹ️
+            i
           </div>
 
           <div>
-            <h3>
+            <strong>
               Your medical history
-            </h3>
+            </strong>
 
             <p>
-              This timeline presents structured medical information recorded
-              in your Medi-Trace health passport.
+              This timeline presents structured medical information
+              recorded in your Medi-Trace health passport.
             </p>
           </div>
 
-        </div>
+        </section>
 
 
-        {/* TIMELINE */}
+        {/* =====================================================
+            TIMELINE PANEL
+        ====================================================== */}
 
-        <section className="dashboard-panel">
+        <section className="patient-timeline-panel">
 
-          <div className="panel-header">
+          <div className="patient-timeline-panel-header">
 
             <div>
+              <span>
+                HEALTH HISTORY
+              </span>
+
               <h2>
                 Medical Events
               </h2>
@@ -116,25 +149,29 @@ function PatientTimeline() {
               </p>
             </div>
 
-            <div className="timeline-count">
-              {events.length} Events
+            <div className="timeline-event-count">
+              {events.length} EVENTS
             </div>
 
           </div>
 
 
-          <div className="medical-timeline">
+          {/* =================================================
+              TIMELINE
+          ================================================== */}
+
+          <div className="patient-medical-timeline">
 
             {events.map((event, index) => (
 
-              <div
-                className="timeline-event"
+              <article
+                className={`patient-timeline-event ${event.tone}`}
                 key={event.date}
               >
 
                 {/* DATE */}
 
-                <div className="timeline-date">
+                <div className="patient-timeline-date">
 
                   <strong>
                     {event.year}
@@ -147,30 +184,30 @@ function PatientTimeline() {
                 </div>
 
 
-                {/* TIMELINE MARKER */}
+                {/* MARKER */}
 
-                <div className="timeline-marker-wrapper">
+                <div className="patient-timeline-track">
 
-                  <div className="timeline-marker">
+                  <div className="patient-timeline-marker">
                     {event.icon}
                   </div>
 
                   {index !== events.length - 1 && (
-                    <div className="timeline-connector"></div>
+                    <div className="patient-timeline-line"></div>
                   )}
 
                 </div>
 
 
-                {/* EVENT CONTENT */}
+                {/* EVENT CARD */}
 
-                <div className="timeline-content">
+                <div className="patient-timeline-card">
 
-                  <div className="timeline-content-header">
+                  <div className="patient-timeline-card-top">
 
-                    <div>
+                    <div className="patient-timeline-card-title">
 
-                      <span className="timeline-type">
+                      <span className="patient-event-category">
                         {event.type}
                       </span>
 
@@ -181,13 +218,7 @@ function PatientTimeline() {
                     </div>
 
                     <span
-                      className={`timeline-status ${
-                        event.status === "Critical"
-                          ? "critical"
-                          : event.status === "Current"
-                            ? "current"
-                            : "completed"
-                      }`}
+                      className={`patient-event-status ${event.tone}`}
                     >
                       {event.status}
                     </span>
@@ -195,25 +226,32 @@ function PatientTimeline() {
                   </div>
 
 
-                  <p className="timeline-description">
+                  <p className="patient-event-description">
                     {event.description}
                   </p>
 
 
-                  <div className="timeline-hospital">
-                    🏥 {event.hospital}
+                  <div className="patient-event-location">
+                    <span className="location-icon">
+                      +
+                    </span>
+
+                    {event.hospital}
                   </div>
 
 
-                  <div className="timeline-details">
+                  <div className="patient-event-details">
 
                     {event.details.map((detail) => (
 
                       <div
-                        className="timeline-detail"
+                        className="patient-event-detail"
                         key={detail}
                       >
-                        <span>✓</span>
+                        <span>
+                          ✓
+                        </span>
+
                         {detail}
                       </div>
 
@@ -223,7 +261,7 @@ function PatientTimeline() {
 
                 </div>
 
-              </div>
+              </article>
 
             ))}
 
@@ -232,52 +270,93 @@ function PatientTimeline() {
         </section>
 
 
-        {/* CRITICAL INFORMATION */}
+        {/* =====================================================
+            CRITICAL INFORMATION
+        ====================================================== */}
 
-        <section className="timeline-critical-card">
+        <section className="patient-timeline-critical">
 
-          <div className="critical-card-icon">
-            ⚠️
+          <div className="timeline-critical-icon">
+            !
           </div>
 
-          <div className="critical-card-content">
+          <div className="timeline-critical-content">
 
-            <div className="critical-card-label">
+            <span>
               CRITICAL MEDICAL INFORMATION
-            </div>
+            </span>
 
             <h2>
               Severe Penicillin Allergy
             </h2>
 
             <p>
-              Reaction recorded as <strong>anaphylaxis</strong>.
-              This information should be considered during emergency care.
+              Reaction recorded as{" "}
+              <strong>
+                anaphylaxis
+              </strong>
+              . This information should be considered during
+              emergency care.
             </p>
 
           </div>
 
-          <div className="critical-card-badge">
+          <div className="timeline-critical-badge">
             SEVERE
           </div>
 
         </section>
 
 
-        {/* FOOTER INFORMATION */}
+        {/* =====================================================
+            EMERGENCY PASSPORT CTA
+        ====================================================== */}
 
-        <div className="timeline-footer">
+        <section className="timeline-passport-cta">
+
+          <div className="timeline-passport-icon">
+            +
+          </div>
+
+          <div>
+            <span>
+              EMERGENCY READY
+            </span>
+
+            <h2>
+              Need your critical information quickly?
+            </h2>
+
+            <p>
+              Open your Emergency Health Passport for a
+              concise view of essential medical information.
+            </p>
+          </div>
+
+          <a
+            href="/patient/passport"
+            className="timeline-passport-button"
+          >
+            Open Passport
+            <span>→</span>
+          </a>
+
+        </section>
+
+
+        {/* =====================================================
+            FOOTER NOTE
+        ====================================================== */}
+
+        <div className="patient-timeline-footer">
 
           <span>
             🔐 Your medical information is protected
           </span>
 
           <span>
-            •
-          </span>
-
-          <span>
-            Only authorized healthcare workflows can modify records.
+            Medi-Trace • Only authorized healthcare workflows
+            can modify records.
           </span>
 
         </div>

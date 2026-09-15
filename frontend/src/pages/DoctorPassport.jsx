@@ -2,6 +2,163 @@ import { useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import DashboardLayout from "../layouts/DashboardLayout.jsx"
 
+function Icon({ name, size = 19 }) {
+  const common = {
+    width: size,
+    height: size,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": "true",
+  }
+
+  const icons = {
+    back: (
+      <svg {...common}>
+        <path d="M19 12H5" />
+        <path d="m12 19-7-7 7-7" />
+      </svg>
+    ),
+
+    user: (
+      <svg {...common}>
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 21a8 8 0 0 1 16 0" />
+      </svg>
+    ),
+
+    blood: (
+      <svg {...common}>
+        <path d="M12 3s-6 6.5-6 11a6 6 0 0 0 12 0c0-4.5-6-11-6-11z" />
+      </svg>
+    ),
+
+    alert: (
+      <svg {...common}>
+        <path d="M10.3 3.4 2.7 17a2 2 0 0 0 1.75 3h15.1a2 2 0 0 0 1.75-3L13.7 3.4a2 2 0 0 0-3.4 0z" />
+        <path d="M12 9v4" />
+        <path d="M12 17h.01" />
+      </svg>
+    ),
+
+    condition: (
+      <svg {...common}>
+        <path d="M4 19V5" />
+        <path d="M4 6h12l-2 3 2 3H4" />
+      </svg>
+    ),
+
+    allergy: (
+      <svg {...common}>
+        <path d="M12 3v18" />
+        <path d="M5 8c2.5 0 4 1.5 7 4s4.5 4 7 4" />
+        <path d="M5 16c2.5 0 4-1.5 7-4s4.5-4 7-4" />
+      </svg>
+    ),
+
+    medicine: (
+      <svg {...common}>
+        <path d="m8 4 12 12" />
+        <path d="M16 3a4 4 0 0 1 0 6l-7 7a4 4 0 0 1-6-6l7-7a4 4 0 0 1 6 0z" />
+        <path d="m6 12 6 6" />
+      </svg>
+    ),
+
+    calendar: (
+      <svg {...common}>
+        <rect x="3" y="4" width="18" height="17" rx="2" />
+        <path d="M16 2v4" />
+        <path d="M8 2v4" />
+        <path d="M3 10h18" />
+      </svg>
+    ),
+
+    document: (
+      <svg {...common}>
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <path d="M14 2v6h6" />
+        <path d="M8 13h8" />
+        <path d="M8 17h5" />
+      </svg>
+    ),
+
+    ai: (
+      <svg {...common}>
+        <path d="m12 3-1.4 5.6L5 10l5.6 1.4L12 17l1.4-5.6L19 10l-5.6-1.4z" />
+        <path d="m19 16-.7 2.3L16 19l2.3.7L19 22l.7-2.3L22 19l-2.3-.7z" />
+      </svg>
+    ),
+
+    shield: (
+      <svg {...common}>
+        <path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z" />
+        <path d="m9 12 2 2 4-4" />
+      </svg>
+    ),
+
+    edit: (
+      <svg {...common}>
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4z" />
+      </svg>
+    ),
+
+    plus: (
+      <svg {...common}>
+        <path d="M12 5v14" />
+        <path d="M5 12h14" />
+      </svg>
+    ),
+
+    eye: (
+      <svg {...common}>
+        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
+    ),
+
+    arrow: (
+      <svg {...common}>
+        <path d="M5 12h13" />
+        <path d="m13 6 6 6-6 6" />
+      </svg>
+    ),
+
+    check: (
+      <svg {...common}>
+        <path d="m5 12 4 4L19 6" />
+      </svg>
+    ),
+
+    clock: (
+      <svg {...common}>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </svg>
+    ),
+
+    file: (
+      <svg {...common}>
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <path d="M14 2v6h6" />
+      </svg>
+    ),
+
+    info: (
+      <svg {...common}>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 11v5" />
+        <path d="M12 8h.01" />
+      </svg>
+    ),
+  }
+
+  return icons[name] || null
+}
+
 function DoctorPassport() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -180,15 +337,11 @@ function DoctorPassport() {
       condition: "Severe Penicillin Allergy",
       status: "Emergency Ready",
       critical: true,
-      allergies: [
-        "Penicillin — Severe",
-      ],
+      allergies: ["Penicillin — Severe"],
       medications: [
         "No medication information specified in current demo dataset",
       ],
-      conditions: [
-        "Severe Penicillin Allergy",
-      ],
+      conditions: ["Severe Penicillin Allergy"],
       events: [
         {
           date: "2019",
@@ -224,9 +377,7 @@ function DoctorPassport() {
       medications: [
         "Post-surgical medications — historical record",
       ],
-      conditions: [
-        "Intracranial lesion",
-      ],
+      conditions: ["Intracranial lesion"],
       events: [
         {
           date: "2024",
@@ -267,6 +418,13 @@ function DoctorPassport() {
     }, 3000)
   }
 
+  const initials = patient.name
+    .split(" ")
+    .map((word) => word[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase()
+
   return (
     <DashboardLayout
       role="doctor"
@@ -274,36 +432,36 @@ function DoctorPassport() {
     >
       <div className="doctor-passport-page">
 
-        {/* BACK */}
+        {/* =========================
+            BACK NAVIGATION
+            ========================= */}
 
         <button
           type="button"
-          className="back-button"
+          className="passport-back-link"
           onClick={() => navigate("/doctor/patients")}
         >
-          ← Back to Patients
+          <Icon name="back" size={16} />
+          Back to Patients
         </button>
 
 
-        {/* PATIENT HEADER */}
+        {/* =========================
+            PATIENT HERO
+            ========================= */}
 
-        <section className="passport-patient-header">
+        <section className="doctor-passport-hero">
 
-          <div className="passport-patient-main">
+          <div className="doctor-passport-identity">
 
-            <div className="large-patient-avatar">
-              {patient.name
-                .split(" ")
-                .map((word) => word[0])
-                .join("")
-                .slice(0, 2)
-                .toUpperCase()}
+            <div className="doctor-passport-avatar">
+              {initials}
             </div>
 
-            <div>
+            <div className="doctor-passport-name">
 
               <div className="passport-label">
-                HEALTH PASSPORT
+                EMERGENCY HEALTH PASSPORT
               </div>
 
               <h1>
@@ -311,7 +469,11 @@ function DoctorPassport() {
               </h1>
 
               <p>
-                {patient.age} years • {patient.gender}
+                {patient.age} years
+                <span>•</span>
+                {patient.gender}
+                <span>•</span>
+                Patient ID: PT-{String(id || 5).padStart(3, "0")}
               </p>
 
             </div>
@@ -319,15 +481,24 @@ function DoctorPassport() {
           </div>
 
 
-          <div className="passport-header-meta">
+          <div className="doctor-passport-hero-right">
 
-            <div className="passport-blood-group">
-              <span>Blood Group</span>
-              <strong>{patient.bloodGroup}</strong>
+            <div className="doctor-blood-card">
+
+              <span className="doctor-blood-icon">
+                <Icon name="blood" size={18} />
+              </span>
+
+              <div>
+                <small>Blood Group</small>
+                <strong>{patient.bloodGroup}</strong>
+              </div>
+
             </div>
 
+
             <div
-              className={`passport-status ${
+              className={`doctor-passport-status ${
                 patient.status === "Emergency Ready"
                   ? "emergency"
                   : patient.status === "Monitoring"
@@ -335,6 +506,7 @@ function DoctorPassport() {
                     : "stable"
               }`}
             >
+              <span></span>
               {patient.status}
             </div>
 
@@ -343,44 +515,68 @@ function DoctorPassport() {
         </section>
 
 
-        {/* CRITICAL ALERT */}
+        {/* =========================
+            CRITICAL ALERT
+            ========================= */}
 
         {patient.critical && (
 
-          <div className="doctor-critical-alert">
+          <section
+            className={`doctor-passport-critical ${
+              patient.name === "Kabir Malhotra"
+                ? "allergy-alert"
+                : "review-alert"
+            }`}
+          >
 
-            <div className="doctor-critical-icon">
-              ⚠️
+            <div className="doctor-passport-critical-icon">
+              <Icon name="alert" size={21} />
             </div>
 
-            <div>
+            <div className="doctor-passport-critical-content">
 
-              <strong>
-                Critical Medical Information
-              </strong>
+              <div className="critical-title-row">
+
+                <strong>
+                  {patient.name === "Kabir Malhotra"
+                    ? "Critical Allergy Alert"
+                    : "Clinical Review Alert"}
+                </strong>
+
+                <span>
+                  {patient.name === "Kabir Malhotra"
+                    ? "HIGH PRIORITY"
+                    : "REVIEW REQUIRED"}
+                </span>
+
+              </div>
 
               <p>
                 {patient.name === "Kabir Malhotra"
                   ? "Severe Penicillin allergy — recorded reaction: anaphylaxis."
                   : patient.name === "Tanya Bose"
-                    ? "Potential medical record discrepancy detected. Doctor review required."
+                    ? "Potential medical record discrepancy detected. Current database and medical document contain different surgery dates."
                     : "Patient has clinically important historical information requiring attention."}
               </p>
 
             </div>
 
-          </div>
+          </section>
 
         )}
 
 
-        {/* EDIT MESSAGE */}
+        {/* =========================
+            EDIT MESSAGE
+            ========================= */}
 
         {showEditMessage && (
 
           <div className="doctor-edit-message">
 
-            <span>✏️</span>
+            <span>
+              <Icon name="check" size={18} />
+            </span>
 
             <div>
               <strong>
@@ -397,9 +593,11 @@ function DoctorPassport() {
         )}
 
 
-        {/* NAVIGATION TABS */}
+        {/* =========================
+            TABS
+            ========================= */}
 
-        <div className="passport-tabs">
+        <div className="doctor-passport-tabs">
 
           {[
             ["overview", "Overview"],
@@ -412,8 +610,8 @@ function DoctorPassport() {
               key={value}
               className={
                 activeTab === value
-                  ? "passport-tab active"
-                  : "passport-tab"
+                  ? "doctor-passport-tab active"
+                  : "doctor-passport-tab"
               }
               onClick={() => setActiveTab(value)}
             >
@@ -425,305 +623,361 @@ function DoctorPassport() {
         </div>
 
 
-        {/* OVERVIEW */}
+        {/* =========================
+            OVERVIEW
+            ========================= */}
 
         {activeTab === "overview" && (
 
-          <div className="passport-content-grid">
+          <div className="doctor-passport-overview">
 
-            {/* LEFT */}
+            {/* =====================
+                CONDITIONS
+                ===================== */}
 
-            <div>
+            <section className="doctor-passport-card">
 
-              {/* CONDITIONS */}
+              <div className="doctor-passport-card-header">
 
-              <section className="dashboard-panel passport-panel">
+                <div className="doctor-section-heading">
 
-                <div className="panel-header">
+                  <span className="doctor-section-icon condition">
+                    <Icon name="condition" size={18} />
+                  </span>
 
                   <div>
-                    <h2>Conditions</h2>
+                    <h2>Medical Conditions</h2>
                     <p>Current structured medical conditions.</p>
                   </div>
 
-                  <button
-                    type="button"
-                    className="small-edit-button"
-                    onClick={showEdit}
+                </div>
+
+                <button
+                  type="button"
+                  className="passport-edit-button"
+                  onClick={showEdit}
+                >
+                  <Icon name="edit" size={14} />
+                  Edit
+                </button>
+
+              </div>
+
+
+              <div className="doctor-passport-list">
+
+                {patient.conditions.map((condition) => (
+
+                  <div
+                    className="doctor-passport-list-item"
+                    key={condition}
                   >
-                    ✏ Edit
-                  </button>
 
-                </div>
+                    <span className="list-check">
+                      <Icon name="check" size={13} />
+                    </span>
 
-                <div className="passport-item-list">
+                    <span>{condition}</span>
 
-                  {patient.conditions.map((condition) => (
+                  </div>
 
-                    <div
-                      className="passport-list-item"
-                      key={condition}
-                    >
-                      <span className="passport-list-icon">
-                        ●
-                      </span>
+                ))}
 
-                      <span>
-                        {condition}
-                      </span>
-                    </div>
+              </div>
 
-                  ))}
-
-                </div>
-
-              </section>
+            </section>
 
 
-              {/* ALLERGIES */}
+            {/* =====================
+                ALLERGIES
+                ===================== */}
 
-              <section className="dashboard-panel passport-panel">
+            <section
+              className={`doctor-passport-card ${
+                patient.name === "Kabir Malhotra"
+                  ? "allergy-card-highlight"
+                  : ""
+              }`}
+            >
 
-                <div className="panel-header">
+              <div className="doctor-passport-card-header">
+
+                <div className="doctor-section-heading">
+
+                  <span className="doctor-section-icon allergy">
+                    <Icon name="allergy" size={18} />
+                  </span>
 
                   <div>
                     <h2>Allergies</h2>
                     <p>Known allergies and recorded reactions.</p>
                   </div>
 
-                  <button
-                    type="button"
-                    className="small-edit-button"
-                    onClick={showEdit}
+                </div>
+
+                <button
+                  type="button"
+                  className="passport-edit-button"
+                  onClick={showEdit}
+                >
+                  <Icon name="edit" size={14} />
+                  Edit
+                </button>
+
+              </div>
+
+
+              <div className="doctor-passport-list">
+
+                {patient.allergies.map((allergy) => (
+
+                  <div
+                    className={
+                      allergy.includes("Penicillin")
+                        ? "doctor-passport-list-item allergy-critical"
+                        : "doctor-passport-list-item"
+                    }
+                    key={allergy}
                   >
-                    ✏ Edit
-                  </button>
 
-                </div>
-
-                <div className="passport-item-list">
-
-                  {patient.allergies.map((allergy) => (
-
-                    <div
-                      className={
-                        allergy.includes("Penicillin")
-                          ? "passport-list-item allergy-critical"
-                          : "passport-list-item"
-                      }
-                      key={allergy}
-                    >
-
-                      <span className="passport-list-icon">
-                        ⚠️
-                      </span>
-
-                      <span>
-                        {allergy}
-                      </span>
-
-                    </div>
-
-                  ))}
-
-                </div>
-
-                {patient.name === "Kabir Malhotra" && (
-
-                  <div className="reaction-box">
-
-                    <span>
-                      Recorded reaction
+                    <span className="allergy-list-icon">
+                      <Icon name="alert" size={14} />
                     </span>
 
-                    <strong>
-                      Anaphylaxis
-                    </strong>
+                    <span>{allergy}</span>
 
                   </div>
 
-                )}
+                ))}
 
-              </section>
-
-            </div>
+              </div>
 
 
-            {/* RIGHT */}
+              {patient.name === "Kabir Malhotra" && (
 
-            <div>
+                <div className="reaction-box">
 
-              {/* MEDICATIONS */}
+                  <span>Recorded reaction</span>
 
-              <section className="dashboard-panel passport-panel">
+                  <strong>
+                    Anaphylaxis
+                  </strong>
 
-                <div className="panel-header">
+                </div>
+
+              )}
+
+            </section>
+
+
+            {/* =====================
+                MEDICATIONS
+                ===================== */}
+
+            <section className="doctor-passport-card">
+
+              <div className="doctor-passport-card-header">
+
+                <div className="doctor-section-heading">
+
+                  <span className="doctor-section-icon medication">
+                    <Icon name="medicine" size={18} />
+                  </span>
 
                   <div>
                     <h2>Medications</h2>
                     <p>Medication information currently documented.</p>
                   </div>
 
-                  <button
-                    type="button"
-                    className="small-edit-button"
-                    onClick={showEdit}
+                </div>
+
+                <button
+                  type="button"
+                  className="passport-edit-button"
+                  onClick={showEdit}
+                >
+                  <Icon name="edit" size={14} />
+                  Edit
+                </button>
+
+              </div>
+
+
+              <div className="doctor-passport-medications">
+
+                {patient.medications.map((medication) => (
+
+                  <div
+                    className="doctor-medication-row"
+                    key={medication}
                   >
-                    ✏ Edit
-                  </button>
 
-                </div>
+                    <span className="medication-dot"></span>
 
-                <div className="passport-item-list">
+                    <span>
+                      {medication}
+                    </span>
 
-                  {patient.medications.map((medication) => (
+                  </div>
 
-                    <div
-                      className="passport-list-item"
-                      key={medication}
-                    >
+                ))}
 
-                      <span className="passport-list-icon">
-                        💊
-                      </span>
+              </div>
 
-                      <span>
-                        {medication}
-                      </span>
-
-                    </div>
-
-                  ))}
-
-                </div>
-
-              </section>
+            </section>
 
 
-              {/* MEDICAL EVENTS */}
+            {/* =====================
+                RECENT EVENTS
+                ===================== */}
 
-              <section className="dashboard-panel passport-panel">
+            <section className="doctor-passport-card">
 
-                <div className="panel-header">
+              <div className="doctor-passport-card-header">
+
+                <div className="doctor-section-heading">
+
+                  <span className="doctor-section-icon event">
+                    <Icon name="calendar" size={18} />
+                  </span>
 
                   <div>
                     <h2>Recent Medical Events</h2>
                     <p>Key events from the patient's history.</p>
                   </div>
 
-                  <button
-                    type="button"
-                    className="small-edit-button"
-                    onClick={showEdit}
-                  >
-                    + Add
-                  </button>
-
                 </div>
 
-                <div className="passport-events">
+                <button
+                  type="button"
+                  className="passport-edit-button"
+                  onClick={showEdit}
+                >
+                  <Icon name="plus" size={14} />
+                  Add
+                </button>
 
-                  {patient.events.slice(-3).map((event) => (
+              </div>
 
-                    <div
-                      className="passport-event"
-                      key={`${event.date}-${event.title}`}
-                    >
 
-                      <div className="passport-event-date">
-                        {event.date}
-                      </div>
+              <div className="doctor-recent-events">
 
-                      <div className="passport-event-marker">
-                        ●
-                      </div>
+                {patient.events.slice(-3).map((event) => (
 
-                      <div>
+                  <div
+                    className="doctor-recent-event"
+                    key={`${event.date}-${event.title}`}
+                  >
 
-                        <h3>
-                          {event.title}
-                        </h3>
+                    <div className="doctor-event-year">
+                      {event.date}
+                    </div>
 
-                        <p>
-                          {event.description}
-                        </p>
+                    <div className="doctor-event-point">
+                      <span></span>
+                    </div>
 
-                      </div>
+                    <div className="doctor-event-details">
+
+                      <h3>
+                        {event.title}
+                      </h3>
+
+                      <p>
+                        {event.description}
+                      </p>
 
                     </div>
 
-                  ))}
+                  </div>
 
-                </div>
+                ))}
 
-              </section>
+              </div>
 
-            </div>
+            </section>
 
           </div>
 
         )}
 
 
-        {/* TIMELINE */}
+        {/* =========================
+            TIMELINE
+            ========================= */}
 
         {activeTab === "timeline" && (
 
-          <section className="dashboard-panel passport-panel full-width-panel">
+          <section className="doctor-passport-card doctor-full-width-card">
 
-            <div className="panel-header">
+            <div className="doctor-passport-card-header">
 
-              <div>
-                <h2>
-                  Medical Timeline
-                </h2>
+              <div className="doctor-section-heading">
 
-                <p>
-                  Chronological clinical history for {patient.name}.
-                </p>
+                <span className="doctor-section-icon event">
+                  <Icon name="clock" size={18} />
+                </span>
+
+                <div>
+                  <h2>Medical Timeline</h2>
+                  <p>
+                    Chronological clinical history for {patient.name}.
+                  </p>
+                </div>
+
               </div>
 
               <button
                 type="button"
-                className="small-edit-button"
+                className="passport-primary-small"
                 onClick={showEdit}
               >
-                + Add Event
+                <Icon name="plus" size={14} />
+                Add Event
               </button>
 
             </div>
 
 
-            <div className="doctor-passport-timeline">
+            <div className="doctor-passport-timeline-new">
 
               {patient.events.map((event, index) => (
 
                 <div
-                  className="doctor-passport-event"
+                  className="doctor-timeline-row"
                   key={`${event.date}-${event.title}`}
                 >
 
-                  <div className="doctor-event-date">
+                  <div className="doctor-timeline-date">
                     {event.date}
                   </div>
 
-                  <div className="doctor-event-marker-wrapper">
+                  <div className="doctor-timeline-track">
 
-                    <div className="doctor-event-marker">
-                      ●
+                    <div className="doctor-timeline-dot">
+                      <span></span>
                     </div>
 
                     {index !== patient.events.length - 1 && (
-                      <div className="doctor-event-line"></div>
+                      <div className="doctor-timeline-line"></div>
                     )}
 
                   </div>
 
-                  <div className="doctor-event-content">
+                  <div className="doctor-timeline-body">
 
-                    <h3>
-                      {event.title}
-                    </h3>
+                    <div className="doctor-timeline-title-row">
+
+                      <h3>
+                        {event.title}
+                      </h3>
+
+                      <span>
+                        <Icon name="check" size={11} />
+                        Recorded
+                      </span>
+
+                    </div>
 
                     <p>
                       {event.description}
@@ -742,50 +996,59 @@ function DoctorPassport() {
         )}
 
 
-        {/* DOCUMENTS */}
+        {/* =========================
+            DOCUMENTS
+            ========================= */}
 
         {activeTab === "documents" && (
 
-          <section className="dashboard-panel passport-panel full-width-panel">
+          <section className="doctor-passport-card doctor-full-width-card">
 
-            <div className="panel-header">
+            <div className="doctor-passport-card-header">
 
-              <div>
-                <h2>
-                  Medical Documents
-                </h2>
+              <div className="doctor-section-heading">
 
-                <p>
-                  {patient.documents} documents associated with this patient.
-                </p>
+                <span className="doctor-section-icon document">
+                  <Icon name="document" size={18} />
+                </span>
+
+                <div>
+                  <h2>Medical Documents</h2>
+                  <p>
+                    {patient.documents} documents associated with this patient.
+                  </p>
+                </div>
+
               </div>
 
               <button
                 type="button"
-                className="primary-action-button"
+                className="passport-primary-small"
                 onClick={showEdit}
               >
-                + Upload Document
+                <Icon name="plus" size={14} />
+                Upload Document
               </button>
 
             </div>
 
 
-            <div className="passport-document-list">
+            <div className="doctor-passport-document-list">
 
               {Array.from(
                 { length: patient.documents },
                 (_, index) => (
+
                   <div
-                    className="passport-document"
+                    className="doctor-document-row"
                     key={index}
                   >
 
-                    <div className="passport-document-icon">
-                      📄
+                    <div className="doctor-document-icon">
+                      <Icon name="file" size={20} />
                     </div>
 
-                    <div>
+                    <div className="doctor-document-info">
 
                       <h3>
                         {index === 0
@@ -801,23 +1064,26 @@ function DoctorPassport() {
 
                     </div>
 
-                    <span className="document-status-badge">
-                      ✓ Available
+                    <span className="doctor-document-status">
+                      <Icon name="check" size={11} />
+                      Available
                     </span>
 
                     <button
                       type="button"
-                      className="document-view-button"
+                      className="doctor-document-view"
                       onClick={() =>
                         alert(
                           "Document preview will be connected to the backend later."
                         )
                       }
                     >
+                      <Icon name="eye" size={14} />
                       View
                     </button>
 
                   </div>
+
                 )
               )}
 
@@ -828,66 +1094,66 @@ function DoctorPassport() {
         )}
 
 
-        {/* CLINICAL TOOLS */}
+        {/* =========================
+            CLINICAL TOOLS
+            ========================= */}
 
-        <section className="doctor-passport-tools">
+        <section className="doctor-passport-tools-new">
 
-          <div className="doctor-tool-card">
+          <button
+            type="button"
+            className="doctor-passport-tool"
+            onClick={() => navigate("/doctor/ai-reviews")}
+          >
 
-            <span>🤖</span>
+            <span className="tool-icon ai">
+              <Icon name="ai" size={20} />
+            </span>
 
-            <div>
-              <strong>
-                AI Clinical Review
-              </strong>
-
-              <p>
+            <span className="tool-copy">
+              <strong>AI Clinical Review</strong>
+              <small>
                 Review AI-assisted findings and historical evidence.
-              </p>
-            </div>
+              </small>
+            </span>
 
-            <button
-              type="button"
-              onClick={() => navigate("/doctor/ai-reviews")}
-            >
-              Open
-            </button>
+            <Icon name="arrow" size={16} />
 
-          </div>
+          </button>
 
 
-          <div className="doctor-tool-card">
+          <button
+            type="button"
+            className="doctor-passport-tool"
+            onClick={() => navigate("/doctor/integrity")}
+          >
 
-            <span>🔗</span>
+            <span className="tool-icon integrity">
+              <Icon name="shield" size={20} />
+            </span>
 
-            <div>
-              <strong>
-                Integrity Verification
-              </strong>
-
-              <p>
+            <span className="tool-copy">
+              <strong>Integrity Verification</strong>
+              <small>
                 Verify provenance of critical historical events.
-              </p>
-            </div>
+              </small>
+            </span>
 
-            <button
-              type="button"
-              onClick={() => navigate("/doctor/integrity")}
-            >
-              Verify
-            </button>
+            <Icon name="arrow" size={16} />
 
-          </div>
+          </button>
 
         </section>
 
 
-        {/* DOCTOR RESPONSIBILITY */}
+        {/* =========================
+            DOCTOR RESPONSIBILITY
+            ========================= */}
 
-        <div className="doctor-review-notice">
+        <section className="doctor-review-notice-new">
 
-          <span>
-            🩺
+          <span className="review-notice-icon">
+            <Icon name="info" size={19} />
           </span>
 
           <div>
@@ -898,13 +1164,12 @@ function DoctorPassport() {
 
             <p>
               Medi-Trace assists with extraction, retrieval and summarization.
-              The treating doctor remains the final decision-maker for
-              clinical information.
+              The treating doctor remains the final decision-maker for clinical information.
             </p>
 
           </div>
 
-        </div>
+        </section>
 
       </div>
     </DashboardLayout>

@@ -12,7 +12,8 @@ const auditRecords = [
     patient: "Kabir Malhotra",
     patientId: "PT-KABIR-005",
     timestamp: "15 Sep 2026 • 14:32",
-    reason: "Critical allergy information required during emergency presentation.",
+    reason:
+      "Critical allergy information required during emergency presentation.",
     severity: "HIGH",
   },
   {
@@ -110,41 +111,128 @@ const auditRecords = [
 
 const typeConfig = {
   ACCESS: {
-    icon: "↗",
     label: "Record Access",
+    short: "Access",
+    icon: "↗",
   },
   BREAK_GLASS: {
-    icon: "🚨",
     label: "Break-Glass",
+    short: "Emergency",
+    icon: "!",
   },
   DOCUMENT: {
-    icon: "▤",
     label: "Document",
+    short: "Document",
+    icon: "▤",
   },
   AI_REVIEW: {
-    icon: "✦",
     label: "AI Review",
+    short: "AI",
+    icon: "✦",
   },
   INTEGRITY: {
-    icon: "✓",
     label: "Integrity",
+    short: "Integrity",
+    icon: "✓",
   },
   MODIFICATION: {
-    icon: "✎",
     label: "Modification",
+    short: "Modified",
+    icon: "✎",
   },
   HISTORICAL_QUERY: {
-    icon: "⌕",
     label: "Historical Query",
+    short: "Query",
+    icon: "⌕",
   },
+}
+
+function Icon({ name, size = 18 }) {
+  const common = {
+    width: size,
+    height: size,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+  }
+
+  const icons = {
+    search: (
+      <>
+        <circle cx="11" cy="11" r="6.5" />
+        <path d="m16 16 4 4" />
+      </>
+    ),
+
+    download: (
+      <>
+        <path d="M12 3v12" />
+        <path d="m7 10 5 5 5-5" />
+        <path d="M4 20h16" />
+      </>
+    ),
+
+    clock: (
+      <>
+        <circle cx="12" cy="12" r="8.5" />
+        <path d="M12 7v5l3 2" />
+      </>
+    ),
+
+    shield: (
+      <>
+        <path d="M12 3l8 3v5c0 5-3.3 8.4-8 10-4.7-1.6-8-5-8-10V6l8-3z" />
+        <path d="m9 12 2 2 4-4" />
+      </>
+    ),
+
+    lock: (
+      <>
+        <rect x="5" y="10" width="14" height="11" rx="2" />
+        <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+      </>
+    ),
+
+    alert: (
+      <>
+        <path d="M10.3 3.8 2.2 18a2 2 0 0 0 1.7 3h16.2a2 2 0 0 0 1.7-3L13.7 3.8a2 2 0 0 0-3.4 0z" />
+        <path d="M12 9v4M12 17h.01" />
+      </>
+    ),
+
+    close: (
+      <>
+        <path d="m6 6 12 12M18 6 6 18" />
+      </>
+    ),
+
+    file: (
+      <>
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <path d="M14 2v6h6M8 13h8M8 17h5" />
+      </>
+    ),
+
+    user: (
+      <>
+        <circle cx="12" cy="8" r="3.5" />
+        <path d="M5 21a7 7 0 0 1 14 0" />
+      </>
+    ),
+  }
+
+  return <svg {...common}>{icons[name]}</svg>
 }
 
 function AuditType({ type }) {
   const config = typeConfig[type] || typeConfig.ACCESS
 
   return (
-    <span className={`audit-type audit-type-${type.toLowerCase()}`}>
-      <span>{config.icon}</span>
+    <span className={`audit-type polished-audit-type audit-${type.toLowerCase()}`}>
+      <span className="audit-type-symbol">{config.icon}</span>
       {config.label}
     </span>
   )
@@ -159,9 +247,10 @@ function DoctorAudit() {
     const matchesFilter =
       filter === "ALL" || record.type === filter
 
-    const searchText = search.toLowerCase()
+    const searchText = search.toLowerCase().trim()
 
     const matchesSearch =
+      !searchText ||
       record.patient.toLowerCase().includes(searchText) ||
       record.patientId.toLowerCase().includes(searchText) ||
       record.doctor.toLowerCase().includes(searchText) ||
@@ -175,12 +264,16 @@ function DoctorAudit() {
       role="doctor"
       userName="Dr. Priya Sharma"
     >
-      <div className="doctor-page">
+      <div className="doctor-page polished-audit-page">
 
         {/* HEADER */}
-        <div className="doctor-page-header">
+        <div className="doctor-page-header polished-audit-header">
+
           <div>
-            <div className="doctor-eyebrow">
+            <div className="doctor-eyebrow audit-eyebrow">
+              <span>
+                <Icon name="shield" size={13} />
+              </span>
               TRANSPARENCY & ACCOUNTABILITY
             </div>
 
@@ -192,39 +285,48 @@ function DoctorAudit() {
             </p>
           </div>
 
-          <div className="audit-live-status">
+          <div className="audit-live-status polished-live-status">
             <span></span>
-            Audit Logging Active
+            <div>
+              <strong>Audit Logging Active</strong>
+              <small>All sensitive actions are recorded</small>
+            </div>
           </div>
+
         </div>
 
-        {/* TRANSPARENCY BANNER */}
-        <div className="audit-info-banner">
+        {/* INFO BANNER */}
+        <div className="audit-info-banner polished-audit-banner">
 
-          <div className="audit-info-icon">
-            ◉
+          <div className="audit-info-icon polished-audit-info-icon">
+            <Icon name="shield" size={19} />
           </div>
 
           <div>
-            <strong>
-              Every sensitive action is recorded
-            </strong>
+            <strong>Every sensitive action is recorded</strong>
 
             <p>
-              Medi-Trace maintains an audit trail for patient
-              access, break-glass authorization, medical document
-              uploads, record modifications, historical queries
-              and integrity verification.
+              Medi-Trace maintains an audit trail for patient access,
+              break-glass authorization, document uploads, record
+              modifications, historical queries and integrity verification.
             </p>
+          </div>
+
+          <div className="audit-banner-badge">
+            <Icon name="lock" size={11} />
+            ACCOUNTABLE
           </div>
 
         </div>
 
         {/* STATISTICS */}
-        <div className="audit-stat-grid">
+        <div className="audit-stat-grid polished-audit-stat-grid">
 
-          <div className="audit-stat-card">
-            <span className="audit-stat-icon">↗</span>
+          <div className="audit-stat-card polished-audit-stat-card">
+            <span className="audit-stat-icon access">
+              <Icon name="clock" size={17} />
+            </span>
+
             <div>
               <small>Total Events</small>
               <strong>248</strong>
@@ -232,8 +334,11 @@ function DoctorAudit() {
             </div>
           </div>
 
-          <div className="audit-stat-card">
-            <span className="audit-stat-icon emergency">🚨</span>
+          <div className="audit-stat-card polished-audit-stat-card">
+            <span className="audit-stat-icon emergency">
+              <Icon name="alert" size={17} />
+            </span>
+
             <div>
               <small>Break-Glass Events</small>
               <strong>7</strong>
@@ -241,8 +346,11 @@ function DoctorAudit() {
             </div>
           </div>
 
-          <div className="audit-stat-card">
-            <span className="audit-stat-icon verification">✓</span>
+          <div className="audit-stat-card polished-audit-stat-card">
+            <span className="audit-stat-icon verification">
+              <Icon name="shield" size={17} />
+            </span>
+
             <div>
               <small>Verifications</small>
               <strong>42</strong>
@@ -250,8 +358,11 @@ function DoctorAudit() {
             </div>
           </div>
 
-          <div className="audit-stat-card">
-            <span className="audit-stat-icon warning">!</span>
+          <div className="audit-stat-card polished-audit-stat-card">
+            <span className="audit-stat-icon warning">
+              <Icon name="alert" size={17} />
+            </span>
+
             <div>
               <small>Flagged Events</small>
               <strong>3</strong>
@@ -261,11 +372,11 @@ function DoctorAudit() {
 
         </div>
 
-        {/* FILTER TOOLBAR */}
-        <div className="audit-toolbar">
+        {/* TOOLBAR */}
+        <div className="audit-toolbar polished-audit-toolbar">
 
-          <div className="audit-search">
-            <span>⌕</span>
+          <div className="audit-search polished-audit-search">
+            <Icon name="search" size={16} />
 
             <input
               type="text"
@@ -273,10 +384,19 @@ function DoctorAudit() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
+
+            {search && (
+              <button
+                type="button"
+                className="audit-clear-search"
+                onClick={() => setSearch("")}
+              >
+                <Icon name="close" size={12} />
+              </button>
+            )}
           </div>
 
-          <div className="audit-filters">
-
+          <div className="audit-filters polished-audit-filters">
             {[
               ["ALL", "All Activity"],
               ["ACCESS", "Access"],
@@ -292,25 +412,28 @@ function DoctorAudit() {
                 type="button"
                 className={
                   filter === value
-                    ? "audit-filter active"
-                    : "audit-filter"
+                    ? "audit-filter polished-audit-filter active"
+                    : "audit-filter polished-audit-filter"
                 }
                 onClick={() => setFilter(value)}
               >
                 {label}
               </button>
             ))}
-
           </div>
 
         </div>
 
-        {/* AUDIT TABLE */}
-        <div className="audit-table-card">
+        {/* TABLE */}
+        <div className="audit-table-card polished-audit-table-card">
 
-          <div className="audit-table-header">
+          <div className="audit-table-header polished-audit-table-header">
 
             <div>
+              <span className="audit-table-eyebrow">
+                SECURITY LOG
+              </span>
+
               <h2>Activity Log</h2>
 
               <span>
@@ -320,19 +443,20 @@ function DoctorAudit() {
 
             <button
               type="button"
-              className="audit-export-button"
+              className="audit-export-button polished-export-button"
               onClick={() =>
                 alert("Demo: Audit export requested.")
               }
             >
-              ↓ Export Audit Log
+              <Icon name="download" size={14} />
+              Export Audit Log
             </button>
 
           </div>
 
           <div className="audit-table-wrapper">
 
-            <table className="audit-table">
+            <table className="audit-table polished-audit-table">
 
               <thead>
                 <tr>
@@ -352,9 +476,11 @@ function DoctorAudit() {
                   <tr key={record.id}>
 
                     <td>
-                      <div className="audit-activity">
+                      <div className="audit-activity polished-audit-activity">
 
-                        <div className="audit-activity-icon">
+                        <div
+                          className={`audit-activity-icon audit-icon-${record.type.toLowerCase()}`}
+                        >
                           {typeConfig[record.type]?.icon || "↗"}
                         </div>
 
@@ -367,23 +493,19 @@ function DoctorAudit() {
                     </td>
 
                     <td>
-                      <div className="audit-patient">
+                      <div className="audit-patient polished-audit-patient">
 
-                        <strong>
-                          {record.patient}
-                        </strong>
+                        <strong>{record.patient}</strong>
 
-                        <span>
-                          {record.patientId}
-                        </span>
+                        <span>{record.patientId}</span>
 
                       </div>
                     </td>
 
                     <td>
-                      <div className="audit-doctor">
+                      <div className="audit-doctor polished-audit-doctor">
 
-                        <div className="audit-doctor-avatar">
+                        <div className="audit-doctor-avatar polished-doctor-avatar">
                           {record.doctor
                             .replace("Dr. ", "")
                             .split(" ")
@@ -398,7 +520,7 @@ function DoctorAudit() {
                     </td>
 
                     <td>
-                      <span className="audit-timestamp">
+                      <span className="audit-timestamp polished-audit-timestamp">
                         {record.timestamp}
                       </span>
                     </td>
@@ -407,10 +529,11 @@ function DoctorAudit() {
                       <span
                         className={
                           record.severity === "HIGH"
-                            ? "audit-severity high"
-                            : "audit-severity normal"
+                            ? "audit-severity high polished-severity"
+                            : "audit-severity normal polished-severity"
                         }
                       >
+                        <span></span>
                         {record.severity === "HIGH"
                           ? "Attention"
                           : "Normal"}
@@ -418,17 +541,14 @@ function DoctorAudit() {
                     </td>
 
                     <td>
-
                       <button
                         type="button"
-                        className="audit-view-button"
-                        onClick={() =>
-                          setSelectedRecord(record)
-                        }
+                        className="audit-view-button polished-audit-view"
+                        onClick={() => setSelectedRecord(record)}
                       >
-                        View →
+                        View
+                        <span>→</span>
                       </button>
-
                     </td>
 
                   </tr>
@@ -440,68 +560,61 @@ function DoctorAudit() {
             </table>
 
             {filteredRecords.length === 0 && (
-              <div className="audit-empty">
-                No audit events match your search.
+              <div className="audit-empty polished-audit-empty">
+                <Icon name="search" size={25} />
+                <strong>No audit events found</strong>
+                <span>
+                  Try changing the search text or activity filter.
+                </span>
               </div>
             )}
 
           </div>
-
         </div>
 
-        {/* AUDIT PRINCIPLES */}
-        <div className="audit-principles">
+        {/* PRINCIPLES */}
+        <div className="audit-principles polished-audit-principles">
 
-          <div className="audit-principle-card">
-
+          <div className="audit-principle-card polished-principle-card">
             <div className="audit-principle-icon">
-              🔐
+              <Icon name="lock" size={17} />
             </div>
 
             <div>
               <h3>Access Transparency</h3>
-
               <p>
                 Patient access and emergency access events are
-                recorded so sensitive health information remains
-                accountable.
+                recorded so sensitive health information remains accountable.
               </p>
             </div>
-
           </div>
 
-          <div className="audit-principle-card">
-
+          <div className="audit-principle-card polished-principle-card">
             <div className="audit-principle-icon">
               ✦
             </div>
 
             <div>
               <h3>AI Accountability</h3>
-
               <p>
                 AI findings and historical queries can be traced
                 back to the doctor workflow that initiated them.
               </p>
             </div>
-
           </div>
 
-          <div className="audit-principle-card">
-
+          <div className="audit-principle-card polished-principle-card">
             <div className="audit-principle-icon">
-              ⛓
+              <Icon name="shield" size={17} />
             </div>
 
             <div>
               <h3>Integrity Traceability</h3>
-
               <p>
                 Integrity verification activity records when
                 provenance checks were performed and by whom.
               </p>
             </div>
-
           </div>
 
         </div>
@@ -510,50 +623,55 @@ function DoctorAudit() {
 
       {/* DETAILS MODAL */}
       {selectedRecord && (
-
         <div
-          className="audit-modal-overlay"
+          className="audit-modal-overlay polished-audit-modal-overlay"
           onClick={() => setSelectedRecord(null)}
         >
-
           <div
-            className="audit-modal"
+            className="audit-modal polished-audit-modal"
             onClick={(e) => e.stopPropagation()}
           >
 
-            <div className="audit-modal-header">
+            <div className="audit-modal-header polished-modal-header">
 
               <div>
-                <span>AUDIT EVENT</span>
+                <span className="modal-event-label">
+                  AUDIT EVENT · {selectedRecord.id}
+                </span>
 
-                <h2>
-                  {selectedRecord.title}
-                </h2>
+                <h2>{selectedRecord.title}</h2>
               </div>
 
               <button
                 type="button"
-                className="audit-close"
+                className="audit-close polished-audit-close"
                 onClick={() => setSelectedRecord(null)}
               >
-                ×
+                <Icon name="close" size={16} />
               </button>
 
             </div>
 
-            <div className="audit-modal-body">
+            <div className="audit-modal-body polished-modal-body">
 
               <AuditType type={selectedRecord.type} />
 
-              <p className="audit-modal-description">
+              <p className="audit-modal-description polished-modal-description">
                 {selectedRecord.description}
               </p>
 
-              <div className="audit-detail-grid">
+              <div className="audit-detail-grid polished-audit-detail-grid">
 
                 <div>
                   <span>Audit ID</span>
                   <strong>{selectedRecord.id}</strong>
+                </div>
+
+                <div>
+                  <span>Activity Type</span>
+                  <strong>
+                    {typeConfig[selectedRecord.type]?.label}
+                  </strong>
                 </div>
 
                 <div>
@@ -576,68 +694,64 @@ function DoctorAudit() {
                   <strong>{selectedRecord.timestamp}</strong>
                 </div>
 
-                <div>
-                  <span>Severity</span>
-                  <strong>
-                    {selectedRecord.severity === "HIGH"
-                      ? "Requires Attention"
-                      : "Normal Activity"}
-                  </strong>
-                </div>
-
               </div>
 
-              <div className="audit-reason-box">
-
+              <div className="audit-reason-box polished-reason-box">
                 <span>RECORDED REASON / CONTEXT</span>
 
-                <p>
-                  {selectedRecord.reason}
-                </p>
-
+                <p>{selectedRecord.reason}</p>
               </div>
 
               {selectedRecord.type === "BREAK_GLASS" && (
-                <div className="audit-breakglass-note">
+                <div className="audit-breakglass-note polished-audit-note emergency-note">
+                  <div>
+                    <Icon name="alert" size={16} />
+                  </div>
 
-                  <strong>
-                    🚨 Break-Glass Event
-                  </strong>
+                  <section>
+                    <strong>Break-Glass Event</strong>
 
-                  <p>
-                    This event represents emergency access.
-                    The associated session provides read-only
-                    emergency information and does not permit
-                    modification of the patient's medical record.
-                  </p>
-
+                    <p>
+                      This event represents emergency access. The
+                      associated session provides read-only emergency
+                      information and does not permit modification of
+                      the patient's medical record.
+                    </p>
+                  </section>
                 </div>
               )}
 
               {selectedRecord.type === "INTEGRITY" && (
-                <div className="audit-integrity-note">
+                <div className="audit-integrity-note polished-audit-note integrity-note">
+                  <div>
+                    <Icon name="shield" size={16} />
+                  </div>
 
-                  <strong>
-                    ⛓ Integrity Activity
-                  </strong>
+                  <section>
+                    <strong>Integrity Activity</strong>
 
-                  <p>
-                    This audit event records an integrity or
-                    provenance verification action. Blockchain
-                    verification provides provenance and does
-                    not determine clinical truth.
-                  </p>
-
+                    <p>
+                      This audit event records an integrity or
+                      provenance verification action. Blockchain
+                      verification provides provenance and does not
+                      determine clinical truth.
+                    </p>
+                  </section>
                 </div>
               )}
 
             </div>
 
-            <div className="audit-modal-footer">
+            <div className="audit-modal-footer polished-modal-footer">
+
+              <span>
+                <Icon name="lock" size={12} />
+                Audit record
+              </span>
 
               <button
                 type="button"
-                className="audit-modal-close-button"
+                className="audit-modal-close-button polished-modal-close-button"
                 onClick={() => setSelectedRecord(null)}
               >
                 Close
@@ -646,9 +760,7 @@ function DoctorAudit() {
             </div>
 
           </div>
-
         </div>
-
       )}
 
     </DashboardLayout>

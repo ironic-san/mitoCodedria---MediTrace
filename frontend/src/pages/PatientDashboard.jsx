@@ -9,13 +9,12 @@ function PatientDashboard() {
     >
       <div className="patient-dashboard">
 
-        {/* =========================
+        {/* =====================================================
             PAGE HEADER
-        ========================== */}
+        ====================================================== */}
 
-        <div className="dashboard-page-header">
-
-          <div>
+        <section className="patient-welcome-section">
+          <div className="patient-welcome-content">
             <div className="page-eyebrow">
               PATIENT DASHBOARD
             </div>
@@ -25,180 +24,227 @@ function PatientDashboard() {
             </h1>
 
             <p>
-              Here's your emergency health overview.
+              Your essential health information is organized,
+              accessible, and ready when you need it.
             </p>
           </div>
 
           <Link
             to="/patient/passport"
-            className="dashboard-primary-button"
+            className="patient-primary-button"
           >
-            View Emergency Passport →
+            <span>View Emergency Passport</span>
+            <span className="button-arrow">→</span>
           </Link>
+        </section>
 
-        </div>
 
-
-        {/* =========================
+        {/* =====================================================
             CRITICAL MEDICAL ALERT
-        ========================== */}
+        ====================================================== */}
 
-        <div className="dashboard-critical-alert">
+        <section className="patient-critical-alert">
 
-          <div className="critical-alert-icon">
+          <div className="patient-critical-icon">
             !
           </div>
 
-          <div className="critical-alert-content">
+          <div className="patient-critical-content">
 
-            <div className="critical-alert-label">
+            <div className="patient-alert-label">
               CRITICAL MEDICAL ALERT
             </div>
 
-            <h3>
+            <h2>
               Severe Penicillin Allergy
-            </h3>
+            </h2>
 
             <p>
-              This allergy is marked as potentially
-              life-threatening and should be clearly
-              communicated during emergency treatment.
+              A severe Penicillin allergy is recorded in your
+              medical history and should be communicated to
+              healthcare professionals during treatment.
             </p>
 
           </div>
 
           <Link
             to="/patient/passport"
-            className="alert-action"
+            className="patient-alert-button"
           >
             View Details
+            <span>→</span>
           </Link>
 
-        </div>
+        </section>
 
 
-        {/* =========================
-            HEALTH SUMMARY CARDS
-        ========================== */}
+        {/* =====================================================
+            HEALTH SNAPSHOT
+        ====================================================== */}
 
-        <div className="health-summary-grid">
+        <section className="patient-health-section">
 
-          {/* Blood Group */}
+          <div className="patient-section-heading">
+            <div>
+              <span className="section-kicker">
+                HEALTH SNAPSHOT
+              </span>
 
-          <div className="health-card">
-
-            <div className="health-card-icon blood-icon">
-              🩸
+              <h2>
+                Your essential information
+              </h2>
             </div>
 
-            <div className="health-card-label">
-              BLOOD GROUP
+            <Link to="/patient/passport">
+              View Passport →
+            </Link>
+          </div>
+
+
+          <div className="patient-health-grid">
+
+            {/* Blood Group */}
+            <div className="patient-health-card">
+
+              <div className="patient-health-card-top">
+                <div className="patient-health-icon blood">
+                  +
+                </div>
+
+                <span className="patient-health-status">
+                  Recorded
+                </span>
+              </div>
+
+              <div className="patient-health-label">
+                BLOOD GROUP
+              </div>
+
+              <div className="patient-health-value">
+                O−
+              </div>
+
+              <p>
+                Registered blood type
+              </p>
+
             </div>
 
-            <div className="health-card-value">
-              O−
+
+            {/* Allergies */}
+            <div className="patient-health-card critical">
+
+              <div className="patient-health-card-top">
+                <div className="patient-health-icon allergy">
+                  !
+                </div>
+
+                <span className="patient-health-status warning">
+                  Critical
+                </span>
+              </div>
+
+              <div className="patient-health-label">
+                ALLERGIES
+              </div>
+
+              <div className="patient-health-value">
+                1
+              </div>
+
+              <p>
+                Critical allergy recorded
+              </p>
+
             </div>
 
-            <div className="health-card-description">
-              Registered blood type
+
+            {/* Medications */}
+            <div className="patient-health-card">
+
+              <div className="patient-health-card-top">
+                <div className="patient-health-icon medication">
+                  +
+                </div>
+
+                <span className="patient-health-status">
+                  Current
+                </span>
+              </div>
+
+              <div className="patient-health-label">
+                ACTIVE MEDICATIONS
+              </div>
+
+              <div className="patient-health-value">
+                2
+              </div>
+
+              <p>
+                Current medications
+              </p>
+
+            </div>
+
+
+            {/* Medical Events */}
+            <div className="patient-health-card">
+
+              <div className="patient-health-card-top">
+                <div className="patient-health-icon events">
+                  ◷
+                </div>
+
+                <span className="patient-health-status">
+                  Updated
+                </span>
+              </div>
+
+              <div className="patient-health-label">
+                MEDICAL EVENTS
+              </div>
+
+              <div className="patient-health-value">
+                4
+              </div>
+
+              <p>
+                Recorded medical events
+              </p>
+
             </div>
 
           </div>
 
-
-          {/* Allergies */}
-
-          <div className="health-card">
-
-            <div className="health-card-icon allergy-icon">
-              ⚠
-            </div>
-
-            <div className="health-card-label">
-              ALLERGIES
-            </div>
-
-            <div className="health-card-value">
-              1
-            </div>
-
-            <div className="health-card-description">
-              Critical allergy recorded
-            </div>
-
-          </div>
+        </section>
 
 
-          {/* Active Medications */}
+        {/* =====================================================
+            MAIN CONTENT GRID
+        ====================================================== */}
 
-          <div className="health-card">
-
-            <div className="health-card-icon medication-icon">
-              💊
-            </div>
-
-            <div className="health-card-label">
-              ACTIVE MEDICATIONS
-            </div>
-
-            <div className="health-card-value">
-              2
-            </div>
-
-            <div className="health-card-description">
-              Current medications
-            </div>
-
-          </div>
+        <div className="patient-dashboard-grid">
 
 
-          {/* Medical Events */}
+          {/* =================================================
+              RECENT MEDICAL HISTORY
+          ================================================== */}
 
-          <div className="health-card">
+          <section className="patient-panel patient-history-panel">
 
-            <div className="health-card-icon event-icon">
-              ◷
-            </div>
-
-            <div className="health-card-label">
-              MEDICAL EVENTS
-            </div>
-
-            <div className="health-card-value">
-              4
-            </div>
-
-            <div className="health-card-description">
-              Recorded medical events
-            </div>
-
-          </div>
-
-        </div>
-
-
-        {/* =========================
-            MAIN DASHBOARD GRID
-        ========================== */}
-
-        <div className="dashboard-main-grid">
-
-
-          {/* =========================
-              RECENT MEDICAL EVENTS
-          ========================== */}
-
-          <section className="dashboard-panel">
-
-            <div className="panel-header">
+            <div className="patient-panel-header">
 
               <div>
+                <span className="section-kicker">
+                  MEDICAL HISTORY
+                </span>
+
                 <h2>
-                  Recent Medical Events
+                  Recent medical events
                 </h2>
 
                 <p>
-                  Your latest recorded medical history
+                  Your latest recorded health activity
                 </p>
               </div>
 
@@ -209,28 +255,31 @@ function PatientDashboard() {
             </div>
 
 
-            <div className="medical-events">
+            <div className="patient-events-list">
 
               {/* Event 1 */}
 
-              <div className="medical-event">
+              <div className="patient-event">
 
-                <div className="event-date">
-                  <strong>
-                    18
-                  </strong>
-
-                  <span>
-                    JUN
-                  </span>
+                <div className="patient-event-date">
+                  <strong>18</strong>
+                  <span>JUN</span>
                 </div>
 
-                <div className="event-line"></div>
+                <div className="patient-event-marker">
+                  <span></span>
+                </div>
 
-                <div className="event-details">
+                <div className="patient-event-content">
 
-                  <div className="event-type">
-                    ALLERGY
+                  <div className="patient-event-meta">
+                    <span className="patient-event-type allergy">
+                      ALLERGY
+                    </span>
+
+                    <span className="patient-event-verified">
+                      ✓ Verified
+                    </span>
                   </div>
 
                   <h3>
@@ -242,10 +291,6 @@ function PatientDashboard() {
                     potential life-threatening reaction.
                   </p>
 
-                  <span className="event-verified">
-                    ✓ Verified
-                  </span>
-
                 </div>
 
               </div>
@@ -253,24 +298,27 @@ function PatientDashboard() {
 
               {/* Event 2 */}
 
-              <div className="medical-event">
+              <div className="patient-event">
 
-                <div className="event-date">
-                  <strong>
-                    04
-                  </strong>
-
-                  <span>
-                    MAY
-                  </span>
+                <div className="patient-event-date">
+                  <strong>04</strong>
+                  <span>MAY</span>
                 </div>
 
-                <div className="event-line"></div>
+                <div className="patient-event-marker">
+                  <span></span>
+                </div>
 
-                <div className="event-details">
+                <div className="patient-event-content">
 
-                  <div className="event-type">
-                    CONSULTATION
+                  <div className="patient-event-meta">
+                    <span className="patient-event-type">
+                      CONSULTATION
+                    </span>
+
+                    <span className="patient-event-verified">
+                      ✓ Verified
+                    </span>
                   </div>
 
                   <h3>
@@ -282,10 +330,6 @@ function PatientDashboard() {
                     medication review.
                   </p>
 
-                  <span className="event-verified">
-                    ✓ Verified
-                  </span>
-
                 </div>
 
               </div>
@@ -293,24 +337,27 @@ function PatientDashboard() {
 
               {/* Event 3 */}
 
-              <div className="medical-event">
+              <div className="patient-event">
 
-                <div className="event-date">
-                  <strong>
-                    12
-                  </strong>
-
-                  <span>
-                    FEB
-                  </span>
+                <div className="patient-event-date">
+                  <strong>12</strong>
+                  <span>FEB</span>
                 </div>
 
-                <div className="event-line"></div>
+                <div className="patient-event-marker">
+                  <span></span>
+                </div>
 
-                <div className="event-details">
+                <div className="patient-event-content">
 
-                  <div className="event-type">
-                    MEDICATION
+                  <div className="patient-event-meta">
+                    <span className="patient-event-type medication">
+                      MEDICATION
+                    </span>
+
+                    <span className="patient-event-verified">
+                      ✓ Verified
+                    </span>
                   </div>
 
                   <h3>
@@ -322,235 +369,279 @@ function PatientDashboard() {
                     clinical review.
                   </p>
 
-                  <span className="event-verified">
-                    ✓ Verified
-                  </span>
-
                 </div>
 
               </div>
 
             </div>
 
+
+            <Link
+              to="/patient/timeline"
+              className="patient-history-footer"
+            >
+              <span>
+                View complete medical timeline
+              </span>
+
+              <span>→</span>
+            </Link>
+
           </section>
 
 
-          {/* =========================
+          {/* =================================================
               RIGHT COLUMN
-          ========================== */}
+          ================================================== */}
 
-          <div className="dashboard-side-column">
+          <aside className="patient-dashboard-side">
 
 
-            {/* =========================
-                AI EMERGENCY SUMMARY
-            ========================== */}
+            {/* =============================================
+                HEALTH PASSPORT CARD
+            ============================================== */}
 
-            <section className="dashboard-panel ai-summary-panel">
+            <section className="patient-panel passport-preview">
 
-              <div className="ai-summary-header">
+              <div className="passport-preview-top">
 
-                <div className="ai-icon">
-                  ✦
+                <div className="passport-card-icon">
+                  +
                 </div>
 
                 <div>
-
-                  <h2>
-                    AI Emergency Summary
-                  </h2>
-
-                  <span>
-                    Generated from medical history
+                  <span className="section-kicker">
+                    EMERGENCY READY
                   </span>
 
+                  <h2>
+                    Health Passport
+                  </h2>
                 </div>
 
               </div>
 
+              <p>
+                Your critical medical information is
+                organized in one place for authorized
+                healthcare professionals.
+              </p>
 
-              <div className="ai-summary-content">
 
-                <p>
-                  <strong>Critical:</strong> Severe
-                  Penicillin allergy is documented and
-                  should be considered before medication
-                  administration.
-                </p>
+              <div className="passport-mini-info">
 
-                <p>
-                  No major cardiac events are currently
-                  recorded in the available history.
-                </p>
+                <div>
+                  <span>
+                    BLOOD GROUP
+                  </span>
+
+                  <strong>
+                    O−
+                  </strong>
+                </div>
+
+                <div>
+                  <span>
+                    ALLERGY
+                  </span>
+
+                  <strong>
+                    Penicillin
+                  </strong>
+                </div>
 
               </div>
 
 
               <Link
                 to="/patient/passport"
-                className="ai-summary-button"
+                className="passport-view-button"
               >
-                View Full Summary →
+                Open Emergency Passport
+                <span>→</span>
               </Link>
 
             </section>
 
 
-            {/* =========================
-                HISTORY INTEGRITY
-            ========================== */}
+            {/* =============================================
+                ACCESS STATUS
+            ============================================== */}
 
-            <section className="dashboard-panel integrity-panel">
+            <section className="patient-panel access-preview">
 
-              <div className="panel-header">
+              <div className="patient-panel-header compact">
 
                 <div>
+                  <span className="section-kicker">
+                    ACCESS CONTROL
+                  </span>
 
                   <h2>
-                    History Integrity
+                    Doctor access
                   </h2>
-
-                  <p>
-                    Critical history verification
-                  </p>
-
                 </div>
+
+                <Link to="/patient/access">
+                  Manage
+                </Link>
 
               </div>
 
 
-              <div className="integrity-status">
+              <div className="access-status-row">
 
-                <div className="integrity-check">
+                <div className="access-status-icon">
                   ✓
                 </div>
 
                 <div>
-
                   <strong>
-                    VERIFIED
+                    Access permissions
                   </strong>
 
                   <p>
-                    Critical history matches
-                    historical proof.
+                    Control who can access your
+                    medical information.
                   </p>
-
                 </div>
 
               </div>
 
 
               <Link
-                to="/patient/passport"
-                className="integrity-link"
+                to="/patient/access-history"
+                className="access-history-link"
               >
-                View Verification Details →
+                View access history
+                <span>→</span>
               </Link>
 
             </section>
 
 
-            {/* =========================
-                QUICK ACTIONS
-            ========================== */}
+            {/* =============================================
+                DOCUMENTS
+            ============================================== */}
 
-            <section className="dashboard-panel quick-actions-panel">
+            <section className="patient-panel documents-preview">
 
-              <div className="panel-header">
+              <div className="patient-panel-header compact">
 
                 <div>
+                  <span className="section-kicker">
+                    DOCUMENTS
+                  </span>
 
                   <h2>
-                    Quick Actions
+                    Medical documents
                   </h2>
-
                 </div>
+
+                <Link to="/patient/documents">
+                  View All
+                </Link>
 
               </div>
 
 
-              <div className="quick-actions">
+              <div className="document-preview-item">
 
-                <Link to="/patient/passport">
+                <div className="document-icon">
+                  ▤
+                </div>
 
-                  <span>
-                    🪪
-                  </span>
-
-                  Emergency Passport
-
-                </Link>
-
-
-                <Link to="/patient/timeline">
+                <div>
+                  <strong>
+                    Medical Records
+                  </strong>
 
                   <span>
-                    ◷
+                    Stored health documents
                   </span>
+                </div>
 
-                  Medical Timeline
-
-                </Link>
-
-
-                <Link to="/patient/documents">
-
-                  <span>
-                    ▤
-                  </span>
-
-                  Medical Documents
-
-                </Link>
+                <span className="document-arrow">
+                  →
+                </span>
 
               </div>
 
             </section>
 
-          </div>
+          </aside>
 
         </div>
 
 
-        {/* =========================
-            EMERGENCY ACCESS
-        ========================== */}
+        {/* =====================================================
+            TRANSPARENCY / EMERGENCY SECTION
+        ====================================================== */}
 
-        <section className="emergency-dashboard-card">
+        <section className="patient-emergency-section">
 
-          <div className="emergency-dashboard-icon">
-            🚨
+          <div className="patient-emergency-symbol">
+            !
           </div>
 
-
-          <div className="emergency-dashboard-content">
+          <div className="patient-emergency-content">
 
             <span>
               EMERGENCY ACCESS
             </span>
 
             <h2>
-              Need emergency medical assistance?
+              Your critical health information is ready.
             </h2>
 
             <p>
-              Your critical health information is
-              organized and ready for authorized
-              healthcare professionals.
+              Authorized healthcare professionals can
+              quickly access essential information during
+              an emergency, subject to the access controls
+              you've configured.
             </p>
 
           </div>
 
-
-          <button
-            type="button"
-            className="emergency-button"
+          <Link
+            to="/patient/passport"
+            className="patient-emergency-button"
           >
-            Emergency Mode
-          </button>
+            View Emergency Passport
+            <span>→</span>
+          </Link>
 
         </section>
+
+
+        {/* =====================================================
+            PRIVACY / TRANSPARENCY NOTE
+        ====================================================== */}
+
+        <div className="patient-privacy-note">
+
+          <div className="privacy-note-icon">
+            🔐
+          </div>
+
+          <div>
+            <strong>
+              You control your medical access
+            </strong>
+
+            <p>
+              Review doctor access permissions and see
+              when your medical information has been accessed
+              from the Access Control and Access History
+              sections.
+            </p>
+          </div>
+
+          <Link to="/patient/access">
+            Manage Access →
+          </Link>
+
+        </div>
 
       </div>
     </DashboardLayout>

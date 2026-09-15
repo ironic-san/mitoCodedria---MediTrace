@@ -3,6 +3,7 @@ import DashboardLayout from "../layouts/DashboardLayout.jsx"
 
 function PatientDocuments() {
   const [showUploadMessage, setShowUploadMessage] = useState(false)
+  const [selectedDocument, setSelectedDocument] = useState(null)
 
   const documents = [
     {
@@ -39,7 +40,15 @@ function PatientDocuments() {
 
     setTimeout(() => {
       setShowUploadMessage(false)
-    }, 3000)
+    }, 3500)
+  }
+
+  const handleView = (document) => {
+    setSelectedDocument(document)
+  }
+
+  const closePreview = () => {
+    setSelectedDocument(null)
   }
 
   return (
@@ -49,7 +58,9 @@ function PatientDocuments() {
     >
       <div className="documents-page">
 
-        {/* PAGE HEADER */}
+        {/* =====================================================
+            PAGE HEADER
+            ===================================================== */}
 
         <div className="dashboard-page-header">
 
@@ -63,7 +74,8 @@ function PatientDocuments() {
             </h1>
 
             <p>
-              View the medical documents associated with your health passport.
+              View and manage the medical documents associated with your
+              Medi-Trace health passport.
             </p>
           </div>
 
@@ -72,72 +84,136 @@ function PatientDocuments() {
             className="primary-action-button"
             onClick={handleUpload}
           >
-            + Add Document
+            <span className="button-plus">
+              +
+            </span>
+
+            Add Document
           </button>
 
         </div>
 
 
-        {/* UPLOAD MESSAGE */}
+        {/* =====================================================
+            UPLOAD MESSAGE
+            ===================================================== */}
 
         {showUploadMessage && (
-          <div className="document-message">
-            <span>ℹ️</span>
 
-            <div>
+          <div className="document-message">
+
+            <div className="document-message-icon">
+              ↑
+            </div>
+
+            <div className="document-message-content">
+
               <strong>
-                Document upload will be connected to the backend later.
+                Document upload interface ready
               </strong>
 
               <p>
-                The frontend upload interface is ready for integration.
+                Backend document storage and processing will be connected
+                during integration.
               </p>
+
             </div>
+
+            <button
+              type="button"
+              className="message-close"
+              onClick={() => setShowUploadMessage(false)}
+            >
+              ×
+            </button>
+
           </div>
+
         )}
 
 
-        {/* DOCUMENT SUMMARY */}
+        {/* =====================================================
+            DOCUMENT SUMMARY
+            ===================================================== */}
 
-        <div className="stats-grid">
+        <div className="document-summary-grid">
 
-          <div className="stat-card">
+          {/* TOTAL DOCUMENTS */}
 
-            <div className="stat-icon">
+          <div className="document-summary-card documents-card-blue">
+
+            <div className="document-summary-icon">
               📄
             </div>
 
-            <div>
-              <span>Total Documents</span>
-              <strong>{documents.length}</strong>
+            <div className="document-summary-content">
+
+              <span>
+                TOTAL DOCUMENTS
+              </span>
+
+              <strong>
+                {documents.length}
+              </strong>
+
+              <p>
+                Records in your passport
+              </p>
+
             </div>
 
           </div>
 
 
-          <div className="stat-card">
+          {/* MEDICAL RECORDS */}
 
-            <div className="stat-icon">
+          <div className="document-summary-card documents-card-green">
+
+            <div className="document-summary-icon">
               🗂️
             </div>
 
-            <div>
-              <span>Medical Records</span>
-              <strong>3</strong>
+            <div className="document-summary-content">
+
+              <span>
+                MEDICAL RECORDS
+              </span>
+
+              <strong>
+                {documents.length}
+              </strong>
+
+              <p>
+                Available medical documents
+              </p>
+
             </div>
 
           </div>
 
 
-          <div className="stat-card">
+          {/* DOCUMENT ACCESS */}
 
-            <div className="stat-icon">
+          <div className="document-summary-card documents-card-purple">
+
+            <div className="document-summary-icon">
               🔐
             </div>
 
-            <div>
-              <span>Secure Storage</span>
-              <strong>Active</strong>
+            <div className="document-summary-content">
+
+              <span>
+                DOCUMENT ACCESS
+              </span>
+
+              <strong>
+                Protected
+              </strong>
+
+              <p>
+                Access follows authorization rules
+              </p>
+
             </div>
 
           </div>
@@ -145,20 +221,33 @@ function PatientDocuments() {
         </div>
 
 
-        {/* DOCUMENT LIST */}
+        {/* =====================================================
+            YOUR DOCUMENTS
+            ===================================================== */}
 
-        <section className="dashboard-panel">
+        <section className="dashboard-panel documents-panel">
 
           <div className="panel-header">
 
             <div>
+
+              <div className="section-kicker">
+                YOUR RECORDS
+              </div>
+
               <h2>
                 Your Documents
               </h2>
 
               <p>
-                Medical records associated with your Medi-Trace passport.
+                Medical records currently associated with your health
+                passport.
               </p>
+
+            </div>
+
+            <div className="document-count">
+              {documents.length} documents
             </div>
 
           </div>
@@ -173,10 +262,14 @@ function PatientDocuments() {
                 key={document.id}
               >
 
+                {/* DOCUMENT ICON */}
+
                 <div className="document-icon">
                   {document.icon}
                 </div>
 
+
+                {/* DOCUMENT INFORMATION */}
 
                 <div className="document-information">
 
@@ -184,7 +277,7 @@ function PatientDocuments() {
                     {document.name}
                   </h3>
 
-                  <p>
+                  <p className="document-type">
                     {document.type}
                   </p>
 
@@ -194,7 +287,7 @@ function PatientDocuments() {
                       📅 {document.date}
                     </span>
 
-                    <span>
+                    <span className="document-meta-divider">
                       •
                     </span>
 
@@ -207,20 +300,24 @@ function PatientDocuments() {
                 </div>
 
 
+                {/* DOCUMENT CONTROLS */}
+
                 <div className="document-status">
 
                   <span className="document-status-badge">
-                    ✓ {document.status}
+
+                    <span className="status-check">
+                      ✓
+                    </span>
+
+                    {document.status}
+
                   </span>
 
                   <button
                     type="button"
                     className="document-view-button"
-                    onClick={() =>
-                      alert(
-                        "Document preview will be connected to the backend later."
-                      )
-                    }
+                    onClick={() => handleView(document)}
                   >
                     View
                   </button>
@@ -236,21 +333,29 @@ function PatientDocuments() {
         </section>
 
 
-        {/* DOCUMENT WORKFLOW */}
+        {/* =====================================================
+            DOCUMENT PROCESS
+            ===================================================== */}
 
-        <section className="dashboard-panel">
+        <section className="dashboard-panel document-process-panel">
 
           <div className="panel-header">
 
             <div>
+
+              <div className="section-kicker">
+                DOCUMENT PROCESSING
+              </div>
+
               <h2>
-                How Medi-Trace handles documents
+                How your documents are handled
               </h2>
 
               <p>
-                Documents can support the creation and review of your health
-                passport.
+                Uploaded records can support the review and maintenance
+                of your health passport.
               </p>
+
             </div>
 
           </div>
@@ -264,7 +369,12 @@ function PatientDocuments() {
                 1
               </div>
 
-              <div>
+              <div className="workflow-step-content">
+
+                <span className="workflow-label">
+                  INPUT
+                </span>
+
                 <h3>
                   Document Upload
                 </h3>
@@ -272,6 +382,7 @@ function PatientDocuments() {
                 <p>
                   A medical document is securely submitted to Medi-Trace.
                 </p>
+
               </div>
 
             </div>
@@ -288,15 +399,21 @@ function PatientDocuments() {
                 2
               </div>
 
-              <div>
+              <div className="workflow-step-content">
+
+                <span className="workflow-label">
+                  PROCESSING
+                </span>
+
                 <h3>
-                  Processing
+                  Information Extraction
                 </h3>
 
                 <p>
-                  OCR and medical language processing extract useful
-                  information.
+                  Document content can be processed to identify useful
+                  medical information.
                 </p>
+
               </div>
 
             </div>
@@ -313,25 +430,48 @@ function PatientDocuments() {
                 3
               </div>
 
-              <div>
+              <div className="workflow-step-content">
+
+                <span className="workflow-label">
+                  REVIEW
+                </span>
+
                 <h3>
                   Doctor Review
                 </h3>
 
                 <p>
-                  Extracted findings are reviewed before becoming authoritative
-                  medical information.
+                  Extracted findings are reviewed before becoming
+                  authoritative medical information.
                 </p>
+
               </div>
 
             </div>
 
           </div>
 
+
+          <div className="workflow-note">
+
+            <span className="workflow-note-icon">
+              ℹ
+            </span>
+
+            <p>
+              Information extracted from a document does not automatically
+              become part of your authoritative medical record. Doctor
+              review is required.
+            </p>
+
+          </div>
+
         </section>
 
 
-        {/* SECURITY INFORMATION */}
+        {/* =====================================================
+            SECURITY
+            ===================================================== */}
 
         <div className="document-security">
 
@@ -340,17 +480,154 @@ function PatientDocuments() {
           </div>
 
           <div>
+
             <strong>
               Your documents remain protected
             </strong>
 
             <p>
-              Access to medical documents follows the authorization and
-              emergency-access rules of Medi-Trace.
+              Document access follows the authorization and emergency-access
+              rules of Medi-Trace.
             </p>
+
+          </div>
+
+          <div className="security-status">
+
+            <span className="security-dot"></span>
+
+            Protected
+
           </div>
 
         </div>
+
+
+        {/* =====================================================
+            DOCUMENT PREVIEW
+            ===================================================== */}
+
+        {selectedDocument && (
+
+          <div
+            className="document-modal-overlay"
+            onClick={closePreview}
+          >
+
+            <div
+              className="document-modal"
+              onClick={(event) =>
+                event.stopPropagation()
+              }
+            >
+
+              <div className="document-modal-header">
+
+                <div className="document-modal-title">
+
+                  <div className="document-modal-icon">
+                    {selectedDocument.icon}
+                  </div>
+
+                  <div>
+
+                    <span>
+                      {selectedDocument.type}
+                    </span>
+
+                    <h2>
+                      {selectedDocument.name}
+                    </h2>
+
+                  </div>
+
+                </div>
+
+
+                <button
+                  type="button"
+                  className="modal-close-button"
+                  onClick={closePreview}
+                >
+                  ×
+                </button>
+
+              </div>
+
+
+              <div className="document-preview">
+
+                <div className="preview-paper">
+
+                  <div className="preview-paper-icon">
+                    📄
+                  </div>
+
+                  <h3>
+                    Document Preview
+                  </h3>
+
+                  <p>
+                    Secure document preview will be connected to backend
+                    storage later.
+                  </p>
+
+                  <span>
+                    {selectedDocument.name}
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div className="document-modal-footer">
+
+                <div>
+
+                  <span>
+                    Document date
+                  </span>
+
+                  <strong>
+                    {selectedDocument.date}
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    File size
+                  </span>
+
+                  <strong>
+                    {selectedDocument.size}
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    Status
+                  </span>
+
+                  <strong className="modal-status">
+                    ✓ {selectedDocument.status}
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        )}
 
       </div>
     </DashboardLayout>

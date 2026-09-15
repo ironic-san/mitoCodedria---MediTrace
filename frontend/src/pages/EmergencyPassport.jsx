@@ -7,114 +7,118 @@ function EmergencyPassport() {
       role="patient"
       userName="Kabir Malhotra"
     >
+      <div className="patient-passport-page">
 
-      <div className="passport-page">
-
-        {/* =========================
+        {/* =====================================================
             PAGE HEADER
-        ========================== */}
+        ====================================================== */}
 
-        <div className="passport-page-header">
+        <section className="patient-passport-header">
 
           <div>
-            <div className="page-eyebrow">
+            <span className="passport-page-kicker">
               EMERGENCY HEALTH PASSPORT
-            </div>
+            </span>
 
             <h1>
               Kabir's Medical Passport
             </h1>
 
             <p>
-              Critical medical information designed for
-              rapid access during emergencies.
+              Essential medical information organized for
+              rapid access during an emergency.
             </p>
           </div>
 
-
-          <div className="passport-header-actions">
+          <div className="patient-passport-actions">
 
             <button
               type="button"
-              className="passport-print-button"
+              className="patient-passport-print"
+              onClick={() => window.print()}
             >
-              🖨 Print Passport
+              <span>▣</span>
+              Print Passport
             </button>
 
             <Link
               to="/patient/dashboard"
-              className="passport-back-button"
+              className="patient-passport-back"
             >
               ← Dashboard
             </Link>
 
           </div>
 
-        </div>
+        </section>
 
 
-        {/* =========================
-            VERIFICATION BANNER
-        ========================== */}
+        {/* =====================================================
+            EMERGENCY STATUS
+        ====================================================== */}
 
-        <div className="passport-verification-banner">
+        <section className="passport-ready-banner">
 
-          <div className="verification-icon">
+          <div className="passport-ready-icon">
             ✓
           </div>
 
-          <div className="verification-content">
+          <div className="passport-ready-content">
 
-            <strong>
-              Critical History Verified
-            </strong>
+            <span>
+              EMERGENCY READY
+            </span>
+
+            <h2>
+              Your critical information is organized
+            </h2>
 
             <p>
-              Available critical medical history matches
-              its historical cryptographic proof.
+              Essential health information can be quickly
+              reviewed by authorized healthcare professionals.
             </p>
 
           </div>
 
-          <div className="verification-status">
-            VERIFIED
+          <div className="passport-ready-badge">
+            READY
           </div>
 
-        </div>
+        </section>
 
 
-        {/* =========================
-            PATIENT IDENTITY CARD
-        ========================== */}
+        {/* =====================================================
+            PATIENT IDENTITY
+        ====================================================== */}
 
-        <section className="passport-identity-card">
+        <section className="passport-identity">
 
-          <div className="passport-avatar">
+          <div className="passport-avatar-large">
             KM
           </div>
 
-          <div className="passport-identity">
+          <div className="passport-patient-details">
 
-            <div className="identity-label">
+            <span className="passport-label">
               PATIENT
-            </div>
+            </span>
 
             <h2>
               Kabir Malhotra
             </h2>
 
             <p>
-              Male • 52 years old
+              Male <span>•</span> 52 years old
             </p>
 
-            <div className="identity-id">
+            <div className="passport-patient-id">
               Patient ID: MT-KM-0005
             </div>
 
           </div>
 
 
-          <div className="identity-blood">
+          <div className="passport-blood-group">
 
             <span>
               BLOOD GROUP
@@ -131,26 +135,23 @@ function EmergencyPassport() {
           </div>
 
 
-          <div className="identity-status">
-
-            <span className="status-dot"></span>
-
+          <div className="passport-emergency-status">
+            <span></span>
             Emergency Ready
-
           </div>
 
         </section>
 
 
-        {/* =========================
-            CRITICAL ALERT
-        ========================== */}
+        {/* =====================================================
+            CRITICAL INFORMATION
+        ====================================================== */}
 
-        <section className="passport-critical-section">
+        <section className="passport-critical-block">
 
-          <div className="passport-section-heading">
+          <div className="passport-block-heading">
 
-            <div className="heading-icon critical-heading-icon">
+            <div className="passport-heading-icon critical">
               !
             </div>
 
@@ -167,30 +168,31 @@ function EmergencyPassport() {
           </div>
 
 
-          <div className="allergy-card">
+          <div className="passport-allergy-card">
 
-            <div className="allergy-warning-icon">
-              ⚠
+            <div className="passport-allergy-icon">
+              !
             </div>
 
-            <div className="allergy-information">
+            <div className="passport-allergy-main">
 
-              <div className="allergy-label">
+              <span>
                 SEVERE ALLERGY
-              </div>
+              </span>
 
               <h3>
                 Penicillin
               </h3>
 
               <p>
-                Severe allergic reaction. Potentially
-                life-threatening.
+                Severe allergic reaction with potential
+                life-threatening consequences.
               </p>
 
             </div>
 
-            <div className="allergy-severity">
+            <div className="passport-severity">
+
               <span>
                 SEVERITY
               </span>
@@ -198,6 +200,7 @@ function EmergencyPassport() {
               <strong>
                 CRITICAL
               </strong>
+
             </div>
 
           </div>
@@ -205,27 +208,24 @@ function EmergencyPassport() {
         </section>
 
 
-        {/* =========================
-            MEDICAL INFORMATION GRID
-        ========================== */}
+        {/* =====================================================
+            MEDICAL INFORMATION
+        ====================================================== */}
 
-        <div className="passport-info-grid">
+        <div className="passport-information-grid">
 
 
-          {/* =========================
-              CONDITIONS
-          ========================== */}
+          {/* CONDITIONS */}
 
-          <section className="passport-info-card">
+          <section className="passport-info-panel">
 
-            <div className="info-card-header">
+            <div className="passport-info-header">
 
-              <div className="info-card-icon">
-                🩺
+              <div className="passport-info-icon blue">
+                +
               </div>
 
               <div>
-
                 <h2>
                   Medical Conditions
                 </h2>
@@ -233,22 +233,20 @@ function EmergencyPassport() {
                 <span>
                   Current conditions
                 </span>
-
               </div>
 
             </div>
 
 
-            <div className="info-card-body">
+            <div className="passport-info-content">
 
-              <div className="condition-item">
+              <div className="passport-empty-state">
 
-                <div className="condition-status">
-                  ●
+                <div className="passport-check">
+                  ✓
                 </div>
 
                 <div>
-
                   <strong>
                     No major conditions recorded
                   </strong>
@@ -257,7 +255,6 @@ function EmergencyPassport() {
                     No active critical conditions are
                     currently listed.
                   </p>
-
                 </div>
 
               </div>
@@ -267,72 +264,46 @@ function EmergencyPassport() {
           </section>
 
 
-          {/* =========================
-              MEDICATIONS
-          ========================== */}
+          {/* MEDICATIONS */}
 
-          <section className="passport-info-card">
+          <section className="passport-info-panel">
 
-            <div className="info-card-header">
+            <div className="passport-info-header">
 
-              <div className="info-card-icon">
-                💊
+              <div className="passport-info-icon green">
+                +
               </div>
 
               <div>
-
                 <h2>
                   Current Medications
                 </h2>
 
                 <span>
-                  Active medications
+                  Active medication information
                 </span>
-
               </div>
 
             </div>
 
 
-            <div className="info-card-body">
+            <div className="passport-info-content">
 
-              <div className="medication-item">
+              <div className="passport-empty-state">
 
-                <div className="medication-number">
-                  01
+                <div className="passport-info-symbol">
+                  i
                 </div>
 
                 <div>
-
                   <strong>
-                    Metformin
+                    No medication information specified
                   </strong>
 
                   <p>
-                    500 mg • Twice daily
+                    The current demo dataset does not
+                    specify medications for this patient.
                   </p>
-
-                </div>
-
-              </div>
-
-
-              <div className="medication-item">
-
-                <div className="medication-number">
-                  02
-                </div>
-
-                <div>
-
-                  <strong>
-                    Atorvastatin
-                  </strong>
-
-                  <p>
-                    20 mg • Once daily
-                  </p>
-
                 </div>
 
               </div>
@@ -342,20 +313,17 @@ function EmergencyPassport() {
           </section>
 
 
-          {/* =========================
-              CARDIAC HISTORY
-          ========================== */}
+          {/* CARDIAC HISTORY */}
 
-          <section className="passport-info-card">
+          <section className="passport-info-panel">
 
-            <div className="info-card-header">
+            <div className="passport-info-header">
 
-              <div className="info-card-icon">
-                ❤️
+              <div className="passport-info-icon red">
+                ♥
               </div>
 
               <div>
-
                 <h2>
                   Cardiac History
                 </h2>
@@ -363,22 +331,20 @@ function EmergencyPassport() {
                 <span>
                   Major cardiac events
                 </span>
-
               </div>
 
             </div>
 
 
-            <div className="info-card-body">
+            <div className="passport-info-content">
 
-              <div className="history-clear">
+              <div className="passport-empty-state">
 
-                <div className="history-check">
+                <div className="passport-check">
                   ✓
                 </div>
 
                 <div>
-
                   <strong>
                     No major cardiac events
                   </strong>
@@ -387,7 +353,6 @@ function EmergencyPassport() {
                     No major cardiac events are currently
                     recorded in available history.
                   </p>
-
                 </div>
 
               </div>
@@ -397,20 +362,17 @@ function EmergencyPassport() {
           </section>
 
 
-          {/* =========================
-              SURGERIES
-          ========================== */}
+          {/* SURGERIES */}
 
-          <section className="passport-info-card">
+          <section className="passport-info-panel">
 
-            <div className="info-card-header">
+            <div className="passport-info-header">
 
-              <div className="info-card-icon">
-                🏥
+              <div className="passport-info-icon purple">
+                +
               </div>
 
               <div>
-
                 <h2>
                   Major Surgeries
                 </h2>
@@ -418,22 +380,20 @@ function EmergencyPassport() {
                 <span>
                   Surgical history
                 </span>
-
               </div>
 
             </div>
 
 
-            <div className="info-card-body">
+            <div className="passport-info-content">
 
-              <div className="history-clear">
+              <div className="passport-empty-state">
 
-                <div className="history-check">
+                <div className="passport-check">
                   ✓
                 </div>
 
                 <div>
-
                   <strong>
                     No major surgeries recorded
                   </strong>
@@ -442,7 +402,6 @@ function EmergencyPassport() {
                     No major surgical procedures are
                     currently listed.
                   </p>
-
                 </div>
 
               </div>
@@ -452,20 +411,17 @@ function EmergencyPassport() {
           </section>
 
 
-          {/* =========================
-              MEDICAL DEVICES
-          ========================== */}
+          {/* MEDICAL DEVICES */}
 
-          <section className="passport-info-card">
+          <section className="passport-info-panel">
 
-            <div className="info-card-header">
+            <div className="passport-info-header">
 
-              <div className="info-card-icon">
+              <div className="passport-info-icon orange">
                 ⚙
               </div>
 
               <div>
-
                 <h2>
                   Medical Devices
                 </h2>
@@ -473,22 +429,20 @@ function EmergencyPassport() {
                 <span>
                   Implanted or critical devices
                 </span>
-
               </div>
 
             </div>
 
 
-            <div className="info-card-body">
+            <div className="passport-info-content">
 
-              <div className="history-clear">
+              <div className="passport-empty-state">
 
-                <div className="history-check">
+                <div className="passport-check">
                   ✓
                 </div>
 
                 <div>
-
                   <strong>
                     No medical devices recorded
                   </strong>
@@ -497,7 +451,6 @@ function EmergencyPassport() {
                     No implanted medical devices are
                     currently listed.
                   </p>
-
                 </div>
 
               </div>
@@ -507,20 +460,17 @@ function EmergencyPassport() {
           </section>
 
 
-          {/* =========================
-              EMERGENCY CONTACT
-          ========================== */}
+          {/* EMERGENCY CONTACT */}
 
-          <section className="passport-info-card">
+          <section className="passport-info-panel">
 
-            <div className="info-card-header">
+            <div className="passport-info-header">
 
-              <div className="info-card-icon">
-                📞
+              <div className="passport-info-icon teal">
+                ☎
               </div>
 
               <div>
-
                 <h2>
                   Emergency Contact
                 </h2>
@@ -528,33 +478,32 @@ function EmergencyPassport() {
                 <span>
                   Contact in case of emergency
                 </span>
-
               </div>
 
             </div>
 
 
-            <div className="info-card-body">
+            <div className="passport-info-content">
 
-              <div className="emergency-contact">
+              <div className="passport-contact">
 
-                <div className="contact-avatar">
+                <div className="passport-contact-avatar">
                   RM
                 </div>
 
-                <div>
+                <div className="passport-contact-details">
 
                   <strong>
                     Riya Malhotra
                   </strong>
 
-                  <p>
+                  <span>
                     Emergency Contact
-                  </p>
+                  </span>
 
                 </div>
 
-                <div className="contact-phone">
+                <div className="passport-contact-number">
                   +91 XXXXX XXXXX
                 </div>
 
@@ -567,169 +516,104 @@ function EmergencyPassport() {
         </div>
 
 
-        {/* =========================
-            AI SUMMARY
-        ========================== */}
+        {/* =====================================================
+            MEDICAL TIMELINE CTA
+        ====================================================== */}
 
-        <section className="passport-ai-section">
+        <section className="passport-timeline-cta">
 
-          <div className="passport-ai-header">
+          <div className="passport-timeline-icon">
+            ◷
+          </div>
 
-            <div className="passport-ai-icon">
-              ✦
-            </div>
+          <div>
 
-            <div>
+            <span>
+              MEDICAL HISTORY
+            </span>
 
-              <span>
-                AI MEDICAL INTELLIGENCE
-              </span>
+            <h2>
+              View your complete medical timeline
+            </h2>
 
-              <h2>
-                Emergency Summary
-              </h2>
-
-            </div>
-
-            <div className="ai-generated-badge">
-              AI GENERATED
-            </div>
+            <p>
+              Review recorded medical events and your
+              longitudinal health history.
+            </p>
 
           </div>
 
+          <Link
+            to="/patient/timeline"
+            className="passport-timeline-button"
+          >
+            Open Timeline
+            <span>→</span>
+          </Link>
 
-          <div className="passport-ai-content">
+        </section>
+
+
+        {/* =====================================================
+            ACCESS & PRIVACY
+        ====================================================== */}
+
+        <section className="passport-access-section">
+
+          <div className="passport-access-icon">
+            🔐
+          </div>
+
+          <div className="passport-access-content">
+
+            <span>
+              PRIVACY & ACCESS
+            </span>
+
+            <h2>
+              You control who can access your health information
+            </h2>
 
             <p>
-
-              <strong>
-                Critical allergy:
-              </strong>{" "}
-
-              Kabir Malhotra has a documented severe
-              Penicillin allergy that may result in a
-              potentially life-threatening reaction.
-
+              Review doctor permissions and see access
+              activity from your Access Control and
+              Access History sections.
             </p>
 
-            <p>
+          </div>
 
-              <strong>
-                Current history:
-              </strong>{" "}
+          <div className="passport-access-actions">
 
-              Two active medications are recorded.
-              No major cardiac events, major surgeries,
-              or medical devices are currently listed.
+            <Link to="/patient/access">
+              Manage Access
+            </Link>
 
-            </p>
-
-            <div className="ai-disclaimer">
-
-              ⚠ AI-generated summary. Healthcare
-              professionals must verify information
-              clinically before treatment.
-
-            </div>
+            <Link to="/patient/access-history">
+              View History
+            </Link>
 
           </div>
 
         </section>
 
 
-        {/* =========================
-            BLOCKCHAIN INTEGRITY
-        ========================== */}
+        {/* =====================================================
+            FOOTER
+        ====================================================== */}
 
-        <section className="passport-blockchain-section">
-
-          <div className="blockchain-main">
-
-            <div className="blockchain-icon">
-              ⛓
-            </div>
-
-            <div>
-
-              <span>
-                INTEGRITY VERIFICATION
-              </span>
-
-              <h2>
-                Blockchain Integrity Verified
-              </h2>
-
-              <p>
-                Critical medical history has a matching
-                historical cryptographic proof.
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div className="blockchain-details">
-
-            <div>
-
-              <span>
-                STATUS
-              </span>
-
-              <strong className="verified-text">
-                ✓ VERIFIED
-              </strong>
-
-            </div>
-
-            <div>
-
-              <span>
-                HASH ALGORITHM
-              </span>
-
-              <strong>
-                SHA-256
-              </strong>
-
-            </div>
-
-            <div>
-
-              <span>
-                PROOF
-              </span>
-
-              <strong>
-                Historical Match
-              </strong>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        {/* =========================
-            FOOTNOTE
-        ========================== */}
-
-        <div className="passport-footnote">
+        <footer className="passport-page-footer">
 
           <span>
-            Last updated: Demo data • 15 September 2026
+            Medi-Trace Emergency Health Passport
           </span>
 
           <span>
-            Medi-Trace • Verify clinically before treatment
+            Patient information • Verify clinically before treatment
           </span>
 
-        </div>
+        </footer>
 
       </div>
-
     </DashboardLayout>
   )
 }
