@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { api, readableError, session } from "../services/api"
 
 function Login() {
   const navigate = useNavigate()
@@ -9,34 +10,24 @@ function Login() {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
 
-  const handleLogin = (event) => {
+  const [submitting, setSubmitting] = useState(false)
+  const handleLogin = async (event) => {
     event.preventDefault()
 
     setError("")
 
-    // Temporary frontend demo authentication
-
-    if (
-      role === "patient" &&
-      email === "kabir@meditrace.demo" &&
-      password === "kabir123"
-    ) {
-      navigate("/patient/dashboard")
-      return
-    }
-
-    if (
-      role === "doctor" &&
-      email === "doctor@meditrace.demo" &&
-      password === "doctor123"
-    ) {
-      navigate("/doctor/dashboard")
-      return
-    }
-
-    setError(
-      "Invalid demo credentials. Please check the email, password, and selected role."
-    )
+    setSubmitting(true)
+    try {
+      const login = await api.login(email, password)
+      session.set(login)
+      const user = await api.me()
+      if (user.role !== role.toUpperCase()) throw new Error(`This account is registered as a ${user.role.toLowerCase()}. Choose the matching sign-in role.`)
+      session.set({ ...login, user })
+      navigate(user.role === "DOCTOR" ? "/doctor/dashboard" : "/patient/dashboard", { replace: true })
+    } catch (requestError) {
+      session.clear()
+      setError(readableError(requestError))
+    } finally { setSubmitting(false) }
   }
 
   return (
@@ -252,60 +243,12 @@ function Login() {
                 type="submit"
                 className="login-submit"
               >
-                Sign In
+                {submitting ? "Signing in…" : "Sign In"}
               </button>
 
             </form>
 
 
-            {/* DIVIDER */}
-
-            <div className="login-divider">
-              <span>DEMO ACCESS</span>
-            </div>
-
-
-            {/* DEMO CREDENTIALS */}
-
-            <div className="demo-credentials">
-
-              <div className="demo-title">
-                🧪 Frontend Demo Accounts
-              </div>
-
-              <div className="demo-account">
-
-                <strong>
-                  👤 Patient
-                </strong>
-
-                <span>
-                  kabir@meditrace.demo
-                </span>
-
-                <span>
-                  Password: kabir123
-                </span>
-
-              </div>
-
-              <div className="demo-account">
-
-                <strong>
-                  🩺 Doctor
-                </strong>
-
-                <span>
-                  doctor@meditrace.demo
-                </span>
-
-                <span>
-                  Password: doctor123
-                </span>
-
-              </div>
-
-            </div>
 
 
             {/* SIGN UP */}

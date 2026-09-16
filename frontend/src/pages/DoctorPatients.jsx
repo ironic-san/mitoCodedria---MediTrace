@@ -1,14 +1,30 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import DashboardLayout from "../layouts/DashboardLayout.jsx"
+import { api } from "../services/api"
+import { useApiQuery } from "../hooks/useApiQuery"
+import { ErrorState, LoadingState } from "../components/AsyncState"
 
 function DoctorPatients() {
   const navigate = useNavigate()
 
   const [search, setSearch] = useState("")
   const [filter, setFilter] = useState("All")
+  const { data, loading, error, refresh } = useApiQuery(api.doctorPatients, [])
 
-  const patients = [
+  const patients = data?.map((patient) => ({
+    id: patient.patient_id,
+    name: patient.full_name,
+    age: patient.date_of_birth ? new Date().getFullYear() - new Date(patient.date_of_birth).getFullYear() : "—",
+    gender: patient.gender || "Not recorded",
+    bloodGroup: patient.blood_group || "Not recorded",
+    condition: patient.relationship_type || "Authorized patient",
+    status: patient.access_status,
+    critical: false,
+    lastVisit: patient.access_expiry ? `Access until ${new Date(patient.access_expiry).toLocaleDateString()}` : "Active access",
+  })) || []
+  /* Backend does not provide diagnoses/criticality in the directory response. */
+  /*
     {
       id: 1,
       name: "Aarav Mehta",
@@ -76,6 +92,7 @@ function DoctorPatients() {
       lastVisit: "13 Sep 2026",
     },
   ]
+  */
 
   const filteredPatients = patients.filter((patient) => {
     const matchesSearch =
@@ -101,6 +118,9 @@ function DoctorPatients() {
       userName="Dr. Arjun Rao"
     >
       <div className="doctor-patients-page">
+
+        {loading && <LoadingState label="Loading authorized patients…" />}
+        {error && <ErrorState error={error} onRetry={refresh} />}
 
         {/* PAGE HEADER */}
 

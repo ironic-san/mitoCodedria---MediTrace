@@ -1,7 +1,16 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx"
+import { api } from "../services/api"
+import { useApiQuery } from "../hooks/useApiQuery"
+import { ErrorState, LoadingState } from "../components/AsyncState"
 
 function AccessHistory() {
-  const accessLogs = [
+  const { data: audit, loading, error, refresh } = useApiQuery(api.myAudit, [])
+  const accessLogs = audit?.logs?.map((log) => {
+    const timestamp = log.timestamp ? new Date(log.timestamp) : null
+    const emergency = log.access_type === "BREAK_GLASS"
+    return { id: log.audit_id, doctor: log.actor_role === "DOCTOR" ? (log.details?.doctor_name || "Doctor") : log.actor_role || "System", hospital: log.details?.hospital_name || "", specialization: log.entity_type || "MediTrace activity", date: timestamp?.toLocaleDateString() || "Date not recorded", time: timestamp?.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) || "", accessType: emergency ? "Emergency" : "Normal", status: emergency ? "Break-Glass" : log.action, reason: log.reason || "No reason recorded.", icon: emergency ? "🚨" : "👨‍⚕️" }
+  }) || []
+  /*
     {
       id: 1,
       doctor: "Dr. Arjun Rao",
@@ -50,7 +59,7 @@ function AccessHistory() {
       reason: "Temporary consultation access expired.",
       icon: "👩‍⚕️",
     },
-  ]
+  ] */
 
   const normalAccesses = accessLogs.filter(
     (log) => log.accessType === "Normal"
@@ -66,6 +75,8 @@ function AccessHistory() {
       userName="Kabir Malhotra"
     >
       <div className="patient-history-page">
+        {loading && <LoadingState label="Loading your audit history…" />}
+        {error && <ErrorState error={error} onRetry={refresh} />}
 
         {/* PAGE HEADER */}
 

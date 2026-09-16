@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom"
+import { session } from "./services/api"
 
 import Home from "./pages/Home"
 import Login from "./pages/Login"
@@ -22,9 +23,13 @@ import DoctorIntegrity from "./pages/DoctorIntegrity.jsx"
 import DoctorEmergency from "./pages/DoctorEmergency.jsx"
 import DoctorAudit from "./pages/DoctorAudit.jsx"
 
-function App() {
+function AppRoutes() {
+  useLocation()
+  const activeSession = session.get()
+  const role = String(activeSession?.user?.role || "").toUpperCase()
+  const patientRoute = (element) => activeSession?.access_token && role === "PATIENT" ? element : <Navigate to="/login" replace />
+  const doctorRoute = (element) => activeSession?.access_token && role === "DOCTOR" ? element : <Navigate to="/login" replace />
   return (
-    <BrowserRouter>
       <Routes>
 
         {/* =====================================================
@@ -48,32 +53,32 @@ function App() {
 
         <Route
           path="/patient/dashboard"
-          element={<PatientDashboard />}
+          element={patientRoute(<PatientDashboard />)}
         />
 
         <Route
           path="/patient/passport"
-          element={<EmergencyPassport />}
+          element={patientRoute(<EmergencyPassport />)}
         />
 
         <Route
           path="/patient/timeline"
-          element={<PatientTimeline />}
+          element={patientRoute(<PatientTimeline />)}
         />
 
         <Route
           path="/patient/documents"
-          element={<PatientDocuments />}
+          element={patientRoute(<PatientDocuments />)}
         />
 
         <Route
           path="/patient/access"
-          element={<PatientAccess />}
+          element={patientRoute(<PatientAccess />)}
         />
 
         <Route
           path="/patient/access-history"
-          element={<AccessHistory />}
+          element={patientRoute(<AccessHistory />)}
         />
 
 
@@ -83,12 +88,12 @@ function App() {
 
         <Route
           path="/doctor/dashboard"
-          element={<DoctorDashboard />}
+          element={doctorRoute(<DoctorDashboard />)}
         />
 
         <Route
           path="/doctor/patients"
-          element={<DoctorPatients />}
+          element={doctorRoute(<DoctorPatients />)}
         />
 
         {/* Doctor Emergency Passport */}
@@ -96,58 +101,58 @@ function App() {
         <Route
           path="/doctor/passport"
           element={
-            <Navigate
-              to="/doctor/passport/PT-KABIR-005"
+            doctorRoute(<Navigate
+              to="/doctor/patients"
               replace
-            />
+            />)
           }
         />
 
         <Route
           path="/doctor/passport/:id"
-          element={<DoctorPassport />}
+          element={doctorRoute(<DoctorPassport />)}
         />
 
         {/* Doctor Medical Timeline */}
 
         <Route
           path="/doctor/timeline"
-          element={<DoctorTimeline />}
+          element={doctorRoute(<DoctorTimeline />)}
         />
 
         {/* Doctor Documents */}
 
         <Route
           path="/doctor/documents"
-          element={<DoctorDocuments />}
+          element={doctorRoute(<DoctorDocuments />)}
         />
 
         {/* Doctor AI Reviews */}
 
         <Route
           path="/doctor/ai-reviews"
-          element={<DoctorAIReviews />}
+          element={doctorRoute(<DoctorAIReviews />)}
         />
 
         {/* Doctor Integrity */}
 
         <Route
           path="/doctor/integrity"
-          element={<DoctorIntegrity />}
+          element={doctorRoute(<DoctorIntegrity />)}
         />
 
         {/* Doctor Emergency / Break-Glass */}
 
         <Route
           path="/doctor/emergency"
-          element={<DoctorEmergency />}
+          element={doctorRoute(<DoctorEmergency />)}
         />
 
         {/* Doctor Audit Trail */}
 
         <Route
           path="/doctor/audit"
-          element={<DoctorAudit />}
+          element={doctorRoute(<DoctorAudit />)}
         />
 
 
@@ -166,8 +171,11 @@ function App() {
         />
 
       </Routes>
-    </BrowserRouter>
   )
+}
+
+function App() {
+  return <BrowserRouter><AppRoutes /></BrowserRouter>
 }
 
 export default App

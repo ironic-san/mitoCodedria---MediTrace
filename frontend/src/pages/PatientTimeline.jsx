@@ -1,7 +1,24 @@
 import DashboardLayout from "../layouts/DashboardLayout.jsx"
+import { api } from "../services/api"
+import { useApiQuery } from "../hooks/useApiQuery"
+import { ErrorState, LoadingState } from "../components/AsyncState"
 
 function PatientTimeline() {
-  const events = [
+  const { data: summary, loading, error, refresh } = useApiQuery(api.patientMe, [])
+  const events = summary?.medical_events?.map((event) => ({
+    year: event.event_date ? new Date(event.event_date).getFullYear() : "—",
+    date: event.event_date ? new Date(event.event_date).toLocaleDateString() : "Date not recorded",
+    title: event.title,
+    type: event.event_type || "Medical event",
+    icon: event.is_critical ? "!" : "+",
+    hospital: event.doctor_name || "MediTrace record",
+    description: event.description || "No additional description recorded.",
+    details: [event.severity && `Severity: ${event.severity}`, event.status && `Status: ${event.status}`].filter(Boolean),
+    status: event.status || "Recorded",
+    tone: event.is_critical ? "critical" : "completed",
+  })) || []
+  /* Demo timeline retained below as a visual reference only; backend data is displayed. */
+  /*
     {
       year: "2019",
       date: "18 Nov 2019",
@@ -53,7 +70,7 @@ function PatientTimeline() {
       status: "Current",
       tone: "current",
     },
-  ]
+  ] */
 
   return (
     <DashboardLayout
@@ -61,6 +78,8 @@ function PatientTimeline() {
       userName="Kabir Malhotra"
     >
       <div className="patient-timeline-page">
+        {loading && <LoadingState label="Loading your medical timeline…" />}
+        {error && <ErrorState error={error} onRetry={refresh} />}
 
         {/* =====================================================
             PAGE HEADER

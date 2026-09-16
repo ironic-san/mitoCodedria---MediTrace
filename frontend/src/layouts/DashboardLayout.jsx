@@ -1,4 +1,5 @@
-import { NavLink, Link } from "react-router-dom"
+import { NavLink, Link, useNavigate } from "react-router-dom"
+import { session } from "../services/api"
 
 function Icon({ name }) {
   const common = {
@@ -132,6 +133,9 @@ function DashboardLayout({
   role = "patient",
   userName = "Kabir Malhotra",
 }) {
+  const navigate = useNavigate()
+  const signedInUser = session.get()?.user
+  const displayName = signedInUser?.full_name || userName
   const patientLinks = [
     {
       name: "Dashboard",
@@ -215,7 +219,7 @@ function DashboardLayout({
 
   const links = role === "doctor" ? doctorLinks : patientLinks
 
-  const initials = userName
+  const initials = displayName
     .split(" ")
     .map((word) => word[0])
     .join("")
@@ -277,9 +281,10 @@ function DashboardLayout({
             </span>
           </NavLink>
 
-          <Link
-            to="/"
+          <button
+            type="button"
             className="sidebar-link logout-link"
+            onClick={() => { session.clear(); navigate("/login", { replace: true }) }}
           >
             <span className="sidebar-icon">
               <Icon name="logout" />
@@ -288,7 +293,7 @@ function DashboardLayout({
             <span className="sidebar-link-text">
               Logout
             </span>
-          </Link>
+          </button>
         </div>
       </aside>
 
@@ -332,7 +337,7 @@ function DashboardLayout({
             </div>
 
             <div className="header-user-info">
-              <strong>{userName}</strong>
+              <strong>{displayName}</strong>
 
               <span>
                 {role === "doctor" ? "Doctor" : "Patient"}

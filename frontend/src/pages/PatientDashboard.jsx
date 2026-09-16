@@ -1,13 +1,22 @@
 import { Link } from "react-router-dom"
 import DashboardLayout from "../layouts/DashboardLayout.jsx"
+import { api, session } from "../services/api"
+import { useApiQuery } from "../hooks/useApiQuery"
+import { ErrorState, LoadingState } from "../components/AsyncState"
 
 function PatientDashboard() {
+  const { data: summary, loading, error, refresh } = useApiQuery(api.patientMe, [])
+  const profile = summary?.profile
+  const criticalAllergy = summary?.allergies?.find((allergy) => String(allergy.severity).toUpperCase() === "SEVERE") || summary?.allergies?.[0]
+  const firstName = profile?.full_name?.split(" ")[0] || session.get()?.user?.full_name?.split(" ")[0] || "Patient"
   return (
     <DashboardLayout
       role="patient"
-      userName="Kabir Malhotra"
+      userName={profile?.full_name || "Patient"}
     >
       <div className="patient-dashboard">
+        {loading && <LoadingState label="Loading your medical summary…" />}
+        {error && <ErrorState error={error} onRetry={refresh} />}
 
         {/* =====================================================
             PAGE HEADER
@@ -20,7 +29,7 @@ function PatientDashboard() {
             </div>
 
             <h1>
-              Good afternoon, Kabir
+              Welcome, {firstName}
             </h1>
 
             <p>
@@ -56,11 +65,11 @@ function PatientDashboard() {
             </div>
 
             <h2>
-              Severe Penicillin Allergy
+              {criticalAllergy?.allergen || "No critical allergy recorded"}
             </h2>
 
             <p>
-              A severe Penicillin allergy is recorded in your
+              {criticalAllergy ? `A ${criticalAllergy.severity?.toLowerCase() || "recorded"} allergy is recorded in your` : "No critical allergy is currently"}
               medical history and should be communicated to
               healthcare professionals during treatment.
             </p>
@@ -121,7 +130,7 @@ function PatientDashboard() {
               </div>
 
               <div className="patient-health-value">
-                O−
+                {profile?.blood_group || "—"}
               </div>
 
               <p>
@@ -149,7 +158,7 @@ function PatientDashboard() {
               </div>
 
               <div className="patient-health-value">
-                1
+                {summary?.allergies?.length ?? "—"}
               </div>
 
               <p>
@@ -177,7 +186,7 @@ function PatientDashboard() {
               </div>
 
               <div className="patient-health-value">
-                2
+                {summary?.medications?.filter((medication) => String(medication.status).toUpperCase() === "ACTIVE").length ?? "—"}
               </div>
 
               <p>

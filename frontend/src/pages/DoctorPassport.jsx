@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import DashboardLayout from "../layouts/DashboardLayout.jsx"
+import { api } from "../services/api"
+import { useApiQuery } from "../hooks/useApiQuery"
+import { ErrorState, LoadingState } from "../components/AsyncState"
 
 function Icon({ name, size = 19 }) {
   const common = {
@@ -162,11 +165,12 @@ function Icon({ name, size = 19 }) {
 function DoctorPassport() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const { data: summary, loading, error, refresh } = useApiQuery(() => api.patientSummary(id), [id])
 
   const [activeTab, setActiveTab] = useState("overview")
   const [showEditMessage, setShowEditMessage] = useState(false)
 
-  const patients = {
+  const _demoPatients = {
     1: {
       name: "Aarav Mehta",
       age: 24,
@@ -408,7 +412,22 @@ function DoctorPassport() {
     },
   }
 
-  const patient = patients[id] || patients[5]
+  const patient = summary ? {
+    name: summary.profile.full_name,
+    age: summary.profile.age ?? "—",
+    gender: summary.profile.gender || "Not recorded",
+    bloodGroup: summary.profile.blood_group || "Not recorded",
+    condition: summary.conditions?.map((condition) => condition.condition_name).join(", ") || "No conditions recorded",
+    status: "Authorized access",
+    critical: summary.critical_history?.length > 0,
+    allergies: summary.allergies?.map((allergy) => allergy.allergen) || [],
+    medications: summary.medications?.map((medication) => [medication.medication_name, medication.dosage, medication.frequency].filter(Boolean).join(" — ")) || [],
+    conditions: summary.conditions?.map((condition) => condition.condition_name) || [],
+    events: summary.medical_events?.map((event) => ({ date: event.event_date || "Date not recorded", title: event.title, description: event.description || "No description recorded." })) || [],
+    documents: "Not available", // The API has no list-documents endpoint.
+  } : null
+
+  if (!patient) return <DashboardLayout role="doctor" userName="Doctor">{loading ? <LoadingState label="Loading authorized patient passport…" /> : <ErrorState error={error || "Patient record is unavailable."} onRetry={refresh} />}</DashboardLayout>
 
   const showEdit = () => {
     setShowEditMessage(true)
