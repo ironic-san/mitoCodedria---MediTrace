@@ -1,17 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.analysis import router as analysis_router
+from app.api.analysis_workflow import router as analysis_workflow_router
 from app.api.audit import router as audit_router
 from app.api.auth import router as auth_router
 from app.api.doctors import router as doctors_router
 from app.api.documents import router as documents_router
 from app.api.emergency import router as emergency_router
 from app.api.integrity import router as integrity_router
-from app.api.nlu import router as nlu_router
-from app.api.ocr import router as ocr_router
 from app.api.patients import router as patients_router
-from app.api.rag import router as rag_router
 from app.core.config import get_settings
 
 settings = get_settings()
@@ -25,7 +22,7 @@ app = FastAPI(
 # Configure CORS for frontend access
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[origin.strip() for origin in settings.FRONTEND_ORIGINS.split(",") if origin.strip()],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -37,11 +34,8 @@ app.include_router(patients_router, prefix="/patients", tags=["Patients & Passpo
 app.include_router(doctors_router, prefix="/doctors", tags=["Doctors & Access Discovery"])
 app.include_router(documents_router, prefix="/documents", tags=["Document Access & Upload"])
 app.include_router(emergency_router, prefix="/emergency", tags=["Emergency & Break-Glass"])
-app.include_router(ocr_router, prefix="/ocr", tags=["OCR Text Extraction"])
-app.include_router(nlu_router, prefix="/nlu", tags=["NLU Medical Extraction"])
-app.include_router(rag_router, prefix="/rag", tags=["Historical Medical RAG"])
 app.include_router(integrity_router, prefix="/integrity", tags=["Integrity & Hyperledger Fabric"])
-app.include_router(analysis_router, prefix="/document-analysis", tags=["Document Analysis & Review"])
+app.include_router(analysis_workflow_router, prefix="/analysis", tags=["Clinical Analysis Workflow"])
 app.include_router(audit_router, prefix="/audit", tags=["Audit Logging"])
 
 

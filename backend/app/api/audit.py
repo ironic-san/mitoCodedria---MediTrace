@@ -7,7 +7,7 @@ from app.core.dependencies import (
 )
 from app.schemas.audit import AuditHistoryResponse
 from app.services.audit_service import get_patient_audit_logs
-from app.services.emergency_service import get_doctor_access_mode
+from app.services.patient_service import has_valid_doctor_access
 from app.services.supabase_service import get_supabase_service_client
 
 router = APIRouter()
@@ -53,8 +53,7 @@ def get_patient_audit_logs_endpoint(
                 detail="Access denied. Patients may only view their own audit trail.",
             )
     elif current_user.role == "DOCTOR":
-        mode = get_doctor_access_mode(client, current_user.doctor_id, patient_id)
-        if not mode:
+        if not has_valid_doctor_access(client, current_user.doctor_id, patient_id):
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="Access denied. Doctor does not have active access to this patient.",

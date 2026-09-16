@@ -48,8 +48,17 @@ def log_audit_event(
         except Exception:
             doctor_id = None
 
-    # Merge details into new_data if new_data is not provided
-    payload_new_data = new_data or ({"metadata": details} if details else None)
+    # The current schema does not have dedicated actor/details columns. Preserve
+    # those fields inside new_data so audit responses remain reconstructable.
+    payload_new_data = dict(new_data or {})
+    metadata = dict(payload_new_data.get("metadata") or {})
+    metadata.update({
+        "actor_id": actor_id,
+        "actor_role": actor_role.upper(),
+    })
+    if details:
+        metadata.update(details)
+    payload_new_data["metadata"] = metadata
 
     record = {
         "audit_id": audit_id,
@@ -70,9 +79,8 @@ def log_audit_event(
         if res.data:
             return str(res.data[0]["audit_id"])
     except Exception as e:
-        logger.warning(f"Audit log persistence warning: {e}")
-
-    return audit_id
+        logger.error("Audit log persistence failed: %s", e)
+        raise RuntimeError("Audit log persistence failed; operation was not confirmed.") from e
 
 
 def get_patient_audit_logs(
@@ -93,7 +101,16 @@ def get_patient_audit_logs(
             .range(offset, offset + limit - 1)
             .execute()
         )
-        rows = res.data or []
+        rows = []
+        for row in res.data or []:
+            item = dict(row)
+            new_data = item.get("new_data") or {}
+            metadata = new_data.get("metadata") if isinstance(new_data, dict) else None
+            if isinstance(metadata, dict):
+                item.setdefault("actor_id", metadata.get("actor_id"))
+                item.setdefault("actor_role", metadata.get("actor_role"))
+                item["details"] = metadata
+            rows.append(item)
         return {
             "patient_id": patient_id,
             "total_logs": len(rows),

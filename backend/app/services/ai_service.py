@@ -7,6 +7,7 @@ import re
 from typing import Any, Dict, List, Optional, Tuple
 from supabase import Client
 
+from app.core.config import get_settings
 from app.schemas.ai import (
     AIDocumentAnalysisResult,
     AIPipelineResponse,
@@ -302,7 +303,7 @@ class AIProvider(ABC):
 
 
 class GeminiAIProvider(AIProvider):
-    def __init__(self, api_key: str, model_name: str = "gemini-2.5-flash"):
+    def __init__(self, api_key: str, model_name: str = "gemini-3.5-flash-lite"):
         self.api_key = api_key
         self.model_name = model_name
 
@@ -325,11 +326,15 @@ DOCUMENT METADATA:
 DOCUMENT EXTRACTED TEXT:
 {document_text}
 
+DETERMINISTIC OCR-NLU FINDINGS:
+{json.dumps(document_meta.get("nlu_findings"), indent=2)}
+
 PATIENT EXISTING STRUCTURED RECORDS:
 {json.dumps(patient_summary, indent=2)}
 
 TASK:
 1. Extract all structured facts (allergies, conditions, medications, medical events, procedures).
+   Treat the deterministic OCR-NLU findings as the primary extraction evidence and preserve their evidence fields.
 2. Compare extracted findings against existing patient records. Classify as MATCH, NEW, or CONFLICT.
 3. Identify critical findings (severe allergies, major diagnoses, critical events).
 4. Provide a clear medical summary.
@@ -379,6 +384,11 @@ class DeterministicAIProvider(AIProvider):
             "events": [],
             "document_date": document_meta.get("document_date"),
         }
+        if document_meta.get("nlu_findings"):
+            # Keep the deterministic OCR-NLU result attached to the review payload
+            # even when Gemini is unavailable. It is the evidence-preserving source
+            # of truth for the extraction stage; this provider only adds comparison.
+            extracted_data["ocr_nlu"] = document_meta["nlu_findings"]
 
         # 1. Check for Conflicts
         if ("no known drug allergies" in doc_lower or "nkda" in doc_lower) and allergies_exist:
@@ -504,11 +514,117 @@ class DeterministicAIProvider(AIProvider):
 
 def get_ai_service() -> AIProvider:
     """Factory returning configured AI Provider or Deterministic Provider."""
-    provider_name = os.getenv("AI_PROVIDER", "").lower()
-    api_key = os.getenv("AI_API_KEY") or os.getenv("GEMINI_API_KEY")
+    settings = get_settings()
+    provider_name = os.getenv("AI_PROVIDER", settings.AI_PROVIDER).lower()
+    api_key = os.getenv("GEMINI_API_KEY") or settings.GEMINI_API_KEY
 
     if (provider_name == "gemini" or api_key) and api_key:
-        model_name = os.getenv("AI_MODEL", "gemini-2.5-flash")
+        model_name = os.getenv("AI_MODEL", settings.AI_MODEL)
         return GeminiAIProvider(api_key=api_key, model_name=model_name)
 
     return DeterministicAIProvider()
+
+
+def deterministic_compare_findings(
+    extracted_data: Dict[str, Any],
+    patient_summary: Dict[str, Any],
+) -> Dict[str, List[Dict[str, Any]]]:
+    """Compare extracted names with current records without delegating equality to Gemini."""
+    categories = {
+        "allergies": ("ALLERGY", "allergen", "allergies"),
+        "conditions": ("CONDITION", "name", "conditions"),
+        "medications": ("MEDICATION", "name", "medications"),
+        "events": ("EVENT", "title", "medical_events"),
+    }
+    result = {"matches": [], "new_findings": [], "conflicts": []}
+
+    for key, (category, name_key, existing_key) in categories.items():
+        existing_items = patient_summary.get(existing_key, []) or []
+        for finding in extracted_data.get(key, []) or []:
+            if not isinstance(finding, dict):
+                continue
+            value = str(finding.get(name_key) or finding.get("finding") or "").strip()
+            if not value:
+                continue
+            normalized = normalize_text(value)
+            matches = []
+            for existing in existing_items:
+                existing_value = str(
+                    existing.get(name_key)
+                    or existing.get("condition_name")
+                    or existing.get("medication_name")
+                    or existing.get("title")
+                    or ""
+                )
+                if normalized and (normalized in normalize_text(existing_value) or normalize_text(existing_value) in normalized):
+                    matches.append(existing)
+
+            if matches:
+                result["matches"].append({"category": category, "finding": value, "existing": matches[0]})
+            else:
+                result["new_findings"].append({"category": category, "finding": value, "classification": "NEW"})
+
+    # NKDA versus any existing allergy is a genuine contradiction, unlike repeated
+    # mentions of the same affirmed entity.
+    if any(str(a.get("allergen", "")).lower().startswith("none") for a in extracted_data.get("allergies", []) if isinstance(a, dict)):
+        for existing in patient_summary.get("allergies", []) or []:
+            result["conflicts"].append({
+                "category": "ALLERGY",
+                "finding": "No known drug allergies",
+                "existing": existing,
+                "classification": "CONFLICT",
+            })
+    return result
+
+
+def generate_grounded_response(
+    patient_id: str,
+    doctor_query: str,
+    ocr_findings: Optional[Dict[str, Any]] = None,
+    rag_retrievals: Optional[List[Dict[str, Any]]] = None,
+) -> Dict[str, Any]:
+    """Generate a response from explicitly supplied evidence only; never writes to DB."""
+    evidence = {"ocr_findings": ocr_findings, "rag_retrievals": rag_retrievals or []}
+    prompt = (
+        "You are a clinical assistant for MediTrace. Use only the supplied evidence. "
+        "Do not invent facts, make a final clinical decision, or write medical records. "
+        "Clearly identify historical information, conflicts, and the need for doctor review.\n\n"
+        f"DOCTOR QUERY:\n{doctor_query}\n\nEVIDENCE:\n{json.dumps(evidence, indent=2)}\n\n"
+        "Return concise doctor-facing prose."
+    )
+
+    settings = get_settings()
+    api_key = os.getenv("GEMINI_API_KEY") or settings.GEMINI_API_KEY
+    model_name = os.getenv("AI_MODEL", settings.AI_MODEL)
+    if api_key and os.getenv("AI_PROVIDER", settings.AI_PROVIDER).lower() == "gemini":
+        try:
+            from google import genai
+            # Keep the client alive for the complete request. Chaining the
+            # client constructor into generate_content can leave the SDK's
+            # underlying transport closed in a long-running FastAPI process.
+            client = genai.Client(api_key=api_key)
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+            )
+            if response.text:
+                return {
+                    "response": response.text.strip(),
+                    "model": model_name,
+                    "evidence_used": {"ocr": bool(ocr_findings), "rag_count": len(rag_retrievals or [])},
+                }
+        except Exception as exc:
+            logger.warning("Grounded Gemini response failed; using deterministic response: %s", exc)
+
+    pieces = [f"Query: {doctor_query}"]
+    if ocr_findings:
+        pieces.append("Document findings supplied for review: " + json.dumps(ocr_findings, ensure_ascii=False))
+    if rag_retrievals:
+        excerpts = [str(item.get("chunk_text", ""))[:500] for item in rag_retrievals]
+        pieces.append("Historical evidence supplied: " + " | ".join(excerpts))
+    pieces.append("Doctor review is required before any authoritative medical record change.")
+    return {
+        "response": "\n\n".join(pieces),
+        "model": "deterministic-fallback",
+        "evidence_used": {"ocr": bool(ocr_findings), "rag_count": len(rag_retrievals or [])},
+    }

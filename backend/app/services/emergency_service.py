@@ -55,7 +55,8 @@ def has_valid_emergency_access(client: Client, doctor_id: str, patient_id: str) 
                 if ended_at_dt <= now_utc:
                     continue  # Session expired
             except Exception:
-                pass
+                # Invalid expiry data must not grant emergency access.
+                continue
         return True
 
     return False
@@ -97,13 +98,14 @@ def get_doctor_access_mode(client: Client, doctor_id: str, patient_id: str) -> O
                 if ended_at_dt <= now_utc:
                     is_valid = False
             except Exception:
-                pass
+                # Invalid expiry data must not grant any access mode.
+                is_valid = False
 
         if is_valid:
             rel_type = (row.get("relationship_type") or "").upper()
             if rel_type in {"BREAK_GLASS", "EMERGENCY"}:
                 has_break_glass = True
-            else:
+            elif rel_type == "NORMAL_ACCESS":
                 has_normal = True
 
     if has_normal:

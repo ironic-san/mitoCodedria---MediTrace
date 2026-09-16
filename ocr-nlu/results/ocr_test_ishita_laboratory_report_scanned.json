@@ -1,0 +1,498 @@
+{
+  "document": {
+    "document_id": "ocr_test_ishita_laboratory_report_scanned",
+    "file_path": "samples\\ocr_test_ishita_laboratory_report_scanned.png",
+    "document_type": "LABORATORY_REPORT",
+    "classification_confidence": 0.99,
+    "classification_reasoning": [
+      "matched: laboratory, reference range, specimen"
+    ],
+    "sections": [
+      {
+        "name": "PATIENT_INFORMATION",
+        "heading": "PATIENT INFORMATION",
+        "text": "Patient Name: Ishita Kapoor\n\nPatient ID (MRN): 20000000-0000-0000-0000-000000000002\n\nDOB: 1980-11-03\n\nGender: Female\n\nBlood Group: B+\n\nContact: 9100000002",
+        "start": 212,
+        "end": 368
+      },
+      {
+        "name": "SPECIMEN_DETAILS",
+        "heading": "SPECIMEN DETAILS",
+        "text": "Sample ID: LAB-2026-0910-4482\n\nSpecimen: Venous blood\n\nCollection Date/Time: 10-Sep-2026, 07:30 hrs (fasting)\n\nOrdering Physician: Dr. Ananya Reddy",
+        "start": 386,
+        "end": 535
+      },
+      {
+        "name": "LABORATORY",
+        "heading": "LABORATORY RESULTS",
+        "text": "Test | Result | Reference Range [ Unit | Flag\nTene en ennwnannnnnnanbaawnannnnbnnaaannnnnnnnanaaaaatnnnnnnanahnannnnn\nHbAlc | 7.8 | 4.0 - 5.6 | % | HIGH\nFasting Plasma Glucose | 162 | 79 - 100 | mg/d. | HIGH\nPost-Prandial Glucose | 224 | < 140 | mg/d. | HIGH\nTotal Cholesterol | 218 | < 200 | mg/dL  [ HIGH\nHDL Cholesterol | 44 | > 50 [| mg/dL | LOW\nLDL Cholesterol | 138 | < 100 | mg/d. | HIGH\nTriglycerides | 1890 | < 150 | mg/d. | HIGH\nSerum Creatinine | 9.9 [| 9.6 - 1.2 | mg/dL [| NORMAL\nBlood Urea Nitrogen | 14 | 7 - 20 | mg/dL [| NORMAL\neGFR | 92 | > 90 [| mL/min [| NORMAL\nTSH | 2.8 [| 0.4 - 4.0 [| mZU/L =| NORMAL",
+        "start": 555,
+        "end": 1180
+      },
+      {
+        "name": "NOTES",
+        "heading": "PATHOLOGIST NOTES",
+        "text": "Elevated HbAlc and fasting glucose indicate suboptimal glycaemic control. Lipid panel shows\ndyslipidaemia. Renal function within normal limits.",
+        "start": 1198,
+        "end": 1343
+      },
+      {
+        "name": "SIGNATURE",
+        "heading": "SIGNATURE",
+        "text": "Verified and electronically signed by:\n\nDr. Meera Krishnamurthy, MD Pathology\n\nCentral Diagnostic Laboratory\n\nNova Health Institute, Bengaluru\n\nNova Health Institute - Central Diagnostic Laboratory\n\nPage 1 of 1",
+        "start": 1354,
+        "end": 1565
+      }
+    ],
+    "metadata": {
+      "source_type": "image",
+      "ocr_engine": "tesseract",
+      "confidence_unit": "percentage",
+      "confidence_word_count": 246
+    }
+  },
+  "candidate_facts": [
+    {
+      "entity_id": "f0b97fb7-acdf-41a4-ac6a-2a3120d777c6",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "Ishita Kapoor",
+      "normalized_text": "Ishita Kapoor",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "Ishita Kapoor",
+        "page_number": null,
+        "character_start": 227,
+        "character_end": 240,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "name"
+      }
+    },
+    {
+      "entity_id": "68dd8cbc-ffde-473c-b1d6-e53e1ac7a37e",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "20000000-0000-0000-0000-000000000002",
+      "normalized_text": "20000000-0000-0000-0000-000000000002",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "20000000-0000-0000-0000-000000000002",
+        "page_number": null,
+        "character_start": 260,
+        "character_end": 296,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "patient_identifier"
+      }
+    },
+    {
+      "entity_id": "52730eab-24a6-440f-abf9-c38747da6b49",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "1980-11-03",
+      "normalized_text": "1980-11-03",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "1980-11-03",
+        "page_number": null,
+        "character_start": 303,
+        "character_end": 313,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "date_of_birth",
+        "iso_date": "1980-11-03"
+      }
+    },
+    {
+      "entity_id": "b8491c7b-18de-4984-ae6e-070225a5aba3",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "Female",
+      "normalized_text": "Female",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "Female",
+        "page_number": null,
+        "character_start": 323,
+        "character_end": 329,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "sex"
+      }
+    },
+    {
+      "entity_id": "491805e7-e28c-493b-af40-889041d1acd0",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "B+",
+      "normalized_text": "B+",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "B+",
+        "page_number": null,
+        "character_start": 344,
+        "character_end": 346,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "blood_group"
+      }
+    },
+    {
+      "entity_id": "0315a697-5347-4b3a-aa35-a4dedd96954f",
+      "entity_type": "LAB_RESULT",
+      "original_text": "HbAlc | 7.8 | 4.0 - 5.6 | % | HIGH",
+      "normalized_text": "HbAlc | 7.8 | 4.0 - 5.6 | % | HIGH",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "HbAlc | 7.8 | 4.0 - 5.6 | % | HIGH",
+        "page_number": null,
+        "character_start": 674,
+        "character_end": 708,
+        "section": "LABORATORY",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "test_name": "HbAlc",
+        "value": 7.8,
+        "reference_range": "4.0 - 5.6",
+        "unit": "%",
+        "abnormal_flag": "HIGH"
+      }
+    },
+    {
+      "entity_id": "e441efc6-759f-4625-8d51-20df93bb2414",
+      "entity_type": "LAB_RESULT",
+      "original_text": "Fasting Plasma Glucose | 162 | 79 - 100 | mg/d. | HIGH",
+      "normalized_text": "Fasting Plasma Glucose | 162 | 79 - 100 | mg/d. | HIGH",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "Fasting Plasma Glucose | 162 | 79 - 100 | mg/d. | HIGH",
+        "page_number": null,
+        "character_start": 709,
+        "character_end": 763,
+        "section": "LABORATORY",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "test_name": "Fasting Plasma Glucose",
+        "value": 162.0,
+        "reference_range": "79 - 100",
+        "unit": "mg/d.",
+        "abnormal_flag": "HIGH"
+      }
+    },
+    {
+      "entity_id": "07b2e430-ccf1-4157-bc17-1bdb4294a8ce",
+      "entity_type": "LAB_RESULT",
+      "original_text": "Post-Prandial Glucose | 224 | < 140 | mg/d. | HIGH",
+      "normalized_text": "Post-Prandial Glucose | 224 | < 140 | mg/d. | HIGH",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "Post-Prandial Glucose | 224 | < 140 | mg/d. | HIGH",
+        "page_number": null,
+        "character_start": 764,
+        "character_end": 814,
+        "section": "LABORATORY",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "test_name": "Post-Prandial Glucose",
+        "value": 224.0,
+        "reference_range": "< 140",
+        "unit": "mg/d.",
+        "abnormal_flag": "HIGH"
+      }
+    },
+    {
+      "entity_id": "46bbeb89-a574-43e5-968e-1ddfab8b175c",
+      "entity_type": "LAB_RESULT",
+      "original_text": "HDL Cholesterol | 44 | > 50 [| mg/dL | LOW",
+      "normalized_text": "HDL Cholesterol | 44 | > 50 [| mg/dL | LOW",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "HDL Cholesterol | 44 | > 50 [| mg/dL | LOW",
+        "page_number": null,
+        "character_start": 863,
+        "character_end": 905,
+        "section": "LABORATORY",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "test_name": "HDL Cholesterol",
+        "value": 44.0,
+        "reference_range": "> 50 [",
+        "unit": "mg/dL",
+        "abnormal_flag": "LOW"
+      }
+    },
+    {
+      "entity_id": "abb2451f-e187-47f1-a0e6-77230fc658ed",
+      "entity_type": "LAB_RESULT",
+      "original_text": "LDL Cholesterol | 138 | < 100 | mg/d. | HIGH",
+      "normalized_text": "LDL Cholesterol | 138 | < 100 | mg/d. | HIGH",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "LDL Cholesterol | 138 | < 100 | mg/d. | HIGH",
+        "page_number": null,
+        "character_start": 906,
+        "character_end": 950,
+        "section": "LABORATORY",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "test_name": "LDL Cholesterol",
+        "value": 138.0,
+        "reference_range": "< 100",
+        "unit": "mg/d.",
+        "abnormal_flag": "HIGH"
+      }
+    },
+    {
+      "entity_id": "19ee1f02-ee2b-4c66-8c7e-2215492234af",
+      "entity_type": "LAB_RESULT",
+      "original_text": "Triglycerides | 1890 | < 150 | mg/d. | HIGH",
+      "normalized_text": "Triglycerides | 1890 | < 150 | mg/d. | HIGH",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "Triglycerides | 1890 | < 150 | mg/d. | HIGH",
+        "page_number": null,
+        "character_start": 951,
+        "character_end": 994,
+        "section": "LABORATORY",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "test_name": "Triglycerides",
+        "value": 1890.0,
+        "reference_range": "< 150",
+        "unit": "mg/d.",
+        "abnormal_flag": "HIGH"
+      }
+    },
+    {
+      "entity_id": "06f2d29f-5c89-48c4-a45b-df8c2b14c617",
+      "entity_type": "LAB_RESULT",
+      "original_text": "Blood Urea Nitrogen | 14 | 7 - 20 | mg/dL [| NORMAL",
+      "normalized_text": "Blood Urea Nitrogen | 14 | 7 - 20 | mg/dL [| NORMAL",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "Blood Urea Nitrogen | 14 | 7 - 20 | mg/dL [| NORMAL",
+        "page_number": null,
+        "character_start": 1049,
+        "character_end": 1100,
+        "section": "LABORATORY",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "test_name": "Blood Urea Nitrogen",
+        "value": 14.0,
+        "reference_range": "7 - 20",
+        "unit": "mg/dL [",
+        "abnormal_flag": "NORMAL"
+      }
+    },
+    {
+      "entity_id": "ef773ecc-28f9-451a-b521-3840d68cd2b4",
+      "entity_type": "LAB_RESULT",
+      "original_text": "eGFR | 92 | > 90 [| mL/min [| NORMAL",
+      "normalized_text": "eGFR | 92 | > 90 [| mL/min [| NORMAL",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "eGFR | 92 | > 90 [| mL/min [| NORMAL",
+        "page_number": null,
+        "character_start": 1101,
+        "character_end": 1137,
+        "section": "LABORATORY",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "test_name": "eGFR",
+        "value": 92.0,
+        "reference_range": "> 90 [",
+        "unit": "mL/min [",
+        "abnormal_flag": "NORMAL"
+      }
+    },
+    {
+      "entity_id": "4602d35f-f847-4afb-8014-31046f824016",
+      "entity_type": "DATE_TIME",
+      "original_text": "1980-11-03",
+      "normalized_text": "1980-11-03",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_ishita_laboratory_report_scanned",
+        "source_text": "1980-11-03",
+        "page_number": null,
+        "character_start": 303,
+        "character_end": 313,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 84.92682926829268
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.8492682926829268,
+      "status": "NORMALIZED",
+      "attributes": {
+        "iso_date": "1980-11-03"
+      }
+    }
+  ],
+  "verified_facts": [],
+  "relationships": [],
+  "validation_issues": []
+}

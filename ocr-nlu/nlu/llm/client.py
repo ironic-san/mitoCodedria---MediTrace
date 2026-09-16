@@ -1,0 +1,3 @@
+from typing import Protocol, Any
+class LLMClient(Protocol):
+    def complete(self, prompt: str, *, json_mode: bool = True) -> Any: ...

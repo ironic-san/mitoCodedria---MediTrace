@@ -1,4 +1,3 @@
-import io
 from typing import Optional
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
 
@@ -6,7 +5,7 @@ from app.core.dependencies import AuthenticatedUser, get_current_user
 from app.schemas.ocr import OCRProcessResponse
 from app.services.audit_service import log_audit_event
 from app.services.emergency_service import get_doctor_access_mode
-from app.services.ocr_service import extract_document_text
+from app.services.ocr_nlu_adapter import process_file
 from app.services.supabase_service import get_supabase_service_client
 
 router = APIRouter()
@@ -50,7 +49,7 @@ async def process_ocr_endpoint(
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Failed to read uploaded document: {e}",
+            detail="Failed to read uploaded document.",
         )
 
     if len(file_bytes) == 0:
@@ -59,25 +58,35 @@ async def process_ocr_endpoint(
             detail="Uploaded file is empty (0 bytes).",
         )
 
-    # Perform OCR / Text Extraction
-    extracted_text = extract_document_text(
-        file_bytes=file_bytes,
-        filename=filename,
-        content_type=content_type,
-    )
-
-    words = extracted_text.split()
-    word_count = len(words)
-    char_count = len(extracted_text)
-
     # Resolve target patient for audit
     target_patient_id = patient_id or current_user.patient_id
+
+    if current_user.role == "PATIENT":
+        if target_patient_id != current_user.patient_id:
+            raise HTTPException(status_code=403, detail="Patients may only process their own documents.")
+    elif current_user.role == "DOCTOR":
+        if not target_patient_id or not current_user.doctor_id:
+            raise HTTPException(status_code=400, detail="A target patient is required for doctor OCR requests.")
+        client = get_supabase_service_client()
+        mode = get_doctor_access_mode(client, current_user.doctor_id, target_patient_id)
+        if mode != "NORMAL":
+            raise HTTPException(status_code=403, detail="OCR requires active NORMAL_ACCESS; break-glass is read-only.")
+
+    try:
+        pipeline_result = process_file(file_bytes, filename, target_patient_id or "standalone-ocr")
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail="OCR-NLU processing service is unavailable.") from exc
+
+    ocr_data = pipeline_result["ocr"]
+    extracted_text = ocr_data["text"]
+    word_count = len(extracted_text.split())
+    char_count = len(extracted_text)
 
     if target_patient_id:
         client = get_supabase_service_client()
         mode = "NORMAL"
         if current_user.role == "DOCTOR" and current_user.doctor_id:
-            mode = get_doctor_access_mode(client, current_user.doctor_id, target_patient_id) or "NORMAL"
+            mode = "NORMAL"
 
         log_audit_event(
             client=client,
@@ -97,11 +106,12 @@ async def process_ocr_endpoint(
         content_type=content_type or "application/octet-stream",
         char_count=char_count,
         word_count=word_count,
-        ocr_status="COMPLETED",
-        confidence_score=0.95,
+        ocr_status=ocr_data["status"],
+        confidence_score=ocr_data["confidence"] or 0.0,
         document_date=document_date,
         metadata={
             "file_size_bytes": len(file_bytes),
             "uploader_role": current_user.role,
+            "ocr_metadata": ocr_data.get("metadata") or {},
         },
     )

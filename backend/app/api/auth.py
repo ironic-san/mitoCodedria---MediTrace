@@ -4,8 +4,6 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from app.core.dependencies import (
     AuthenticatedUser,
     get_current_user,
-    require_doctor,
-    require_patient,
 )
 from app.schemas.auth import LoginRequest, TokenResponse, UserMeResponse
 from app.services.supabase_service import get_supabase_service_client
@@ -47,7 +45,7 @@ def login(payload: LoginRequest):
             else:
                 raise HTTPException(
                     status_code=status.HTTP_401_UNAUTHORIZED,
-                    detail=f"Authentication failed: {e}",
+                    detail="Authentication service is temporarily unavailable.",
                 ) from e
 
     session = getattr(auth_res, "session", auth_res)
@@ -80,8 +78,6 @@ def login(payload: LoginRequest):
         role=role,
         user_id=auth_user_id,
     )
-
-
 @router.get("/me", response_model=UserMeResponse, summary="Get current authenticated user identity & profile")
 def get_me(current_user: AuthenticatedUser = Depends(get_current_user)):
     """
@@ -100,25 +96,3 @@ def get_me(current_user: AuthenticatedUser = Depends(get_current_user)):
         date_of_birth=current_user.date_of_birth,
         blood_group=current_user.blood_group,
     )
-
-
-@router.get("/doctor-only", summary="Test endpoint for doctor-only authorization")
-def doctor_only_test(current_user: AuthenticatedUser = Depends(require_doctor)):
-    """Sample endpoint asserting require_doctor dependency."""
-    return {
-        "status": "granted",
-        "message": f"Welcome Dr. {current_user.full_name}",
-        "doctor_id": current_user.doctor_id,
-        "role": current_user.role,
-    }
-
-
-@router.get("/patient-only", summary="Test endpoint for patient-only authorization")
-def patient_only_test(current_user: AuthenticatedUser = Depends(require_patient)):
-    """Sample endpoint asserting require_patient dependency."""
-    return {
-        "status": "granted",
-        "message": f"Welcome {current_user.full_name}",
-        "patient_id": current_user.patient_id,
-        "role": current_user.role,
-    }

@@ -70,6 +70,28 @@ class ReviewAnalysisResponse(BaseModel):
     updated_records: Optional[Dict[str, Any]] = None
 
 
+class GroundedResponseRequest(BaseModel):
+    """Inputs for the final doctor-facing response layer."""
+    patient_id: str
+    document_id: Optional[str] = None
+    doctor_query: str = Field(..., min_length=2)
+    ocr_findings: Optional[Dict[str, Any]] = None
+    rag_retrievals: Optional[List[Dict[str, Any]]] = None
+
+
+class GroundedResponse(BaseModel):
+    analysis_id: Optional[str] = None
+    document_id: Optional[str] = None
+    patient_id: str
+    doctor_query: str
+    response: str
+    conflicts: List[Dict[str, Any]] = Field(default_factory=list)
+    review_required: bool = True
+    evidence_used: Dict[str, Any] = Field(default_factory=dict)
+    review_status: str = "PENDING"
+    model: str = "deterministic-fallback"
+
+
 # --- TASK 6 EXPLICIT NLU SCHEMAS ---
 
 class NLUProcessRequest(BaseModel):

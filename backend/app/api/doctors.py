@@ -52,6 +52,7 @@ def get_doctor_accessible_patients(current_user: AuthenticatedUser = Depends(req
         client.table("doctor_patient")
         .select("*")
         .eq("doctor_id", current_user.doctor_id)
+        .eq("relationship_type", "NORMAL_ACCESS")
         .eq("status", "ACTIVE")
         .execute()
     )

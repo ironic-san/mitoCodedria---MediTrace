@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 
 from app.core.dependencies import AuthenticatedUser, get_current_user
 from app.schemas.ai import NLUProcessRequest, NLUProcessResponse
-from app.services.ai_service import extract_nlu_findings
 from app.services.audit_service import log_audit_event
 from app.services.emergency_service import get_doctor_access_mode
+from app.services.ocr_nlu_adapter import process_text
 from app.services.supabase_service import get_supabase_service_client
 
 router = APIRouter()
@@ -30,17 +30,32 @@ def process_nlu_endpoint(
             detail="extracted_text cannot be empty.",
         )
 
-    nlu_res = extract_nlu_findings(
-        extracted_text=payload.extracted_text,
-        patient_id=payload.patient_id,
-        document_meta=payload.document_meta,
-    )
+    if payload.patient_id and current_user.role == "PATIENT" and payload.patient_id != current_user.patient_id:
+        raise HTTPException(status_code=403, detail="Patients may only process their own medical text.")
+    if payload.patient_id and current_user.role == "DOCTOR":
+        if not current_user.doctor_id:
+            raise HTTPException(status_code=404, detail="Doctor profile is not linked to the authenticated user.")
+        client = get_supabase_service_client()
+        if get_doctor_access_mode(client, current_user.doctor_id, payload.patient_id) != "NORMAL":
+            raise HTTPException(status_code=403, detail="NLU requires active NORMAL_ACCESS; break-glass is read-only.")
+
+    try:
+        document_meta = payload.document_meta or {}
+        pipeline_result = process_text(
+            payload.extracted_text,
+            document_id=document_meta.get("document_id", "standalone-nlu"),
+            metadata=document_meta,
+        )
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail="OCR-NLU processing service is unavailable.") from exc
+
+    nlu_data = pipeline_result["nlu"]
 
     if payload.patient_id:
         client = get_supabase_service_client()
         mode = "NORMAL"
         if current_user.role == "DOCTOR" and current_user.doctor_id:
-            mode = get_doctor_access_mode(client, current_user.doctor_id, payload.patient_id) or "NORMAL"
+            mode = "NORMAL"
 
         log_audit_event(
             client=client,
@@ -52,9 +67,23 @@ def process_nlu_endpoint(
             entity_type="AI_FINDINGS",
             reason="NLU structured extraction performed",
             details={
-                "normalizations_count": len(nlu_res.normalizations),
-                "critical_findings_count": len(nlu_res.critical_findings),
+                "facts_count": len(nlu_data.get("candidate_facts", [])),
+                "validation_issues_count": len(nlu_data.get("validation_issues", [])),
             },
         )
 
-    return nlu_res
+    return NLUProcessResponse(
+        extracted_text=payload.extracted_text,
+        findings=nlu_data,
+        normalizations=[],
+        critical_findings=[
+            fact.get("original_text", "")
+            for fact in nlu_data.get("candidate_facts", [])
+            if fact.get("entity_type") == "CRITICAL_FINDING"
+        ],
+        is_suggestion_only=True,
+        summary=(
+            f"OCR-NLU extraction completed with {len(nlu_data.get('candidate_facts', []))} candidate facts "
+            f"and {len(nlu_data.get('validation_issues', []))} validation issues."
+        ),
+    )

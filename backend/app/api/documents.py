@@ -1,16 +1,17 @@
 from datetime import datetime, timezone
 import logging
 import uuid
+from pathlib import Path
 from typing import Optional
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
 
 from app.core.dependencies import AuthenticatedUser, get_current_user
 from app.schemas.ai import DocumentAnalysisResponse
 from app.schemas.document import DocumentAccessResponse, DocumentUploadResponse
-from app.services.ai_service import get_ai_service
+from app.services.ai_service import deterministic_compare_findings, get_ai_service
 from app.services.audit_service import log_audit_event
 from app.services.emergency_service import get_doctor_access_mode
-from app.services.ocr_service import extract_document_text
+from app.services.ocr_nlu_adapter import process_file, process_text
 from app.services.patient_service import (
     get_consolidated_medical_summary,
     has_valid_doctor_access,
@@ -83,7 +84,9 @@ async def upload_document(
         )
 
     # 2. Validate file type and extension
-    filename = file.filename or "uploaded_document"
+    # Keep only the basename so client-supplied path components cannot escape the
+    # patient storage prefix.
+    filename = Path(file.filename or "uploaded_document").name
     ext = "." + filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
 
     content_type = file.content_type or ""
@@ -110,23 +113,20 @@ async def upload_document(
             file=file_bytes,
             file_options={"content-type": content_type or "application/octet-stream"},
         )
-    except Exception:
-        pass
+    except Exception as exc:
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail="Medical document storage is temporarily unavailable.",
+        ) from exc
 
     now_utc = datetime.now(timezone.utc)
     doc_title = title.strip() if title else filename
     doc_date = document_date.strip() if document_date else now_utc.strftime("%Y-%m-%d")
 
-    # Resolve uploader doctor_id
-    if current_user.role == "DOCTOR":
-        uploader_doctor_id = current_user.doctor_id
-    else:
-        rel_res = client.table("doctor_patient").select("doctor_id").eq("patient_id", target_patient_id).execute()
-        if rel_res.data:
-            uploader_doctor_id = str(rel_res.data[0]["doctor_id"])
-        else:
-            first_doc = client.table("doctors").select("doctor_id").limit(1).execute()
-            uploader_doctor_id = str(first_doc.data[0]["doctor_id"]) if first_doc.data else "10000000-0000-0000-0000-000000000001"
+    # A patient is the authenticated uploader. Never assign the document to an
+    # unrelated or globally selected doctor. The DB column is nullable in the
+    # current schema; doctors remain the uploader only for doctor uploads.
+    uploader_doctor_id = current_user.doctor_id if current_user.role == "DOCTOR" else None
 
     # 4. Insert record into medical_documents table
     record_payload = {
@@ -141,8 +141,22 @@ async def upload_document(
         "uploaded_at": now_utc.isoformat(),
     }
 
-    insert_res = client.table("medical_documents").insert(record_payload).execute()
+    try:
+        insert_res = client.table("medical_documents").insert(record_payload).execute()
+    except Exception as exc:
+        try:
+            client.storage.from_("medical-documents").remove([storage_path])
+        except Exception:
+            logger.exception("Failed to clean up orphaned document storage object")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to persist medical document metadata.",
+        ) from exc
     if not insert_res.data:
+        try:
+            client.storage.from_("medical-documents").remove([storage_path])
+        except Exception:
+            logger.exception("Failed to clean up storage after metadata failure")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Failed to persist document metadata in database.",
@@ -170,8 +184,8 @@ async def upload_document(
         signed_res = client.storage.from_("medical-documents").create_signed_url(storage_path, 3600)
         if isinstance(signed_res, dict) and "signedURL" in signed_res:
             download_url = signed_res["signedURL"]
-    except Exception:
-        pass
+    except Exception as exc:
+        logger.warning("Signed URL creation failed for uploaded document: %s", exc)
 
     return DocumentUploadResponse(
         document_id=doc_id,
@@ -240,8 +254,11 @@ def get_document_access(
                 download_url = signed_res["signedURL"]
             elif hasattr(signed_res, "get"):
                 download_url = signed_res.get("signedURL", raw_file_url)
-        except Exception:
-            download_url = raw_file_url
+        except Exception as exc:
+            raise HTTPException(
+                status_code=status.HTTP_502_BAD_GATEWAY,
+                detail="Medical document access URL could not be created.",
+            ) from exc
 
     log_audit_event(
         client=client,
@@ -269,7 +286,6 @@ def get_document_access(
     )
 
 
-@router.post("/{document_id}/analyze", response_model=DocumentAnalysisResponse, summary="Analyze document with OCR & AI")
 def analyze_document(
     document_id: str,
     current_user: AuthenticatedUser = Depends(get_current_user),
@@ -312,6 +328,7 @@ def analyze_document(
         )
 
     extracted_text = doc_data.get("extracted_text")
+    nlu_findings = None
     storage_path = doc_data.get("file_url", "")
 
     if not extracted_text or doc_data.get("ocr_status") != "COMPLETED":
@@ -319,19 +336,39 @@ def analyze_document(
         if storage_path and not storage_path.startswith("synthetic://"):
             try:
                 file_bytes = client.storage.from_("medical-documents").download(storage_path)
-            except Exception:
-                pass
+            except Exception as exc:
+                raise HTTPException(
+                    status_code=status.HTTP_502_BAD_GATEWAY,
+                    detail="Medical document could not be downloaded from storage.",
+                ) from exc
 
-        extracted_text = extract_document_text(
-            file_bytes=file_bytes or b"",
-            filename=doc_data.get("title", ""),
-            content_type="",
-        )
+        try:
+            pipeline_result = process_file(
+                file_bytes=file_bytes or b"",
+                filename=doc_data.get("title", ""),
+                document_id=document_id,
+            )
+        except Exception as exc:
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail="OCR-NLU processing service is unavailable.",
+            ) from exc
+        extracted_text = pipeline_result["ocr"]["text"]
+        nlu_findings = pipeline_result["nlu"]
 
         client.table("medical_documents").update({
             "extracted_text": extracted_text,
             "ocr_status": "COMPLETED",
         }).eq("document_id", document_id).execute()
+    else:
+        try:
+            nlu_findings = process_text(extracted_text, document_id=document_id)
+            nlu_findings = nlu_findings["nlu"]
+        except Exception as exc:
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail="OCR-NLU processing service is unavailable.",
+            ) from exc
 
     patient_summary_model = get_consolidated_medical_summary(client, owner_patient_id)
     patient_summary_dict = patient_summary_model.model_dump()
@@ -342,10 +379,14 @@ def analyze_document(
         "title": doc_data.get("title"),
         "document_type": doc_data.get("document_type"),
         "document_date": doc_data.get("document_date"),
+        "nlu_findings": nlu_findings,
     }
 
     ai_service = get_ai_service()
     ai_result = ai_service.analyze_document(extracted_text, patient_summary_dict, doc_meta)
+    comparison = deterministic_compare_findings(ai_result.extracted_data, patient_summary_dict)
+    ai_result.new_findings = comparison["new_findings"]
+    ai_result.conflicts = comparison["conflicts"]
 
     now_utc = datetime.now(timezone.utc)
 
@@ -409,7 +450,6 @@ def analyze_document(
     )
 
 
-@router.get("/{document_id}/analysis", response_model=DocumentAnalysisResponse, summary="Get document analysis result")
 def get_document_analysis(
     document_id: str,
     current_user: AuthenticatedUser = Depends(get_current_user),

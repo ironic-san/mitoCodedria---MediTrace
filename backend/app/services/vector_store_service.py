@@ -17,6 +17,8 @@ class IndexedDocumentChunk(BaseModel):
     chunk_text: str
     chunk_index: int
     term_vector: Dict[str, float]
+    section: Optional[str] = None
+    metadata: Dict[str, Any] = {}
 
 
 class PatientVectorStore:
@@ -44,7 +46,7 @@ class PatientVectorStore:
 
             title = doc.get("title") or "Medical Document"
             doc_date = doc.get("document_date")
-            text = (doc.get("extracted_text") or doc.get("title") or "").strip()
+            text = (doc.get("extracted_text") or doc.get("chunk_text") or doc.get("title") or "").strip()
 
             if not text:
                 continue
@@ -71,6 +73,8 @@ class PatientVectorStore:
                         chunk_text=para,
                         chunk_index=idx,
                         term_vector=term_vec,
+                        section=doc.get("section"),
+                        metadata=doc.get("metadata") or {},
                     )
                 )
 
@@ -120,7 +124,10 @@ class PatientVectorStore:
                     document_date=chunk.document_date,
                     chunk_text=chunk.chunk_text,
                     similarity_score=round(float(sim), 4),
+                    score=round(float(sim), 4),
                     patient_id=chunk.patient_id,
+                    section=chunk.section,
+                    metadata=chunk.metadata,
                 )
             )
 
@@ -150,9 +157,38 @@ def get_patient_vector_store(client: Optional[Any] = None, patient_id: Optional[
     if client is not None and patient_id is not None:
         if patient_id not in _vector_store_instance._patient_chunks or not _vector_store_instance._patient_chunks[patient_id]:
             try:
-                docs_res = client.table("medical_documents").select("*").eq("patient_id", patient_id).execute()
+                # Prefer the already-imported historical corpus. Fall back to
+                # document text for local/demo records not yet chunked.
+                docs_res = client.table("medical_document_chunks").select("*").eq("patient_id", patient_id).execute()
+                if not docs_res.data:
+                    docs_res = client.table("medical_documents").select("*").eq("patient_id", patient_id).execute()
                 if docs_res.data:
-                    _vector_store_instance.index_documents_for_patient(patient_id, docs_res.data)
+                    indexed_rows = docs_res.data
+                    # Chunk rows intentionally contain only retrieval fields. Join
+                    # document metadata at read time so responses cite the real
+                    # document title/date without changing RAG mappings.
+                    if docs_res.data and "chunk_text" in docs_res.data[0]:
+                        metadata_rows = (
+                            client.table("medical_documents")
+                            .select("document_id,title,document_date,document_type")
+                            .eq("patient_id", patient_id)
+                            .execute()
+                            .data
+                            or []
+                        )
+                        metadata_by_id = {
+                            str(row.get("document_id")): row for row in metadata_rows
+                        }
+                        indexed_rows = []
+                        for chunk in docs_res.data:
+                            document_meta = metadata_by_id.get(str(chunk.get("document_id")), {})
+                            indexed_rows.append({
+                                **document_meta,
+                                **chunk,
+                                "title": document_meta.get("title") or chunk.get("title"),
+                                "document_date": document_meta.get("document_date") or chunk.get("document_date"),
+                            })
+                    _vector_store_instance.index_documents_for_patient(patient_id, indexed_rows)
             except Exception as e:
                 logger.warning(f"Failed to auto-index documents for patient {patient_id}: {e}")
     return _vector_store_instance

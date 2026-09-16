@@ -94,7 +94,7 @@ def get_current_user(
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to query user roles: {e}",
+            detail="Unable to resolve the authenticated user's role.",
         ) from e
 
     # 3. Resolve role-specific record (doctors or patients)
@@ -143,7 +143,7 @@ def get_current_user(
         except Exception as e:
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail=f"Failed to query doctor profile: {e}",
+                detail="Unable to resolve the doctor profile.",
             ) from e
 
     elif role == "PATIENT":
@@ -171,7 +171,7 @@ def get_current_user(
         except Exception as e:
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail=f"Failed to query patient profile: {e}",
+                detail="Unable to resolve the patient profile.",
             ) from e
 
     else:

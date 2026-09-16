@@ -130,6 +130,26 @@ def get_patient_summary(
     return summary
 
 
+@router.get("/{patient_id}/audit", response_model=AuditHistoryResponse, summary="Get patient audit history")
+def get_patient_audit_history(
+    patient_id: str,
+    limit: int = Query(50, ge=1, le=100),
+    offset: int = Query(0, ge=0),
+    current_user: AuthenticatedUser = Depends(get_current_user),
+):
+    """Workflow alias that never exposes broad audit history through break-glass."""
+    client = get_supabase_service_client()
+    if current_user.role == "PATIENT":
+        if current_user.patient_id != patient_id:
+            raise HTTPException(status_code=403, detail="Patients may only view their own audit history.")
+    elif current_user.role == "DOCTOR":
+        if not has_valid_doctor_access(client, current_user.doctor_id, patient_id):
+            raise HTTPException(status_code=403, detail="Normal doctor access is required for audit history.")
+    else:
+        raise HTTPException(status_code=403, detail="Invalid user role.")
+    return get_patient_audit_logs(client, patient_id, limit=limit, offset=offset)
+
+
 @router.get("/{patient_id}/emergency-summary", response_model=EmergencyMedicalSummaryResponse, summary="Get patient emergency summary")
 def get_patient_emergency_summary_route(
     patient_id: str,

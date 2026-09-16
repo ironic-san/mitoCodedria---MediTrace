@@ -12,3 +12,9 @@ class OCRProcessResponse(BaseModel):
     confidence_score: float = 0.95
     document_date: Optional[str] = None
     metadata: Dict[str, Any] = Field(default_factory=dict)
+
+
+class OCRWorkflowResponse(BaseModel):
+    document_id: Optional[str] = None
+    ocr: OCRProcessResponse
+    nlu: Dict[str, Any]

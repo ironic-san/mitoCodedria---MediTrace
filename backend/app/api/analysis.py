@@ -66,6 +66,15 @@ def review_document_analysis(
         )
 
     an_data = analysis_res.data[0]
+    existing_review_status = str(an_data.get("review_status") or "PENDING").upper()
+    if existing_review_status != "PENDING":
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail=(
+                f"Document analysis '{analysis_id}' has already been reviewed "
+                f"with status '{existing_review_status}'. Duplicate review submissions are not permitted."
+            ),
+        )
     patient_id = str(an_data["patient_id"])
     document_id = str(an_data["document_id"])
 
@@ -114,15 +123,17 @@ def review_document_analysis(
                         .execute()
                     )
                     if not existing_pat_alg.data:
-                        sev = alg.get("severity", "Severe") if isinstance(alg, dict) else "Severe"
-                        react = alg.get("reaction", "Reaction noted") if isinstance(alg, dict) else "Reaction noted"
-                        ins_pat_alg = client.table("patient_allergies").insert({
+                        alg_data = alg if isinstance(alg, dict) else {}
+                        allergy_payload = {
                             "patient_id": patient_id,
                             "allergy_id": allergy_id,
-                            "severity": sev,
-                            "reaction": react,
                             "status": "ACTIVE",
-                        }).execute()
+                        }
+                        if alg_data.get("severity") is not None:
+                            allergy_payload["severity"] = alg_data["severity"]
+                        if alg_data.get("reaction") is not None:
+                            allergy_payload["reaction"] = alg_data["reaction"]
+                        ins_pat_alg = client.table("patient_allergies").insert(allergy_payload).execute()
                         updated_records.setdefault("allergies", []).append(ins_pat_alg.data[0])
 
         # B. Conditions
@@ -146,16 +157,58 @@ def review_document_analysis(
                         .execute()
                     )
                     if not existing_pat_cond.data:
-                        ins_pat_cond = client.table("patient_conditions").insert({
+                        condition_payload = {
                             "patient_id": patient_id,
                             "condition_id": condition_id,
                             "status": "ACTIVE",
-                            "severity": "Moderate",
-                            "diagnosed_date": now_utc.strftime("%Y-%m-%d"),
-                        }).execute()
+                        }
+                        if isinstance(cond, dict):
+                            for field in ("severity", "diagnosed_date", "resolved_date", "notes"):
+                                if cond.get(field) is not None:
+                                    condition_payload[field] = cond[field]
+                        ins_pat_cond = client.table("patient_conditions").insert(condition_payload).execute()
                         updated_records.setdefault("conditions", []).append(ins_pat_cond.data[0])
 
-        # C. Events
+        # C. Medications
+        medications = findings_data.get("medications", [])
+        if isinstance(medications, list):
+            for med in medications:
+                med_data = med if isinstance(med, dict) else {"name": str(med)}
+                med_name = med_data.get("name") or med_data.get("medication")
+                if not med_name:
+                    continue
+                med_res = client.table("medications").select("medication_id").ilike("name", f"%{med_name}%").execute()
+                if med_res.data:
+                    medication_id = str(med_res.data[0]["medication_id"])
+                else:
+                    med_insert = client.table("medications").insert({
+                        "name": med_name,
+                        "generic_name": med_data.get("generic_name"),
+                    }).execute()
+                    medication_id = str(med_insert.data[0]["medication_id"])
+
+                existing_med = (
+                    client.table("patient_medications")
+                    .select("patient_medication_id")
+                    .eq("patient_id", patient_id)
+                    .eq("medication_id", medication_id)
+                    .execute()
+                )
+                if not existing_med.data:
+                    medication_payload = {
+                        "patient_id": patient_id,
+                        "medication_id": medication_id,
+                        "prescribed_by": current_user.doctor_id,
+                        "status": med_data.get("status", "ACTIVE"),
+                    }
+                    for field in ("dosage", "frequency", "route", "start_date", "end_date", "instructions"):
+                        if med_data.get(field) is not None:
+                            medication_payload[field] = med_data[field]
+                    med_link = client.table("patient_medications").insert(medication_payload).execute()
+                    if med_link.data:
+                        updated_records.setdefault("medications", []).append(med_link.data[0])
+
+        # D. Events
         events = findings_data.get("events", [])
         if isinstance(events, list):
             for ev in events:

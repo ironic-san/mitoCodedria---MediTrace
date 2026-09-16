@@ -1,0 +1,326 @@
+{
+  "document": {
+    "document_id": "ocr_test_rohan_iyer_brain_mri_report_scanned",
+    "file_path": "samples\\ocr_test_rohan_iyer_brain_mri_report_scanned.png",
+    "document_type": "MRI_REPORT",
+    "classification_confidence": 0.99,
+    "classification_reasoning": [
+      "matched: mri, magnetic resonance"
+    ],
+    "sections": [
+      {
+        "name": "PATIENT_INFORMATION",
+        "heading": "PATIENT INFORMATION",
+        "text": "Patient Name: Rohan Iyer\nPatient Identifier: NEW-PATIENT-001 (External Synthetic ID)\nDate of Birth: 17-Nov-1997 (Age: 26)\nGender: Male\nBlood Group: At\nCLINICAL INFORMATION\nOrdering Physician: Dr. Meenakshi Subramaniam, DM Neurology\nClinical Indication: Recurrent headaches of approximately four months\nduration with migrainous features. Evaluation to exclude\nsecondary intracranial pathology.\nRelevant History: No prior neuroimaging. Neurological examination\nunremarkable per referring clinician.\nTECHNIQUE\nMRI of the brain was performed on a 3.0 Tesla scanner (Siemens MAGNETOM Vida)\nusing the following sequences:\n- Sagittal Tl-weighted\n- Axial Tl-weighted (pre- and post-gadolinium)\n- Axial T2-weighted\n- Axial FLAIR (Fluid-Attenuated Inversion Recovery)\n- Axial DWI (Diffusion-Weighted Imaging) with ADC map\n- Axial SWI (Susceptibility-Weighted Imaging)\n- Coronal T2-weighted\n- Post-contrast axial and coronal Tl-weighted\nIntravenous gadolinium-based contrast agent (Gadovist 0.1 mmol/kg) was\nadministered. No adverse reaction to contrast was observed,",
+        "start": 401,
+        "end": 1459
+      },
+      {
+        "name": "FINDINGS",
+        "heading": "FINDINGS",
+        "text": "CEREBRAL HEMISPHERES:\nNo focal parenchymal signal abnormality identified. Grey-white matter\ndifferentiation is well preserved. No areas of restricted diffusion on DWI\nto suggest acute infarction. No evidence of haemorrhagic transformation.\nPOSTERIOR FOSSA:\nCerebellum, brainstem, and fourth ventricle appear normal. No mass or\nsignal abnormality.\nVENTRICULAR SYSTEM:\nLateral ventricles are symmetric and normal in size and configuration.\nThird and fourth ventricles are normal. No hydrocephalus.\nMIDLINE STRUCTURES:\nNo midline shift. Septum pellucidum is midline. Corpus callosum is normal\nin morphology and signal.\nEXTRA-AXIAL SPACES:\nNo extra-axial fluid collection. Sulcal spaces are age-appropriate.\nNo subdural or epidural haemorrhage.\nSELLA / PITUITARY:\nPituitary gland is normal in size and morphology. No sellar or suprasellar\nmass. Optic chiasm is unremarkable.\nORBITS:\nGlobes and extraocular muscles appear normal bilaterally. No retrobulbar\nMass or abnormal enhancement.\nVASCULAR STRUCTURES:\nMajor intracranial vessels demonstrate normal flow voids. No evidence of\naneurysm, arteriovenous malformation, or venous sinus thrombosis on SWI\nand post-contrast sequences.\nPOST-CONTRAST:\nNo abnormal parenchymal or meningeal enhancement following gadolinium\nadministration.\nCALVARIUM AND SCALP:\nNormal. No osseous lesion.\nINCIDENTAL FINDINGS:\nMild mucosal thickening in the right maxillary sinus (likely incidental\ninflammatory change). No other incidental findings of clinical\nsignificance.",
+        "start": 1467,
+        "end": 2964
+      },
+      {
+        "name": "IMPRESSION",
+        "heading": "IMPRESSION",
+        "text": "1. No acute intracranial abnormality identified.\n2. No acute infarction, intracranial haemorrhage, or significant mass\neffect.\n3. No space-occupying lesion. No abnormal enhancement.\n4. Normal MRI of the brain.\n5. Incidental mild right maxillary sinus mucosal thickening — likely\nclinically insignificant.\nRECOMMENDATION:\nClinical correlation recommended. The imaging findings do not explain the\npatient's headache symptoms. Further management at the discretion of the\nreferring clinician.\nRADIOLOGIST SIGNATURE\nReported by:\nDr. Ashwin Kulkarni, MD Radiology\nSenior Consultant Radiologist\nSanjeevan Neurosciences Clinic — Diagnostic Imaging Centre, Bengaluru\nDate: 25-Jul-2024\nVerified by:\nDr. Sunita Rao, MD DNB Radiology\nHead, Department of Diagnostic Imaging\nDISCLAIMER: This report is based on the imaging findings at the time of\nexamination and should be interpreted in conjunction with the clinical\nhistory and findings of the treating physician.\nSanjeevan Neurosciences Clinic — Diagnostic Imaging Centre\nPage 1 of 1",
+        "start": 2974,
+        "end": 3997
+      }
+    ],
+    "metadata": {
+      "source_type": "image",
+      "ocr_engine": "tesseract",
+      "confidence_unit": "percentage",
+      "confidence_word_count": 521
+    }
+  },
+  "candidate_facts": [
+    {
+      "entity_id": "d0cb4747-02eb-41a1-93c6-8f8af30c5745",
+      "entity_type": "SYMPTOM",
+      "original_text": "headache",
+      "normalized_text": "headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_brain_mri_report_scanned",
+        "source_text": "headache",
+        "page_number": null,
+        "character_start": 3380,
+        "character_end": 3388,
+        "section": "IMPRESSION",
+        "ocr_confidence": 94.18042226487523
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9418042226487523,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "e9499a74-219b-4ad4-b718-6afb31fa0f42",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "Brain",
+      "normalized_text": "Brain",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_brain_mri_report_scanned",
+        "source_text": "Brain",
+        "page_number": null,
+        "character_start": 248,
+        "character_end": 254,
+        "section": null,
+        "ocr_confidence": 94.18042226487523
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9418042226487523,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "6bc3cc3c-8cb3-4135-ab3e-b27f6e152db9",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "Brain",
+      "normalized_text": "Brain",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_brain_mri_report_scanned",
+        "source_text": "Brain",
+        "page_number": null,
+        "character_start": 376,
+        "character_end": 381,
+        "section": null,
+        "ocr_confidence": 94.18042226487523
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9418042226487523,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "4fd6b728-49e3-488d-89a3-c6fb03331399",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "brain",
+      "normalized_text": "brain",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_brain_mri_report_scanned",
+        "source_text": "brain",
+        "page_number": null,
+        "character_start": 919,
+        "character_end": 925,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 94.18042226487523
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9418042226487523,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "7aee02e5-4c6d-48d9-a21a-b833e2a85a99",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "brain",
+      "normalized_text": "brain",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_brain_mri_report_scanned",
+        "source_text": "brain",
+        "page_number": null,
+        "character_start": 3177,
+        "character_end": 3183,
+        "section": "IMPRESSION",
+        "ocr_confidence": 94.18042226487523
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9418042226487523,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "03f74b3d-39a9-4c7d-b207-d4cff1d8d3c4",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "Rohan Iyer",
+      "normalized_text": "Rohan Iyer",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_brain_mri_report_scanned",
+        "source_text": "Rohan Iyer",
+        "page_number": null,
+        "character_start": 416,
+        "character_end": 426,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 94.18042226487523
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9418042226487523,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "name"
+      }
+    },
+    {
+      "entity_id": "9b41805a-edd6-479f-8322-da6f66fe1ecb",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "NEW-PATIENT-001 (External Synthetic ID)",
+      "normalized_text": "NEW-PATIENT-001 (External Synthetic ID)",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_brain_mri_report_scanned",
+        "source_text": "NEW-PATIENT-001 (External Synthetic ID)",
+        "page_number": null,
+        "character_start": 447,
+        "character_end": 486,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 94.18042226487523
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9418042226487523,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "patient_identifier"
+      }
+    },
+    {
+      "entity_id": "0b128820-0992-4895-a181-d9a99f780329",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "17-Nov-1997 (Age: 26)",
+      "normalized_text": "17-Nov-1997 (Age: 26)",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_brain_mri_report_scanned",
+        "source_text": "17-Nov-1997 (Age: 26)",
+        "page_number": null,
+        "character_start": 502,
+        "character_end": 523,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 94.18042226487523
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9418042226487523,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "date_of_birth",
+        "iso_date": "1997-11-17"
+      }
+    },
+    {
+      "entity_id": "08e2d279-b22a-4d74-9f59-3b32cb2c0b93",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "Male",
+      "normalized_text": "Male",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_brain_mri_report_scanned",
+        "source_text": "Male",
+        "page_number": null,
+        "character_start": 532,
+        "character_end": 536,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 94.18042226487523
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9418042226487523,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "sex"
+      }
+    },
+    {
+      "entity_id": "8e1f78df-33a0-4529-b75d-50760cca8b67",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "At",
+      "normalized_text": "At",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_brain_mri_report_scanned",
+        "source_text": "At",
+        "page_number": null,
+        "character_start": 550,
+        "character_end": 552,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 94.18042226487523
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9418042226487523,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "blood_group"
+      }
+    }
+  ],
+  "verified_facts": [],
+  "relationships": [],
+  "validation_issues": []
+}

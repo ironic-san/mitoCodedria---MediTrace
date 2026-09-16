@@ -1,0 +1,857 @@
+{
+  "document": {
+    "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+    "file_path": "samples\\ocr_test_tanya_neurosurgery_report_scanned.png",
+    "document_type": "OPERATIVE_REPORT",
+    "classification_confidence": 0.99,
+    "classification_reasoning": [
+      "matched: operative"
+    ],
+    "sections": [
+      {
+        "name": "DOCUMENT_METADATA",
+        "heading": "DOCUMENT METADATA",
+        "text": "Title: Tanya Neurosurgery Report\nDocument Type: NEUROSURGERY_REPORT\nDocument Date: 14/09/2025\nSurgery Date: 14/09/2025\nDocument ID: 60000000-0000-0000-0000-900000000016\nFile URL: synthetic://tanya/neurosurgery-report.pdf",
+        "start": 146,
+        "end": 368
+      },
+      {
+        "name": "PATIENT_INFORMATION",
+        "heading": "PATIENT INFORMATION",
+        "text": "Patient Name: Tanya Bose\nPatient ID: 20000000 -9000-0000-90000-900000000006\nDate of Birth: 1992-12-28 (Age: 32)\nGender: Female\nBlood Group: A-",
+        "start": 387,
+        "end": 531
+      },
+      {
+        "name": "CLINICAL_TEAM",
+        "heading": "CLINICAL TEAM",
+        "text": "Primary Surgeon: Dr. Arjun Banerjee, MCh Neurosurgery\nAssisting Surgeon: Dr. Pallavi Sen, MS General Surgery\nAnaesthetist: Dr. Rohan Das, MD Anaesthesiology\nNEUROSURGERY OPERATIVE REPORT\nDate of Surgery: 14 September 2025 (Date of Operation: 14/09/2025)\n*Important Note: Surgery was performed on 14 September 2025.*\nPre-operative Diagnosis: Left frontal intracranial lesion, suspected low-grade glioma\nPost-operative Diagnosis: Left frontal space-occupying lesion (awaiting final\nhistopathology)\nProcedure: Left frontal craniotomy and microsurgical excision of intracranial lesion",
+        "start": 544,
+        "end": 1126
+      },
+      {
+        "name": "OPERATIVE_SUMMARY",
+        "heading": "Operative Summary",
+        "text": "* Patient positioned supine with head in Mayfield clamp\n* Left frontal craniotomy performed\n* Dura opened. Lesion identified in the left frontal cortex, well-circumscribed, firm,\ngreyish-white\n* Microsurgical dissection performed. Gross total resection achieved\n* Hemostasis secured. Dura closed in watertight fashion. Bone flap replaced and fixed\n* Estimated blood loss: 180 mL\n* Duration: 3 hours 45 minutes\nSpecimen: Sent for histopathological examination\nIntraoperative Neuromonitoring: No significant changes in somatosensory evoked potentials",
+        "start": 1144,
+        "end": 1694
+      },
+      {
+        "name": "POSTOPERATIVE_CONDITION",
+        "heading": "Immediate Post-operative Condition",
+        "text": "* Patient extubated in the OR\n* GCS 15/15\n* ALL four Limbs moving\n* No new neurological deficit\n* Transferred to Neuro-ICU for monitoring",
+        "start": 1729,
+        "end": 1868
+      },
+      {
+        "name": "POSTOPERATIVE_ORDERS",
+        "heading": "Post-operative Orders",
+        "text": "* Levetiracetam 500 mg IV BID\n* Dexamethasone 4 mg IV QID (taper over 5 days)\n* Paracetamol 1g IV QID PRN\n* CT Brain within 24 hours post-op\n* Neuro-observations Q1H for 24 hours\nElectronically Signed By:\nDr. Arjun Banerjee, MCh Neurosurgery\n14/09/2025\nMeridian Care Hospital - \"Excellence in Healthcare\"\nPage 1 of 1",
+        "start": 1890,
+        "end": 2207
+      }
+    ],
+    "metadata": {
+      "source_type": "image",
+      "ocr_engine": "tesseract",
+      "confidence_unit": "percentage",
+      "confidence_word_count": 294
+    }
+  },
+  "candidate_facts": [
+    {
+      "entity_id": "443ffc1b-ecca-4eea-acb1-1878c162a74a",
+      "entity_type": "PROCEDURE",
+      "original_text": "Surgery",
+      "normalized_text": "Surgery",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Surgery",
+        "page_number": null,
+        "character_start": 241,
+        "character_end": 248,
+        "section": "DOCUMENT_METADATA",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "e9d57c77-9c5f-41b7-9143-5569d9c0afc5",
+      "entity_type": "PROCEDURE",
+      "original_text": "Surgery",
+      "normalized_text": "Surgery",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Surgery",
+        "page_number": null,
+        "character_start": 646,
+        "character_end": 653,
+        "section": "CLINICAL_TEAM",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "cd1da5d8-3d39-4b8e-b82a-b8858d25d84e",
+      "entity_type": "PROCEDURE",
+      "original_text": "Surgery",
+      "normalized_text": "Surgery",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Surgery",
+        "page_number": null,
+        "character_start": 740,
+        "character_end": 747,
+        "section": "CLINICAL_TEAM",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "8aac4076-a487-4dfd-ab52-3f4bac2b054a",
+      "entity_type": "PROCEDURE",
+      "original_text": "Operation",
+      "normalized_text": "Operation",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Operation",
+        "page_number": null,
+        "character_start": 776,
+        "character_end": 785,
+        "section": "CLINICAL_TEAM",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "9d7d20f8-a1d1-4e5c-a0fd-f4db0907ce7f",
+      "entity_type": "PROCEDURE",
+      "original_text": "Surgery",
+      "normalized_text": "Surgery",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Surgery",
+        "page_number": null,
+        "character_start": 816,
+        "character_end": 823,
+        "section": "CLINICAL_TEAM",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "dd4038d0-5807-4bb4-b433-9b2976d3cd77",
+      "entity_type": "PROCEDURE",
+      "original_text": "Procedure",
+      "normalized_text": "Procedure",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Procedure",
+        "page_number": null,
+        "character_start": 1041,
+        "character_end": 1050,
+        "section": "CLINICAL_TEAM",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "c9e99dcf-0cb5-4385-bf45-ab85c404e8eb",
+      "entity_type": "PROCEDURE",
+      "original_text": "craniotomy",
+      "normalized_text": "craniotomy",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "craniotomy",
+        "page_number": null,
+        "character_start": 1065,
+        "character_end": 1075,
+        "section": "CLINICAL_TEAM",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "6e230772-692d-4f84-8864-436d2d33ba77",
+      "entity_type": "PROCEDURE",
+      "original_text": "craniotomy",
+      "normalized_text": "craniotomy",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "craniotomy",
+        "page_number": null,
+        "character_start": 1216,
+        "character_end": 1226,
+        "section": "OPERATIVE_SUMMARY",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "8840421e-07a0-421e-9b46-f68c170d34e2",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "Left",
+      "normalized_text": "Left",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Left",
+        "page_number": null,
+        "character_start": 886,
+        "character_end": 898,
+        "section": "CLINICAL_TEAM",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "aeae9773-9441-4b2b-94ad-5a8d95c954d2",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "Left",
+      "normalized_text": "Left",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "RECENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Left",
+        "page_number": null,
+        "character_start": 973,
+        "character_end": 985,
+        "section": "CLINICAL_TEAM",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "8e9fb6e2-3596-4f39-8aa2-a363dc043492",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "Left",
+      "normalized_text": "Left",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Left",
+        "page_number": null,
+        "character_start": 1052,
+        "character_end": 1064,
+        "section": "CLINICAL_TEAM",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "de6bbc6f-18b5-4bde-8703-736ff3a0213d",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "Left",
+      "normalized_text": "Left",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Left",
+        "page_number": null,
+        "character_start": 1203,
+        "character_end": 1215,
+        "section": "OPERATIVE_SUMMARY",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "4fc241e9-445b-4f61-ab83-7473ba955a53",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "left",
+      "normalized_text": "left",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "left",
+        "page_number": null,
+        "character_start": 1277,
+        "character_end": 1289,
+        "section": "OPERATIVE_SUMMARY",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "d13d4de9-131f-45fa-95b2-6d332ade0fe7",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "Brain",
+      "normalized_text": "Brain",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Brain",
+        "page_number": null,
+        "character_start": 2001,
+        "character_end": 2007,
+        "section": "POSTOPERATIVE_ORDERS",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "258e53fb-a848-43b7-93fd-3c7e18c16ebd",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "Tanya Bose",
+      "normalized_text": "Tanya Bose",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Tanya Bose",
+        "page_number": null,
+        "character_start": 402,
+        "character_end": 412,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "name"
+      }
+    },
+    {
+      "entity_id": "b2eec262-852a-43ce-ad36-61bb643b20b6",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "20000000 -9000-0000-90000-900000000006",
+      "normalized_text": "20000000 -9000-0000-90000-900000000006",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "20000000 -9000-0000-90000-900000000006",
+        "page_number": null,
+        "character_start": 425,
+        "character_end": 463,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "patient_identifier"
+      }
+    },
+    {
+      "entity_id": "f8070620-a4b1-46e0-bf2a-c78fe7a671ba",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "1992-12-28 (Age: 32)",
+      "normalized_text": "1992-12-28 (Age: 32)",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "1992-12-28 (Age: 32)",
+        "page_number": null,
+        "character_start": 479,
+        "character_end": 499,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "date_of_birth",
+        "iso_date": "1992-12-28"
+      }
+    },
+    {
+      "entity_id": "1a0e69ea-7078-4b33-97b7-4e6549f16fef",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "Female",
+      "normalized_text": "Female",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Female",
+        "page_number": null,
+        "character_start": 508,
+        "character_end": 514,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "sex"
+      }
+    },
+    {
+      "entity_id": "d310cb83-5dad-4ac4-9135-ee57ed769985",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "A-",
+      "normalized_text": "A-",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "A-",
+        "page_number": null,
+        "character_start": 528,
+        "character_end": 530,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "blood_group"
+      }
+    },
+    {
+      "entity_id": "3a51e354-2160-4214-8d2f-e2bb0c6d632c",
+      "entity_type": "MEDICATION",
+      "original_text": "Levetiracetam",
+      "normalized_text": "Levetiracetam",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Levetiracetam",
+        "page_number": null,
+        "character_start": 1893,
+        "character_end": 1916,
+        "section": "POSTOPERATIVE_ORDERS",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "dose": "500",
+        "unit": "mg",
+        "frequency": null,
+        "route": "intravenous"
+      }
+    },
+    {
+      "entity_id": "454d16a6-1818-48c1-a1ed-f5b6e7ed54ed",
+      "entity_type": "MEDICATION",
+      "original_text": "Paracetamol",
+      "normalized_text": "Paracetamol",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "Paracetamol",
+        "page_number": null,
+        "character_start": 1971,
+        "character_end": 1988,
+        "section": "POSTOPERATIVE_ORDERS",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "dose": "1",
+        "unit": "g",
+        "frequency": null,
+        "route": "intravenous"
+      }
+    },
+    {
+      "entity_id": "a17b7037-03f7-413c-9b00-a2a911c748a1",
+      "entity_type": "DATE_TIME",
+      "original_text": "14/09/2025",
+      "normalized_text": "14/09/2025",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "14/09/2025",
+        "page_number": null,
+        "character_start": 230,
+        "character_end": 240,
+        "section": "DOCUMENT_METADATA",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "iso_date": "2025-09-14"
+      }
+    },
+    {
+      "entity_id": "09d68bc6-dc3d-4844-b55e-e3e6c93bde1c",
+      "entity_type": "DATE_TIME",
+      "original_text": "14/09/2025",
+      "normalized_text": "14/09/2025",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "14/09/2025",
+        "page_number": null,
+        "character_start": 255,
+        "character_end": 265,
+        "section": "DOCUMENT_METADATA",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "iso_date": "2025-09-14"
+      }
+    },
+    {
+      "entity_id": "e8d5f879-98d3-467d-bc0c-5b6f19b2f0eb",
+      "entity_type": "DATE_TIME",
+      "original_text": "1992-12-28",
+      "normalized_text": "1992-12-28",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "1992-12-28",
+        "page_number": null,
+        "character_start": 479,
+        "character_end": 489,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "iso_date": "1992-12-28"
+      }
+    },
+    {
+      "entity_id": "bce00dd0-50f8-4d8a-b1e7-ac11aff30746",
+      "entity_type": "DATE_TIME",
+      "original_text": "14 September 2025",
+      "normalized_text": "14 September 2025",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "14 September 2025",
+        "page_number": null,
+        "character_start": 749,
+        "character_end": 766,
+        "section": "CLINICAL_TEAM",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "iso_date": "2025-09-14"
+      }
+    },
+    {
+      "entity_id": "e848d71f-603d-4faa-bec3-ad90e7930db8",
+      "entity_type": "DATE_TIME",
+      "original_text": "14/09/2025",
+      "normalized_text": "14/09/2025",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "14/09/2025",
+        "page_number": null,
+        "character_start": 787,
+        "character_end": 797,
+        "section": "CLINICAL_TEAM",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "iso_date": "2025-09-14"
+      }
+    },
+    {
+      "entity_id": "3130fd04-85a6-427b-b108-26527384f1f5",
+      "entity_type": "DATE_TIME",
+      "original_text": "14 September 2025",
+      "normalized_text": "14 September 2025",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "14 September 2025",
+        "page_number": null,
+        "character_start": 841,
+        "character_end": 858,
+        "section": "CLINICAL_TEAM",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "iso_date": "2025-09-14"
+      }
+    },
+    {
+      "entity_id": "2c14633b-9f50-4ceb-a718-25c617cb2073",
+      "entity_type": "DATE_TIME",
+      "original_text": "14/09/2025",
+      "normalized_text": "14/09/2025",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_tanya_neurosurgery_report_scanned",
+        "source_text": "14/09/2025",
+        "page_number": null,
+        "character_start": 2133,
+        "character_end": 2143,
+        "section": "POSTOPERATIVE_ORDERS",
+        "ocr_confidence": 93.87074829931973
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9387074829931973,
+      "status": "NORMALIZED",
+      "attributes": {
+        "iso_date": "2025-09-14"
+      }
+    }
+  ],
+  "verified_facts": [],
+  "relationships": [],
+  "validation_issues": []
+}

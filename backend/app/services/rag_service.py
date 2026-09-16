@@ -7,7 +7,8 @@ from typing import Any, Dict, List, Optional
 from fastapi import HTTPException, status
 from supabase import Client
 
-from app.schemas.rag import RAGQueryResponse, RAGSourceItem
+from app.core.config import get_settings
+from app.schemas.rag import RAGQueryResponse, RAGRetrievalResponse, RAGSourceItem
 from app.services.audit_service import log_audit_event
 from app.services.emergency_service import get_doctor_access_mode
 from app.services.vector_store_service import get_patient_vector_store
@@ -50,7 +51,8 @@ def synthesize_clinical_answer(question: str, sources: List[RAGSourceItem]) -> s
     If Gemini API is configured, uses Gemini LLM with strict grounding;
     otherwise uses deterministic grounded synthesis.
     """
-    api_key = os.getenv("GEMINI_API_KEY")
+    settings = get_settings()
+    api_key = os.getenv("GEMINI_API_KEY") or settings.GEMINI_API_KEY
     if api_key and not os.getenv("MOCK_AI"):
         try:
             from google import genai
@@ -74,7 +76,7 @@ def synthesize_clinical_answer(question: str, sources: List[RAGSourceItem]) -> s
             )
 
             res = client.models.generate_content(
-                model="gemini-2.5-flash",
+                model=os.getenv("AI_MODEL", settings.AI_MODEL),
                 contents=prompt
             )
             if res.text:
@@ -243,3 +245,34 @@ def extract_keywords_and_query_rag(
     )
     response.extracted_keywords = keywords
     return response
+
+
+def retrieve_historical_records(
+    client: Client,
+    doctor_id: str,
+    patient_id: str,
+    question: str,
+    max_sources: int = 5,
+) -> RAGRetrievalResponse:
+    """Return patient-isolated evidence only; final response generation is separate."""
+    mode = get_doctor_access_mode(client, doctor_id, patient_id)
+    if not mode:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Access denied. Doctor does not have active access to this patient.",
+        )
+
+    vstore = get_patient_vector_store(client, patient_id)
+    retrievals = vstore.search_patient_scoped(patient_id, question, top_k=max_sources)
+    log_audit_event(
+        client=client,
+        actor_id=doctor_id,
+        actor_role="DOCTOR",
+        patient_id=patient_id,
+        action="RAG_QUERY",
+        access_type=mode,
+        entity_type="RAG",
+        reason="Patient-scoped historical evidence retrieval",
+        details={"question": question, "retrieval_count": len(retrievals)},
+    )
+    return RAGRetrievalResponse(patient_id=patient_id, query=question, retrievals=retrievals)

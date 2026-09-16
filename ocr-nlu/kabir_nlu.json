@@ -1,0 +1,552 @@
+{
+  "document": {
+    "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+    "file_path": "samples\\ocr_test_kabir_emergency_discharge_ocr_scanned.png",
+    "document_type": "DISCHARGE_SUMMARY",
+    "classification_confidence": 0.95,
+    "classification_reasoning": [
+      "matched explicit discharge heading"
+    ],
+    "sections": [],
+    "metadata": {
+      "source_type": "image",
+      "ocr_engine": "tesseract",
+      "confidence_unit": "percentage",
+      "confidence_word_count": 239
+    }
+  },
+  "candidate_facts": [
+    {
+      "entity_id": "ff94be07-941a-42b3-ae45-b8a2d29d2521",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "Kabir Malhotra\nDOB",
+      "normalized_text": "Kabir Malhotra\nDOB",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "Kabir Malhotra\nDOB",
+        "page_number": null,
+        "character_start": 318,
+        "character_end": 350,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "9cd0ed88-a73f-4827-81f1-33e6dff81e14",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "1974-09-09",
+      "normalized_text": "1974-09-09",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "1974-09-09",
+        "page_number": null,
+        "character_start": 347,
+        "character_end": 362,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "05ac4f1f-71bd-4eb4-97cb-4b3c1c80d1ed",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "Male",
+      "normalized_text": "Male",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "Male",
+        "page_number": null,
+        "character_start": 363,
+        "character_end": 375,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "dc23b26d-c1ac-4e77-9b9f-c92f0419f703",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "0-",
+      "normalized_text": "0-",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "0-",
+        "page_number": null,
+        "character_start": 376,
+        "character_end": 391,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "c9e6cad1-31eb-4386-a213-83a0bb6f31b0",
+      "entity_type": "CONDITION",
+      "original_text": "pneurnonia",
+      "normalized_text": "pneumonia",
+      "terminology_code": "SNOMED:233604007",
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "pneurnonia",
+        "page_number": null,
+        "character_start": 489,
+        "character_end": 499,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "715d4fc0-084a-4673-83f0-dbc64b3c10b2",
+      "entity_type": "CONDITION",
+      "original_text": "pneumonia",
+      "normalized_text": "pneumonia",
+      "terminology_code": "SNOMED:233604007",
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "pneumonia",
+        "page_number": null,
+        "character_start": 1542,
+        "character_end": 1551,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "3691bdaa-8096-4f37-bc87-ddd70f0fb94a",
+      "entity_type": "RECOMMENDATION",
+      "original_text": "Recommend",
+      "normalized_text": "Recommend",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "Recommend",
+        "page_number": null,
+        "character_start": 1208,
+        "character_end": 1217,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "86898111-5be3-4dba-b5c6-98c2fa88dae4",
+      "entity_type": "RECOMMENDATION",
+      "original_text": "follow-up",
+      "normalized_text": "follow-up",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "POSSIBLE",
+        "temporality": "FUTURE",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "follow-up",
+        "page_number": null,
+        "character_start": 1657,
+        "character_end": 1666,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NEEDS_REVIEW",
+      "attributes": {}
+    },
+    {
+      "entity_id": "b52f94ee-5dce-4958-8206-2a9ddf61d0dc",
+      "entity_type": "MEDICATION",
+      "original_text": "Levofloxacin",
+      "normalized_text": "Levofloxacin",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "Levofloxacin",
+        "page_number": null,
+        "character_start": 1381,
+        "character_end": 1393,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {
+        "dose": null,
+        "unit": null,
+        "frequency": null,
+        "route": null
+      }
+    },
+    {
+      "entity_id": "b790acaf-c54a-46d0-b979-c55af0c3b02b",
+      "entity_type": "MEDICATION",
+      "original_text": "Paracetamol",
+      "normalized_text": "Paracetamol",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "Paracetamol",
+        "page_number": null,
+        "character_start": 1413,
+        "character_end": 1424,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {
+        "dose": null,
+        "unit": null,
+        "frequency": null,
+        "route": null
+      }
+    },
+    {
+      "entity_id": "bf369d32-65a3-4e8c-b963-b6f2ffce90cc",
+      "entity_type": "MEDICATION",
+      "original_text": "Cetirizine",
+      "normalized_text": "Cetirizine",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "Cetirizine",
+        "page_number": null,
+        "character_start": 1443,
+        "character_end": 1453,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {
+        "dose": null,
+        "unit": null,
+        "frequency": null,
+        "route": null
+      }
+    },
+    {
+      "entity_id": "54c4a9a2-9394-4423-bfe0-6eb66ebd7064",
+      "entity_type": "MEDICATION",
+      "original_text": "Salbutamol",
+      "normalized_text": "Salbutamol",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "Salbutamol",
+        "page_number": null,
+        "character_start": 1474,
+        "character_end": 1488,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {
+        "dose": null,
+        "unit": null,
+        "frequency": null,
+        "route": "Neb"
+      }
+    },
+    {
+      "entity_id": "0bd032a3-5e5b-4208-9f33-cab7f50d865b",
+      "entity_type": "ALLERGY",
+      "original_text": "Penicillin",
+      "normalized_text": "Penicillin",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "HISTORICAL",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "Penicillin",
+        "page_number": null,
+        "character_start": 518,
+        "character_end": 567,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {
+        "reaction": "confirmed anaphylaxis",
+        "severity": "SEVERE",
+        "confirmed": true
+      }
+    },
+    {
+      "entity_id": "45fc4369-a8de-4abd-a2c5-80fde58b1192",
+      "entity_type": "ALLERGY",
+      "original_text": "amoxicillin",
+      "normalized_text": "amoxicillin",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "POSSIBLE",
+        "temporality": "FUTURE",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "amoxicillin",
+        "page_number": null,
+        "character_start": 1596,
+        "character_end": 1633,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NEEDS_REVIEW",
+      "attributes": {
+        "reaction": "reaction",
+        "severity": null,
+        "confirmed": false
+      }
+    },
+    {
+      "entity_id": "3eab3a88-b2ba-4822-877e-b1b887b7f159",
+      "entity_type": "DATE_TIME",
+      "original_text": "17/01/2024",
+      "normalized_text": "17/01/2024",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "17/01/2024",
+        "page_number": null,
+        "character_start": 237,
+        "character_end": 247,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {
+        "iso_date": "2024-01-17"
+      }
+    },
+    {
+      "entity_id": "33a5da99-dde2-4447-86ca-3d5f16283fdc",
+      "entity_type": "DATE_TIME",
+      "original_text": "1974-09-09",
+      "normalized_text": "1974-09-09",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_kabir_emergency_discharge_ocr_scanned",
+        "source_text": "1974-09-09",
+        "page_number": null,
+        "character_start": 352,
+        "character_end": 362,
+        "section": null,
+        "ocr_confidence": 90.94142259414225
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9094142259414225,
+      "status": "NORMALIZED",
+      "attributes": {
+        "iso_date": "1974-09-09"
+      }
+    }
+  ],
+  "verified_facts": [],
+  "relationships": [
+    {
+      "relationship_id": "rel-b52f94ee-5dce-4958-8206-2a9ddf61d0dc-c9e6cad1-31eb-4386-a213-83a0bb6f31b0",
+      "source_entity_id": "b52f94ee-5dce-4958-8206-2a9ddf61d0dc",
+      "relationship_type": "TREATS",
+      "target_entity_id": "c9e6cad1-31eb-4386-a213-83a0bb6f31b0",
+      "evidence": [],
+      "confidence": 0.45
+    },
+    {
+      "relationship_id": "rel-b52f94ee-5dce-4958-8206-2a9ddf61d0dc-715d4fc0-084a-4673-83f0-dbc64b3c10b2",
+      "source_entity_id": "b52f94ee-5dce-4958-8206-2a9ddf61d0dc",
+      "relationship_type": "TREATS",
+      "target_entity_id": "715d4fc0-084a-4673-83f0-dbc64b3c10b2",
+      "evidence": [],
+      "confidence": 0.45
+    },
+    {
+      "relationship_id": "rel-b790acaf-c54a-46d0-b979-c55af0c3b02b-c9e6cad1-31eb-4386-a213-83a0bb6f31b0",
+      "source_entity_id": "b790acaf-c54a-46d0-b979-c55af0c3b02b",
+      "relationship_type": "TREATS",
+      "target_entity_id": "c9e6cad1-31eb-4386-a213-83a0bb6f31b0",
+      "evidence": [],
+      "confidence": 0.45
+    },
+    {
+      "relationship_id": "rel-b790acaf-c54a-46d0-b979-c55af0c3b02b-715d4fc0-084a-4673-83f0-dbc64b3c10b2",
+      "source_entity_id": "b790acaf-c54a-46d0-b979-c55af0c3b02b",
+      "relationship_type": "TREATS",
+      "target_entity_id": "715d4fc0-084a-4673-83f0-dbc64b3c10b2",
+      "evidence": [],
+      "confidence": 0.45
+    },
+    {
+      "relationship_id": "rel-bf369d32-65a3-4e8c-b963-b6f2ffce90cc-c9e6cad1-31eb-4386-a213-83a0bb6f31b0",
+      "source_entity_id": "bf369d32-65a3-4e8c-b963-b6f2ffce90cc",
+      "relationship_type": "TREATS",
+      "target_entity_id": "c9e6cad1-31eb-4386-a213-83a0bb6f31b0",
+      "evidence": [],
+      "confidence": 0.45
+    },
+    {
+      "relationship_id": "rel-bf369d32-65a3-4e8c-b963-b6f2ffce90cc-715d4fc0-084a-4673-83f0-dbc64b3c10b2",
+      "source_entity_id": "bf369d32-65a3-4e8c-b963-b6f2ffce90cc",
+      "relationship_type": "TREATS",
+      "target_entity_id": "715d4fc0-084a-4673-83f0-dbc64b3c10b2",
+      "evidence": [],
+      "confidence": 0.45
+    },
+    {
+      "relationship_id": "rel-54c4a9a2-9394-4423-bfe0-6eb66ebd7064-c9e6cad1-31eb-4386-a213-83a0bb6f31b0",
+      "source_entity_id": "54c4a9a2-9394-4423-bfe0-6eb66ebd7064",
+      "relationship_type": "TREATS",
+      "target_entity_id": "c9e6cad1-31eb-4386-a213-83a0bb6f31b0",
+      "evidence": [],
+      "confidence": 0.45
+    },
+    {
+      "relationship_id": "rel-54c4a9a2-9394-4423-bfe0-6eb66ebd7064-715d4fc0-084a-4673-83f0-dbc64b3c10b2",
+      "source_entity_id": "54c4a9a2-9394-4423-bfe0-6eb66ebd7064",
+      "relationship_type": "TREATS",
+      "target_entity_id": "715d4fc0-084a-4673-83f0-dbc64b3c10b2",
+      "evidence": [],
+      "confidence": 0.45
+    }
+  ],
+  "validation_issues": []
+}

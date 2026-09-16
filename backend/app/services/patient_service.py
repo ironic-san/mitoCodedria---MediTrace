@@ -27,6 +27,7 @@ def has_valid_doctor_access(client: Client, doctor_id: str, patient_id: str) -> 
         .select("*")
         .eq("doctor_id", doctor_id)
         .eq("patient_id", patient_id)
+        .eq("relationship_type", "NORMAL_ACCESS")
         .eq("status", "ACTIVE")
         .execute()
     )
@@ -47,7 +48,8 @@ def has_valid_doctor_access(client: Client, doctor_id: str, patient_id: str) -> 
                 if ended_at_dt <= now_utc:
                     continue  # Expired
             except Exception:
-                pass
+                # Invalid expiry data must fail closed.
+                continue
         return True  # Valid active relationship
 
     return False
@@ -57,7 +59,11 @@ def has_any_valid_doctor_access(client: Client, doctor_id: str, patient_id: str)
     """
     Returns True if doctor has either normal active access OR valid active break-glass emergency access.
     """
-    return has_valid_doctor_access(client, doctor_id, patient_id)
+    if has_valid_doctor_access(client, doctor_id, patient_id):
+        return True
+
+    from app.services.emergency_service import has_valid_emergency_access
+    return has_valid_emergency_access(client, doctor_id, patient_id)
 
 
 def get_consolidated_medical_summary(client: Client, patient_id: str) -> MedicalSummaryResponse:

@@ -1,0 +1,1375 @@
+{
+  "document": {
+    "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+    "file_path": "samples\\ocr_test_rohan_iyer_neurology_followup_scanned.png",
+    "document_type": "FOLLOW_UP",
+    "classification_confidence": 0.9,
+    "classification_reasoning": [
+      "matched explicit follow-up heading"
+    ],
+    "sections": [
+      {
+        "name": "PATIENT_INFORMATION",
+        "heading": "PATIENT INFORMATION",
+        "text": "Patient Name: Rohan Iyer\nPatient Identifier: NEW-PATIENT-001 (External Synthetic ID)\nDate of Birth: 17-Nov-1997 (Age: 27)\nGender: Male\nBlood Group: At\nContact Number: 9876543210\nEmail: rohan. iyer@fictional.demo\nAddress: Flat 12B, Orchid Residency, Indiranagar, Bengaluru, Karnataka\nREASON FOR FOLLOW-UP\nScheduled neurology follow-up visit, approximately eight months after initial\nconsultation. Patient was first seen on 18 July 2024 for evaluation of\nrecurrent headaches with migrainous features. An MRI Brain was subsequently\nperformed and returned to clinic for review and ongoing management.\nPREVIOUS INVESTIGATIONS\nMRI Brain (with and without contrast) — dated 25 July 2024 (Accession No.:\nMRI-2024-0725-1148, Sanjeevan Neurosciences Clinic Imaging Centre):\nRESULT: No acute intracranial abnormality identified. No infarction,\nhaemorrhage, or space-occupying lesion. Normal MRI of the brain.\nIncidental finding: Mild right maxillary sinus mucosal thickening\n(clinically insignificant).\nRoutine Blood Work (performed July 2024):\nCBC: Within normal limits.\nESR: 8 mm/hr (normal).\nCRP: 0.4 mg/L (normal).\nTSH: 2.1 mIU/L (normal, reference 0.44.0).\nINTERVAL HISTORY\nSince the initial consultation in July 2024, the patient reports a meaningful\nimprovement in headache frequency and severity. Over the past eight months:\n- Headache frequency has reduced from 2-3 episodes per week to approximately\n2-3 episodes per month.\n- Headache intensity has decreased from moderate-severe (6—-7/10 on VAS) to\nmild-moderate (3-4/10 on VAS).\n- Duration of individual episodes has also shortened (now typically 2—4 hours,\npreviously 4-12 hours).\n- Photophobia is now rare and limited to the more intense episodes only.\nThe patient attributes the improvement to:\n- Implementation of sleep hygiene recommendations (now sleeping approximately\n7 hours per night, up from 5-6 hours).\n- Reduced screen time during non-work hours.\n- Maintaining a regular exercise routine (walking 30 minutes, 4-5 days/week)\n- Reduced caffeine intake (from 3 cups to 1 cup of coffee per day).\n- Maintaining a headache diary as advised.\nThe patient was started on a low-dose preventive medication (Propranolol) by\nDr. Subramaniam during a brief telephone review in November 2024, after\nheadache frequency had plateaued at approximately once per week.\nNo episodes of sudden thunderclap headache. No seizures. No visual aura. No\nfocal neurological symptoms. No syncope. No new symptoms reported.",
+        "start": 459,
+        "end": 2916
+      },
+      {
+        "name": "MEDICATIONS",
+        "heading": "CURRENT MEDICATIONS",
+        "text": "Medication | Dose | Route | Frequency | Status | Notes\nween newman enn neha nnn nahn nna nanan n abana nanan nna nanan aaa\nPropranolol | 20 mg [| Oral | OD (AM) | Active | Preventive; started Nov 2024\nParacetamol | 500 mg | Oral | PRN | Active | Acute headache relief; max 2g/day\nNo other prescription medications.\nNo known drug allergies.",
+        "start": 2935,
+        "end": 3276
+      },
+      {
+        "name": "EXAMINATION",
+        "heading": "PHYSICAL EXAMINATION",
+        "text": "General: Well-appearing, relaxed, in no acute distress.\nVitals:\nBlood Pressure: 116/72 mmHg (right arm, sitting)\nHeart Rate: 66 bpm, regular (note: on Propranolol)\nRespiratory Rate: 14/min\nTemperature: 36.7°C\nWeight: 73 kg (previous: 74 kg)\nBMI: 23.8 kg/m?\nNEUROLOGICAL EXAMINATION\nMental Status: GCS 15/15. Alert, oriented to time, place, and person.\nCranial Nerves: CN I-XII intact. PERRL 3 mm bilaterally. No papilloedema.\nVisual fields full. Facial symmetry preserved.\nMotor: Power 5/5 all four extremities. Tone normal.\nSensory: Intact to light touch, pinprick, vibration, proprioception.\nReflexes: 2+ bilaterally and symmetric. Plantars flexor bilaterally.\nCoordination: Finger-to-nose and heel-to-shin normal. No dysmetria.\nGait: Normal gait and tandem walk.\nNeurological examination remains unremarkable with no focal deficit.",
+        "start": 3296,
+        "end": 4132
+      },
+      {
+        "name": "ASSESSMENT",
+        "heading": "ASSESSMENT",
+        "text": "27-year-old male with a diagnosis of migraine without aura, initially\npresenting in July 2024 with recurrent episodic headaches. MRI Brain (July\n2024) was normal, excluding secondary intracranial pathology.\nThere has been a clinically significant improvement in headache frequency (from\n2-3/week to 2-3/month) and severity over the past eight months. The improvement\nis attributable to a combination of lifestyle modifications and low-dose\nPropranolol prophylaxis.\nCurrent headache burden is manageable and the patient is satisfied with his\nsymptom control.\nNo red-flag neurological features. Neurological examination remains normal.",
+        "start": 4142,
+        "end": 4777
+      },
+      {
+        "name": "PLAN",
+        "heading": "PLAN",
+        "text": "1. MEDICATION:\n\n- Continue Propranolol 20 mg OD (morning) for migraine prophylaxis.\n\n- Continue Paracetamol 500 mg PRN for breakthrough headaches.\n\n- Monitor resting heart rate; patient counselled to report bradycardia\nsymptoms (dizziness, fatigue, presyncope).\n\n2. LIFESTYLE:\n\n- Continue current lifestyle modifications (sleep hygiene, exercise,\nreduced caffeine, limited screen time).\n\n- Continue maintaining headache diary.",
+        "start": 4781,
+        "end": 5209
+      },
+      {
+        "name": "FOLLOW_UP",
+        "heading": "3. FOLLOW-UP",
+        "text": "- Review in 6 months (approximately September 2025).\n\n- If headaches remain well-controlled at next visit, consider gradual\ntapering of Propranolol.\n\n- If headache frequency increases or new symptoms develop, return sooner.\n\n- No repeat neuroimaging indicated at this time given clinical improvement\nand previously normal MRI.\n\n4. PATIENT COUNSELLING:\n\n- Reassured that brain MRI was normal and the headache pattern is\nconsistent with primary migraine.\n\n- Advised to present to the emergency department if experiencing sudden\nsevere headache (\"worst headache of life\"), seizures, visual loss, or\nany new focal neurological symptoms.\n\nPHYSICIAN SIGNATURE\n\nElectronically signed by:\n\nDr. Meenakshi Subramaniam, DM Neurology\n\nSenior Consultant, Department of Neurology\n\nSanjeevan Neurosciences Clinic, Bengaluru\n\nDate: 12 March 2025\n\nSanjeevan Neurosciences Clinic — \"Compassionate Neurological Care\"\nPage 1 of 1",
+        "start": 5223,
+        "end": 6134
+      }
+    ],
+    "metadata": {
+      "source_type": "image",
+      "ocr_engine": "tesseract",
+      "confidence_unit": "percentage",
+      "confidence_word_count": 856
+    }
+  },
+  "candidate_facts": [
+    {
+      "entity_id": "e98a8060-cec3-4a75-9c98-c1adc9fbca6e",
+      "entity_type": "SYMPTOM",
+      "original_text": "headache",
+      "normalized_text": "headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "headache",
+        "page_number": null,
+        "character_start": 1721,
+        "character_end": 1729,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "2c757786-fdc2-4bdb-bc51-4fad7e0f3b24",
+      "entity_type": "SYMPTOM",
+      "original_text": "Headache",
+      "normalized_text": "Headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Headache",
+        "page_number": null,
+        "character_start": 1784,
+        "character_end": 1792,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "c4b5347d-7885-40a2-a1a1-f1b967bae00a",
+      "entity_type": "SYMPTOM",
+      "original_text": "Headache",
+      "normalized_text": "Headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Headache",
+        "page_number": null,
+        "character_start": 1885,
+        "character_end": 1893,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "202c5e26-ffca-4cad-8301-dd725b4c25d3",
+      "entity_type": "SYMPTOM",
+      "original_text": "headache",
+      "normalized_text": "headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "headache",
+        "page_number": null,
+        "character_start": 2532,
+        "character_end": 2540,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "3f6f0b4b-a33a-412d-bbef-83783a828c8e",
+      "entity_type": "SYMPTOM",
+      "original_text": "headache",
+      "normalized_text": "headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "headache",
+        "page_number": null,
+        "character_start": 2708,
+        "character_end": 2716,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "3530bd60-5afe-49ae-81ce-7234db5b59c7",
+      "entity_type": "SYMPTOM",
+      "original_text": "headache",
+      "normalized_text": "headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "headache",
+        "page_number": null,
+        "character_start": 2807,
+        "character_end": 2815,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "4e09024e-16c0-4834-a0f5-54f27f5f0ed2",
+      "entity_type": "SYMPTOM",
+      "original_text": "headache",
+      "normalized_text": "headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "headache",
+        "page_number": null,
+        "character_start": 3188,
+        "character_end": 3196,
+        "section": "MEDICATIONS",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "a127d844-7242-4d51-92d6-a5e6421bf19e",
+      "entity_type": "SYMPTOM",
+      "original_text": "headache",
+      "normalized_text": "headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "headache",
+        "page_number": null,
+        "character_start": 4405,
+        "character_end": 4413,
+        "section": "ASSESSMENT",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "5ec3f15e-eaee-43d8-8f61-511eb13a1026",
+      "entity_type": "SYMPTOM",
+      "original_text": "headache",
+      "normalized_text": "headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "headache",
+        "page_number": null,
+        "character_start": 4616,
+        "character_end": 4624,
+        "section": "ASSESSMENT",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "45ddfda3-6776-44f7-aaab-a2fef9d2f2ca",
+      "entity_type": "SYMPTOM",
+      "original_text": "dizziness",
+      "normalized_text": "dizziness",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "dizziness",
+        "page_number": null,
+        "character_start": 5011,
+        "character_end": 5020,
+        "section": "PLAN",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "907c7064-4942-4660-95fc-9ec5f2a945dd",
+      "entity_type": "SYMPTOM",
+      "original_text": "headache",
+      "normalized_text": "headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "headache",
+        "page_number": null,
+        "character_start": 5193,
+        "character_end": 5201,
+        "section": "PLAN",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "29a4fa37-7676-4e79-8a0b-0b52865f8afe",
+      "entity_type": "SYMPTOM",
+      "original_text": "headache",
+      "normalized_text": "headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "headache",
+        "page_number": null,
+        "character_start": 5380,
+        "character_end": 5388,
+        "section": "FOLLOW_UP",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "ca4176fb-96ab-46f4-a040-62a65a9b5279",
+      "entity_type": "SYMPTOM",
+      "original_text": "headache",
+      "normalized_text": "headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "headache",
+        "page_number": null,
+        "character_start": 5624,
+        "character_end": 5632,
+        "section": "FOLLOW_UP",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "57ea8241-e97c-4f75-94bb-420dd94b4d6d",
+      "entity_type": "SYMPTOM",
+      "original_text": "headache",
+      "normalized_text": "headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "headache",
+        "page_number": null,
+        "character_start": 5758,
+        "character_end": 5766,
+        "section": "FOLLOW_UP",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "cf167258-1ab7-4201-9d49-03a83d902aa4",
+      "entity_type": "SYMPTOM",
+      "original_text": "headache",
+      "normalized_text": "headache",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "headache",
+        "page_number": null,
+        "character_start": 5775,
+        "character_end": 5783,
+        "section": "FOLLOW_UP",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "fed4d307-5304-4b71-b4bf-40df64bbb3a7",
+      "entity_type": "CONDITION",
+      "original_text": "migraine",
+      "normalized_text": "migraine",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "migraine",
+        "page_number": null,
+        "character_start": 4180,
+        "character_end": 4188,
+        "section": "ASSESSMENT",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "def00b59-adac-4e64-9661-a0ec42aa79e5",
+      "entity_type": "CONDITION",
+      "original_text": "migraine",
+      "normalized_text": "migraine",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "migraine",
+        "page_number": null,
+        "character_start": 4844,
+        "character_end": 4852,
+        "section": "PLAN",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "6bb8ab9c-21c8-4584-a22e-bc1fefab3803",
+      "entity_type": "CONDITION",
+      "original_text": "migraine",
+      "normalized_text": "migraine",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "migraine",
+        "page_number": null,
+        "character_start": 5668,
+        "character_end": 5676,
+        "section": "FOLLOW_UP",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "6d9f0b3c-e29b-4bd7-b344-3801405a9bcb",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "Brain",
+      "normalized_text": "Brain",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Brain",
+        "page_number": null,
+        "character_start": 965,
+        "character_end": 971,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "15baab6c-77fc-4db1-b4c3-20809e83077b",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "Brain",
+      "normalized_text": "Brain",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Brain",
+        "page_number": null,
+        "character_start": 1084,
+        "character_end": 1090,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "7d375a32-d304-4073-bd6d-45bc27579606",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "brain",
+      "normalized_text": "brain",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "brain",
+        "page_number": null,
+        "character_start": 1350,
+        "character_end": 1356,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "57cac1bb-52f1-4693-94ec-5a44d771ae02",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "Heart",
+      "normalized_text": "Heart",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Heart",
+        "page_number": null,
+        "character_start": 3410,
+        "character_end": 3415,
+        "section": "EXAMINATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "a5345ab7-8fa4-42d8-93bf-69b92ac0d84b",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "Brain",
+      "normalized_text": "Brain",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Brain",
+        "page_number": null,
+        "character_start": 4275,
+        "character_end": 4281,
+        "section": "ASSESSMENT",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "e399112e-7019-4cdf-a929-7a41224cadb9",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "heart",
+      "normalized_text": "heart",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "heart",
+        "page_number": null,
+        "character_start": 4947,
+        "character_end": 4953,
+        "section": "PLAN",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "8b566b64-1c0d-4cb5-a1bd-58fe30c3936c",
+      "entity_type": "ANATOMICAL_SITE",
+      "original_text": "brain",
+      "normalized_text": "brain",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "brain",
+        "page_number": null,
+        "character_start": 5594,
+        "character_end": 5600,
+        "section": "FOLLOW_UP",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {}
+    },
+    {
+      "entity_id": "e8f5453b-a9ad-4b79-a762-09a12e69253f",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "Rohan Iyer",
+      "normalized_text": "Rohan Iyer",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Rohan Iyer",
+        "page_number": null,
+        "character_start": 474,
+        "character_end": 484,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "name"
+      }
+    },
+    {
+      "entity_id": "06a86dfe-c87c-46a6-be86-1c8708e4b1f2",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "NEW-PATIENT-001 (External Synthetic ID)",
+      "normalized_text": "NEW-PATIENT-001 (External Synthetic ID)",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "NEW-PATIENT-001 (External Synthetic ID)",
+        "page_number": null,
+        "character_start": 505,
+        "character_end": 544,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "patient_identifier"
+      }
+    },
+    {
+      "entity_id": "1a6b302a-35cb-4ee2-923c-767b6b817d79",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "17-Nov-1997 (Age: 27)",
+      "normalized_text": "17-Nov-1997 (Age: 27)",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "17-Nov-1997 (Age: 27)",
+        "page_number": null,
+        "character_start": 560,
+        "character_end": 581,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "date_of_birth",
+        "iso_date": "1997-11-17"
+      }
+    },
+    {
+      "entity_id": "6d9c8f68-801b-4e2f-8009-0022331e9579",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "Male",
+      "normalized_text": "Male",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Male",
+        "page_number": null,
+        "character_start": 590,
+        "character_end": 594,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "sex"
+      }
+    },
+    {
+      "entity_id": "009d4210-9513-4bbd-ac2a-99d25d6f2981",
+      "entity_type": "PATIENT_DEMOGRAPHIC",
+      "original_text": "At",
+      "normalized_text": "At",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "At",
+        "page_number": null,
+        "character_start": 608,
+        "character_end": 610,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "field": "blood_group"
+      }
+    },
+    {
+      "entity_id": "90626918-a924-421b-976d-f28f991fec53",
+      "entity_type": "MEDICATION",
+      "original_text": "Paracetamol",
+      "normalized_text": "Paracetamol",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Paracetamol",
+        "page_number": null,
+        "character_start": 3137,
+        "character_end": 3148,
+        "section": "MEDICATIONS",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "dose": null,
+        "unit": null,
+        "frequency": null,
+        "route": null
+      }
+    },
+    {
+      "entity_id": "47e005dd-dd25-4a4c-a395-169321b972fe",
+      "entity_type": "MEDICATION",
+      "original_text": "Paracetamol",
+      "normalized_text": "Paracetamol",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Paracetamol",
+        "page_number": null,
+        "character_start": 4878,
+        "character_end": 4900,
+        "section": "PLAN",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "dose": "500",
+        "unit": "mg",
+        "frequency": "as needed",
+        "route": null
+      }
+    },
+    {
+      "entity_id": "b97993d6-1633-4fd9-a289-a0305b0df737",
+      "entity_type": "ALLERGY",
+      "original_text": "No known drug allergies",
+      "normalized_text": "No known drug allergies",
+      "terminology_code": null,
+      "context": {
+        "negation": "NEGATED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "No known drug allergies",
+        "page_number": null,
+        "character_start": 3251,
+        "character_end": 3274,
+        "section": "MEDICATIONS",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NEEDS_REVIEW",
+      "attributes": {
+        "criticality": "NONE"
+      }
+    },
+    {
+      "entity_id": "4fe407eb-0f30-4def-a244-bc2ceefd4336",
+      "entity_type": "DATE_TIME",
+      "original_text": "12 March 2025",
+      "normalized_text": "12 March 2025",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "12 March 2025",
+        "page_number": null,
+        "character_start": 328,
+        "character_end": 341,
+        "section": null,
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "iso_date": "2025-03-12"
+      }
+    },
+    {
+      "entity_id": "57912121-3446-437c-899a-27d1f1bf46d6",
+      "entity_type": "DATE_TIME",
+      "original_text": "18 July 2024",
+      "normalized_text": "18 July 2024",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "18 July 2024",
+        "page_number": null,
+        "character_start": 882,
+        "character_end": 894,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "iso_date": "2024-07-18"
+      }
+    },
+    {
+      "entity_id": "30ba43ff-bb5e-47ca-93be-e25069e0cda8",
+      "entity_type": "DATE_TIME",
+      "original_text": "25 July 2024",
+      "normalized_text": "25 July 2024",
+      "terminology_code": null,
+      "context": {
+        "negation": "NEGATED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "25 July 2024",
+        "page_number": null,
+        "character_start": 1127,
+        "character_end": 1139,
+        "section": "PATIENT_INFORMATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NEEDS_REVIEW",
+      "attributes": {
+        "iso_date": "2024-07-25"
+      }
+    },
+    {
+      "entity_id": "576200ca-3f28-45d3-b8fe-175bd393dc96",
+      "entity_type": "DATE_TIME",
+      "original_text": "12 March 2025",
+      "normalized_text": "12 March 2025",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "12 March 2025",
+        "page_number": null,
+        "character_start": 6041,
+        "character_end": 6054,
+        "section": "FOLLOW_UP",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "iso_date": "2025-03-12"
+      }
+    },
+    {
+      "entity_id": "5ec54646-f80a-48eb-b4e8-3046fa263146",
+      "entity_type": "MEASUREMENT",
+      "original_text": "BMI: 23.8 ",
+      "normalized_text": "BMI: 23.8 ",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "BMI: 23.8 ",
+        "page_number": null,
+        "character_start": 3538,
+        "character_end": 3548,
+        "section": "EXAMINATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "value": 23.8,
+        "measurement_type": "BMI",
+        "unit": null
+      }
+    },
+    {
+      "entity_id": "820d94c1-7000-48e8-af8f-42e1039cbe0c",
+      "entity_type": "MEASUREMENT",
+      "original_text": "Weight: 73 kg",
+      "normalized_text": "Weight: 73 kg",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "HISTORICAL",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Weight: 73 kg",
+        "page_number": null,
+        "character_start": 3506,
+        "character_end": 3519,
+        "section": "EXAMINATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "value": 73.0,
+        "measurement_type": "WEIGHT",
+        "unit": "kg"
+      }
+    },
+    {
+      "entity_id": "8ad448ab-9c59-4365-a5f6-cbc5e2b913e9",
+      "entity_type": "MEASUREMENT",
+      "original_text": "72 mmHg",
+      "normalized_text": "72 mmHg",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "72 mmHg",
+        "page_number": null,
+        "character_start": 3381,
+        "character_end": 3388,
+        "section": "EXAMINATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "value": 72.0,
+        "measurement_type": "MEASUREMENT",
+        "unit": "mmHg"
+      }
+    },
+    {
+      "entity_id": "91755360-e87d-420a-8cbc-e231b6dcfd71",
+      "entity_type": "MEASUREMENT",
+      "original_text": "66 bpm",
+      "normalized_text": "66 bpm",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "66 bpm",
+        "page_number": null,
+        "character_start": 3422,
+        "character_end": 3428,
+        "section": "EXAMINATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "value": 66.0,
+        "measurement_type": "MEASUREMENT",
+        "unit": "bpm"
+      }
+    },
+    {
+      "entity_id": "d447b12b-1a3c-48eb-bcb1-49e6e88cf6cc",
+      "entity_type": "MEASUREMENT",
+      "original_text": "74 kg",
+      "normalized_text": "74 kg",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "HISTORICAL",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "74 kg",
+        "page_number": null,
+        "character_start": 3531,
+        "character_end": 3536,
+        "section": "EXAMINATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "value": 74.0,
+        "measurement_type": "MEASUREMENT",
+        "unit": "kg"
+      }
+    },
+    {
+      "entity_id": "134c6658-6c84-41d4-8722-8813d088fb9c",
+      "entity_type": "MEASUREMENT",
+      "original_text": "3 mm",
+      "normalized_text": "3 mm",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "3 mm",
+        "page_number": null,
+        "character_start": 3688,
+        "character_end": 3692,
+        "section": "EXAMINATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "value": 3.0,
+        "measurement_type": "MEASUREMENT",
+        "unit": "mm"
+      }
+    },
+    {
+      "entity_id": "173db590-cd14-4813-bf9e-df9b9ceafe3e",
+      "entity_type": "VITAL_SIGN",
+      "original_text": "Blood Pressure: 116/72 mmHg",
+      "normalized_text": "Blood Pressure: 116/72 mmHg",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Blood Pressure: 116/72 mmHg",
+        "page_number": null,
+        "character_start": 3361,
+        "character_end": 3388,
+        "section": "EXAMINATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "name": "Blood Pressure",
+        "value": "116/72",
+        "unit": "mmHg"
+      }
+    },
+    {
+      "entity_id": "2e4c5a55-3bb6-4eac-aef9-0376b8b678f6",
+      "entity_type": "VITAL_SIGN",
+      "original_text": "Heart Rate: 66 bpm",
+      "normalized_text": "Heart Rate: 66 bpm",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Heart Rate: 66 bpm",
+        "page_number": null,
+        "character_start": 3410,
+        "character_end": 3428,
+        "section": "EXAMINATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "name": "Heart Rate",
+        "value": "66",
+        "unit": "bpm"
+      }
+    },
+    {
+      "entity_id": "f976bf57-ebd3-44b9-ae66-5e2751dc7ffd",
+      "entity_type": "VITAL_SIGN",
+      "original_text": "Temperature: 36.7°C",
+      "normalized_text": "Temperature: 36.7°C",
+      "terminology_code": null,
+      "context": {
+        "negation": "AFFIRMED",
+        "certainty": "CERTAIN",
+        "temporality": "CURRENT",
+        "experiencer": "PATIENT",
+        "status": "UNKNOWN"
+      },
+      "evidence": {
+        "document_id": "ocr_test_rohan_iyer_neurology_followup_scanned",
+        "source_text": "Temperature: 36.7°C",
+        "page_number": null,
+        "character_start": 3486,
+        "character_end": 3505,
+        "section": "EXAMINATION",
+        "ocr_confidence": 92.34929906542057
+      },
+      "extraction_method": "rule_based",
+      "extraction_confidence": 0.9234929906542056,
+      "status": "NORMALIZED",
+      "attributes": {
+        "name": "Temperature",
+        "value": "36.7",
+        "unit": "°C"
+      }
+    }
+  ],
+  "verified_facts": [],
+  "relationships": [],
+  "validation_issues": []
+}

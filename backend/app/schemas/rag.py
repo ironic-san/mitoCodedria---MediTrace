@@ -9,6 +9,12 @@ class RAGQueryRequest(BaseModel):
     max_sources: Optional[int] = Field(5, ge=1, le=15, description="Maximum evidence sources to return")
 
 
+class RAGRetrievalRequest(BaseModel):
+    patient_id: str
+    query: str = Field(..., min_length=2)
+    max_sources: Optional[int] = Field(5, ge=1, le=15)
+
+
 class RAGKeywordQueryRequest(BaseModel):
     """Request payload for keyword-derived historical RAG retrieval."""
     patient_id: str = Field(..., description="Target patient UUID")
@@ -23,7 +29,16 @@ class RAGSourceItem(BaseModel):
     document_date: Optional[str] = None
     chunk_text: str
     similarity_score: float
+    score: Optional[float] = None
     patient_id: str
+    section: Optional[str] = None
+    metadata: Dict[str, Any] = Field(default_factory=dict)
+
+
+class RAGRetrievalResponse(BaseModel):
+    patient_id: str
+    query: str
+    retrievals: List[RAGSourceItem] = Field(default_factory=list)
 
 
 class RAGQueryResponse(BaseModel):
