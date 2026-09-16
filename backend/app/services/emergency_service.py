@@ -105,7 +105,7 @@ def get_doctor_access_mode(client: Client, doctor_id: str, patient_id: str) -> O
             rel_type = (row.get("relationship_type") or "").upper()
             if rel_type in {"BREAK_GLASS", "EMERGENCY"}:
                 has_break_glass = True
-            elif rel_type == "NORMAL_ACCESS":
+            elif rel_type in {"NORMAL_ACCESS", "PRIMARY_CARE"}:
                 has_normal = True
 
     if has_normal:

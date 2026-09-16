@@ -27,7 +27,7 @@ def has_valid_doctor_access(client: Client, doctor_id: str, patient_id: str) -> 
         .select("*")
         .eq("doctor_id", doctor_id)
         .eq("patient_id", patient_id)
-        .eq("relationship_type", "NORMAL_ACCESS")
+        .in_("relationship_type", ["NORMAL_ACCESS", "PRIMARY_CARE"])
         .eq("status", "ACTIVE")
         .execute()
     )

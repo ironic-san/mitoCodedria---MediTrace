@@ -32,8 +32,8 @@ class IntegrityAnchorResponse(BaseModel):
     event_title: Optional[str] = "Critical Medical Event"
     event_hash: Optional[str] = None
     record_hash: Optional[str] = None
-    blockchain_tx_id: str
-    block_number: int
+    blockchain_tx_id: Optional[str] = None
+    block_number: Optional[int] = None
     blockchain_timestamp: Optional[str] = None
     anchored_at: Optional[str] = None
     blockchain_network: Optional[str] = "Hyperledger Fabric (meditrace-channel)"
