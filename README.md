@@ -1,64 +1,126 @@
-# MediTrace
+# 🏥 MediTrace
 
 ## AI-Powered Emergency Health Passport with Verifiable Medical History
 
-MediTrace is a secure digital health-passport system designed to help doctors
-quickly access, understand, and verify relevant patient information,
-especially during emergency situations.
+MediTrace is a secure digital health-passport platform designed to help doctors **quickly access, understand, retrieve, and verify relevant patient medical history**, especially during emergency situations.
 
-The platform brings together structured medical records, medical-document
-processing, historical medical information retrieval, AI-assisted analysis,
-critical-event integrity verification, controlled emergency access, and
-patient-facing access transparency.
+Medical information is often spread across prescriptions, reports, hospital records, and scanned documents. MediTrace brings these sources together and uses **OCR, Medical NLU, RAG, and LLM-assisted analysis** to make historical information easier to retrieve and understand.
+
+For critical medical events, MediTrace also provides **blockchain-backed integrity verification**, allowing the system to detect if an important historical record has been modified or is missing.
 
 > **MediTrace assists the doctor; it does not replace the doctor.**
 
-AI is used to extract, organize, retrieve, summarize, and flag potentially
-important information. The doctor remains the final clinical
-decision-maker.
+---
+
+# 🎯 Problem
+
+In emergency situations, doctors may need important historical information within seconds.
+
+However:
+
+- Medical records may be scattered across different documents and hospitals.
+- Old prescriptions and reports can be difficult to search manually.
+- Critical information such as allergies, previous surgeries, chronic conditions, and major medical events may be buried inside documents.
+- There may be a need to verify whether important historical information has been modified.
+- Emergency access must remain controlled and traceable.
+
+MediTrace addresses these problems by combining **secure medical data management, AI-assisted retrieval, and integrity verification**.
 
 ---
 
-## Key Features
+# 💡 Our Solution
 
-- 👤 Patient and doctor authentication
-- 🔐 Patient-controlled normal doctor access
-- 🏥 Doctor health-passport access
-- 🚨 Controlled break-glass emergency access
-- 📄 Medical document upload and OCR
-- 🧠 Medical Natural Language Understanding (NLU)
-- 🔎 Historical medical information retrieval using RAG
-- 🤖 LLM-assisted medical report generation
-- 🔗 Critical medical-event integrity and provenance verification
-- 📋 Audit logging and access transparency
-- ⚠️ Discrepancy and abnormality flagging
-- 🗂️ Structured medical information management
+MediTrace provides a digital emergency health passport where authorized doctors can access relevant patient information through a secure interface.
+
+The system combines:
+
+- 🔐 Authentication and role-based access
+- 👤 Patient and doctor management
+- 📄 Medical document processing
+- 🔎 OCR-based text extraction
+- 🧠 Medical Natural Language Understanding
+- 🗂️ Structured medical information
+- 🔍 Patient-scoped RAG retrieval
+- 🤖 Gemini LLM-assisted responses
+- 🔗 SHA-256 + blockchain-backed integrity verification
+- 🚨 Controlled Break-Glass emergency access
+- 📋 Complete audit logging
 
 ---
 
-## System Overview
+# 🔄 Complete Working Flow
 
 ```text
-                         MEDiTRACE
-                            │
-          ┌─────────────────┼─────────────────┐
-          │                 │                 │
-          ▼                 ▼                 ▼
-     PATIENT SIDE      DOCTOR SIDE       EMERGENCY
-          │                 │                 │
-          ▼                 ▼                 ▼
-     Access Control    Normal Access      Break-Glass
-     Basic Info             │                 │
-     Audit Log              ▼                 ▼
-                       Health Passport   Critical Information
-                              │                 │
-                    ┌─────────┴─────────┐       │
-                    ▼                   ▼       ▼
-                   AI/RAG          Integrity   RAG
-                    │                   │       │
-                    └─────────┬─────────┘       │
-                              ▼                 │
-                        Doctor Review ◄──────────┘
-                              │
-                              ▼
-                       Doctor Decision
+                         ┌─────────────────────┐
+                         │   Patient / Doctor  │
+                         │      Login          │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │ Authentication &    │
+                         │ Authorization       │
+                         └──────────┬──────────┘
+                                    │
+                    ┌───────────────┴───────────────┐
+                    │                               │
+                    ▼                               ▼
+           ┌────────────────┐              ┌────────────────┐
+           │  Normal Access │              │  Break-Glass   │
+           │                │              │   Emergency    │
+           └───────┬────────┘              └───────┬────────┘
+                   │                               │
+                   └───────────────┬───────────────┘
+                                   ▼
+                         ┌─────────────────────┐
+                         │ Patient Medical     │
+                         │ Records/Documents   │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │ OCR / Text          │
+                         │ Extraction          │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │ Medical NLU         │
+                         │                     │
+                         │ Conditions          │
+                         │ Allergies           │
+                         │ Medications         │
+                         │ Procedures / Events │
+                         └──────────┬──────────┘
+                                    │
+                       ┌────────────┴────────────┐
+                       ▼                         ▼
+              ┌────────────────┐        ┌────────────────┐
+              │ Structured     │        │ Historical     │
+              │ Medical Data   │        │ Documents      │
+              └───────┬────────┘        └───────┬────────┘
+                      │                          │
+                      ▼                          ▼
+              ┌────────────────┐        ┌────────────────┐
+              │ Supabase /     │        │ Chunking +     │
+              │ PostgreSQL     │        │ Embeddings     │
+              └────────────────┘        └───────┬────────┘
+                                                 │
+                                                 ▼
+                                        ┌────────────────┐
+                                        │ Patient-Scoped │
+                                        │ RAG Retrieval  │
+                                        └───────┬────────┘
+                                                │
+                                                ▼
+                                        ┌────────────────┐
+                                        │ Gemini LLM     │
+                                        │ Grounded       │
+                                        │ Response       │
+                                        └───────┬────────┘
+                                                │
+                                                ▼
+                                        ┌────────────────┐
+                                        │ Doctor Review  │
+                                        │ & Decision     │
+                                        └────────────────┘
